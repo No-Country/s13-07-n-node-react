@@ -1,4 +1,10 @@
-# <img align="center" width="40" alt="no-country" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLXeGR2RyhCZtjyQ0AnrgaHH-QRE2rnfiJOw&usqp=CAU"/> **_Test Plan_**
+---
+runme:
+  id: 01HP5Y2HVM8AX0JGWTMZX2W3FC
+  version: v2.2
+---
+
+#  ___Test Plan___
 
 ## `Objetivo`
 
@@ -21,32 +27,32 @@ El plan de pruebas cubrirá las funcionalidades de la app según la lista de req
 
   <summary><b>Pruebas Funcionales</b></summary>
 
-  - **Smoke Test:**
-    Pruebas iniciales para asegurar que las funciones principales del software estén operativas.
+- **Smoke Test:**
+   Pruebas iniciales para asegurar que las funciones principales del software estén operativas.
+- **Pruebas Exploratorias:**
+   Evaluación adicional basada en los requerimientos para descubrir posibles problemas y áreas de mejora.
 
-  - **Pruebas Exploratorias:**
-    Evaluación adicional basada en los requerimientos para descubrir posibles problemas y áreas de mejora.
 </details>
 
 <details>
 
   <summary><b>Pruebas No Funcionales</b></summary>
 
-  - **Pruebas de Usabilidad:**
-    Evaluación de la facilidad de uso y la experiencia del usuario.
+- **Pruebas de Usabilidad:**
+   Evaluación de la facilidad de uso y la experiencia del usuario.
+- **Pruebas de Seguridad:**
+   Enfoque en la autenticación y autorización para garantizar la protección de datos y la integridad del sistema.
 
-  - **Pruebas de Seguridad:**
-    Enfoque en la autenticación y autorización para garantizar la protección de datos y la integridad del sistema.
 </details>
 
 <details>
 
   <summary><b>Pruebas Automatizadas</b></summary>
 
-  - **Pruebas E2E (End-to-End):**
-    Automatización de pruebas que cubren todo el flujo del sistema, desde el inicio hasta la finalización.
-</details>
+- **Pruebas E2E (End-to-End):**
+   Automatización de pruebas que cubren todo el flujo del sistema, desde el inicio hasta la finalización.
 
+</details>
 
 ## `Herramientas de Pruebas`
 
@@ -62,29 +68,27 @@ El plan de pruebas cubrirá las funcionalidades de la app según la lista de req
 ## `Preparacion y Planificacion`
 
 - [Tablero de trabajo en Trello]()
-
-- [Hitos / Milestones en GitHub](https://github.com/MaxiBarbo/challengeTest1/milestones)
-
+- [Hitos / Milestones en GitHub](https://github.com/No-Country/s13-07-n-node-react/milestones)
 - [Diseño en Figma]()
 
 ## `Ejecución de Pruebas`
 
-### <u>Escenarios BDD</u>
+### Escenarios BDD
 
-- [Proyecto en Github con escenarios de pruebas en Gherkin](https://github.com/users/MaxiBarbo/projects/4)
+- [Proyecto en Github con escenarios de pruebas en Gherkin](https://github.com/orgs/No-Country/projects/79)
 
-### <u>Testing APIs</u>
+### Testing APIs
 
 - [Postman]()
 
-### <u>Reporte de Bugs encontrados</u>
+### Reporte de Bugs encontrados
 
-- [Proyecto en GitHub con Bugs encontrados](https://github.com/users/MaxiBarbo/projects/6)
+- [Proyecto en GitHub con Bugs encontrados](https://github.com/orgs/No-Country/projects/78)
 
-### <u>Testing Manual, Métricas y Estimaciones</u>
+### Testing Manual, Métricas y Estimaciones
 
 * [Test Cases ejecutados en Google Sheets](https://docs.google.com/spreadsheets/d/1r32jKngM6Jw_gcJPxGlLL5ZANTZZQ5qWdl6VkUtg6ek/edit?usp=sharing)
 
 ## `Repositorio del Proyecto`
 
-* [No Country - Team: s13-07-n-node-react]()
+* [No Country - Team: s13-07-n-node-react](https://github.com/No-Country/s13-07-n-node-react.git)

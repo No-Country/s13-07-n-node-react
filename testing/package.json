@@ -9,7 +9,7 @@
   "scripts": {
     "test": "cucumber-js test",
     "report": "npx ts-node src/helper/report.ts",
-    "codegen": "npx playwright codegen https://pigmeo-app.netlify.app/login",
+    "codegen": "npx playwright codegen www.google.com",
     "codegen:host:pigmeo": "npx playwright codegen http://localhost:3000/auth/login",
     "json:report": "node json_report.js",
     "html:report": "node html_report.js",
