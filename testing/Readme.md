@@ -1,4 +1,10 @@
-#  ___Test Plan___
+---
+runme:
+  id: 01HP6QPBGDE2ZB50HH11V70S5B
+  version: v2.2
+---
+
+# ___Test Plan___
 
 ## `Objetivo`
 
@@ -61,7 +67,7 @@ El plan de pruebas cubrirá las funcionalidades de la app según la lista de req
 
 ## `Preparacion y Planificacion`
 
-- [Tablero de trabajo en Trello]()
+- [Tablero de trabajo en Trello/Jira]()
 - [Hitos / Milestones en GitHub](https://github.com/No-Country/s13-07-n-node-react/milestones)
 - [Diseño en Figma]()
 
