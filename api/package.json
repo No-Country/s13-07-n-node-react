@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "format": "prettier --write \"**/*.js\"",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +27,8 @@
     "swagger": "^0.7.5"
   },
   "devDependencies": {
-    "nodemon": "^3.0.3"
+    "eslint": "^8.56.0",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.5"
   }
 }

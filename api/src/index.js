@@ -5,6 +5,7 @@ import { config } from "./Middleware/middleware.js";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+
 const app = express();
 config(app, [
   morgan("dev"),
@@ -14,6 +15,7 @@ config(app, [
   cookieParser(),
 ]);
 db();
-app.listen(process.env.PORT_SERVER, () => {
-  console.log(`listening on ${process.env.PORT_SERVER}`);
+const port = process.env.PORT_SERVER || 3001;
+app.listen(port, () => {
+  console.log(`listening on http://localhost:${port}`);
 });
