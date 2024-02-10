@@ -1,12 +1,18 @@
+
 import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
-type Store = {
-  count: number
-  inc: () => void
-}
-
-export const useStore = create<Store>()((set) => ({
-  count: 1,
-  inc: () => set((state) => ({ count: state.count + 1 })),
-}))
+export const useBearStore = create(
+  persist(
+    (set:any, get:any) => ({
+      bears: 0,
+      addABear: () => set({ bears: get().bears  + 1 }),
+      counter:["hola", "espero", "verte"],
+    }),
+    {
+      name: 'food-storage', // name of the item in the storage (must be unique)
+      storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+    },
+  ),
+)
 
