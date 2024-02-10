@@ -1,3 +1,9 @@
+---
+runme:
+  id: 01HP6R3GGGBM6AC2ZQ0M5PH1JN
+  version: v2.2
+---
+
 # ___Test Plan___
 
 ## `Objetivo`
@@ -67,7 +73,7 @@ El plan de pruebas cubrirá las funcionalidades de la app según la lista de req
 
 ## `Ejecución de Pruebas`
 
-### Escenarios BDD
+### Test Suite
 
 - [Proyecto en Github con escenarios de pruebas en Gherkin](https://github.com/orgs/No-Country/projects/79)
 

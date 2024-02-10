@@ -2,7 +2,7 @@ name: Api Test Postman - S13-07-n-node-react
 
 on: 
   push:
-    branches: [ testing ]
+    branches: [ test ]
 
 jobs:
   automated-api-tests:
