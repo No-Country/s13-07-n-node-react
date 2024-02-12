@@ -49,8 +49,8 @@ El plan de pruebas cubrirá las funcionalidades de la app según la lista de req
 
   <summary><b>Pruebas Automatizadas</b></summary>
 
-- **Pruebas E2E (End-to-End):**
-   Automatización de pruebas que cubren todo el flujo del sistema, desde el inicio hasta la finalización.
+- **Escenarios de pruebas ejecutados en lenguje Gherkin**
+   Se crean escenarios basados en las historias de usuarios y/o criterios de aceptacion en archivos feature que luego son ejecutados con cucumber 
 
 </details>
 
@@ -67,13 +67,21 @@ El plan de pruebas cubrirá las funcionalidades de la app según la lista de req
 
 ## `Preparacion y Planificacion`
 
+<<<<<<< HEAD
 - [Tablero de trabajo en Trello/Jira]()
+=======
+- [Tablero de trabajo en Trello](https://trello.com/b/gyxztPmh/spotter)
+>>>>>>> 3500dbb396ffda5363e93c79ea3ee42624fc27d7
 - [Hitos / Milestones en GitHub](https://github.com/No-Country/s13-07-n-node-react/milestones)
 - [Diseño en Figma]()
 
 ## `Ejecución de Pruebas`
 
+<<<<<<< HEAD
 ### Test Suite
+=======
+### Test Suite & Documentacion
+>>>>>>> 3500dbb396ffda5363e93c79ea3ee42624fc27d7
 
 - [Proyecto en Github con escenarios de pruebas en Gherkin](https://github.com/orgs/No-Country/projects/79)
 
