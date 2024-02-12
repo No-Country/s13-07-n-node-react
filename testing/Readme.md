@@ -1,9 +1,3 @@
----
-runme:
-  id: 01HP6R3GGGBM6AC2ZQ0M5PH1JN
-  version: v2.2
----
-
 # ___Test Plan___
 
 ## `Objetivo`
