@@ -23,7 +23,7 @@ report.generate({
       { label: "Type", value: "smoke test" },
       { label: "Version", value: "1.0" },
       { label: "CI / CD pipeline", value: "GitHub Actions" },
-      { label: "Repository", value: "" },
+      { label: "Repository", value: "https://github.com/No-Country/s13-07-n-node-react.git" },
       { label: "Execution Start Time", value: "Nov 19th 2023" },
       { label: "Execution End Time", value: "Nov 19th 2023" },
       { label: "Web", value: "" },

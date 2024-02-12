@@ -1,1 +1,101 @@
-[]
+[
+  {
+    "description": "    Como usuario\n    Quiero verificar que todos los enlaces de mi webApp funcionan correctamente\n    Para garantizar una navegación sin problemas",
+    "elements": [
+      {
+        "description": "",
+        "id": "verificacion-status-de-links-en-la-webapp;verificar-estado-de-los-enlaces-en-la-página-principal",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Verificar estado de los enlaces en la página principal",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1376551400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "el usuario 'a' accede con su contraseña 'b' en la web app 'c'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16195700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 11,
+            "name": "que estoy en la página principal de la aplicación",
+            "match": {
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1659799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "inspecciono todos los enlaces en la página",
+            "match": {
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1140499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "cada enlace debería responder con un estado HTTP 200 OK",
+            "match": {
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1020599
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 124200
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smokeTest",
+            "line": 9
+          },
+          {
+            "name": "@nav_id:01",
+            "line": 9
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "verificacion-status-de-links-en-la-webapp",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Verificacion status de Links en la webApp",
+    "tags": [],
+    "uri": "src\\features\\test_cases\\verificacion_links.feature"
+  }
+]
