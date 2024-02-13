@@ -13,6 +13,9 @@ config(app, [
   express.json(),
   cookieParser(),
 ]);
+
+app.use("/api/v1", routes)
+
 db();
 app.listen(process.env.PORT_SERVER, () => {
   console.log(`listening on ${process.env.PORT_SERVER}`);
