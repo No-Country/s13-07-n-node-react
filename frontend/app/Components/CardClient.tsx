@@ -4,14 +4,16 @@ import Image from 'next/image';
 import avatar from "../../public/Roberta Casas.png"
 import megatlon from "../../public/image 1.png";
 import codigoBarras from "../../public/Frame.png"
+
+
 const CardClient = () => {
     
-  return (
+    return (
     <div className='w-[328px] h-[146px] mt-[24px] relative'>
         <Image src={backgroundImage} alt='background-image' />
         <div className='absolute top-0 left-0 right-0 bottom-0'>
             <div className='w-full h-full grid grid-cols-12'>
-                 <div className="col-span-4 flex justify-center items-center">
+                    <div className="col-span-4 flex justify-center items-center">
                     <Image className='w-[74px]' src={avatar} alt={"avatar"} />
                 </div>
                 <div className="col-span-4  flex flex-col justify-center">
@@ -38,5 +40,4 @@ const CardClient = () => {
     </div>
   )
 }
-
 export default CardClient

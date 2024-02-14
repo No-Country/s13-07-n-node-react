@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+const metadata:Metadata = {
+
+    title:"Inicio",
+    description:"pagina principal",
+}
 export default function InicioLayout({
     children,
     }: {
