@@ -4,10 +4,15 @@ import {
   getClientByIdService,
   updateClientService,
   deleteClientService,
+  loginClientService,
 } from "../services/client.service.js";
 
 export const createClient = async (req, res) => {
   await createClientService(req, res);
+};
+
+export const loginClient = async (req, res) => {
+  await loginClientService(req, res);
 };
 
 export const getAllClients = async (req, res) => {

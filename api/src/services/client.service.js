@@ -1,5 +1,9 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import ClientModel from "../schemas/client.schema.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const createClientService = async (req, res) => {
   try {
@@ -33,6 +37,36 @@ export const createClientService = async (req, res) => {
   } catch (error) {
     console.error("Error creating client:", error);
     res.status(500).json({ message: "Error creating client" });
+  }
+};
+
+export const loginClientService = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Convertir el email a minúsculas
+    const lowerCaseEmail = email.toLowerCase();
+
+    // Verificar si el cliente existe en la base de datos
+    const client = await ClientModel.findOne({ email: lowerCaseEmail });
+    if (!client) {
+      return res.status(404).json({ message: "Invalid credentials" });
+    }
+
+    // Verificar si la contraseña es correcta
+    const passwordMatch = await bcrypt.compare(password, client.password);
+    if (!passwordMatch) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    // Si las credenciales son correctas, generar un token JWT
+    const token = jwt.sign({ clientId: client._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+    // Devolver el token como respuesta
+    res.json({ token });
+  } catch (error) {
+    console.error("Error logging in client:", error);
+    res.status(500).json({ message: "Error logging in client" });
   }
 };
 

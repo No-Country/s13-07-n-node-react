@@ -11,11 +11,6 @@ export const createClientValidation = generateValidationRules("createClient", {
     isLength: { min: 2, max: 40 },
     OnlyLetters: {},
   },
-  documentNumber: {
-    notEmpty: {},
-    isLength: { min: 2, max: 40 },
-    isNumeric: {},
-  },
   email: {
     notEmpty: {},
     isEmail: {},
@@ -42,14 +37,21 @@ export const updateClientValidation = generateValidationRules("updateClient", {
     isLength: { min: 2, max: 40 },
     OnlyLetters: {},
   },
-  documentNumber: {
-    notEmpty: {},
-    isLength: { min: 2, max: 40 },
-    isNumeric: {},
-  },
   birthdate: {
     notEmpty: {},
     isDate: {},
+  },
+});
+
+export const loginClientValidation = generateValidationRules("loginClient", {
+  email: {
+    notEmpty: {},
+    isEmail: {},
+  },
+  password: {
+    notEmpty: {},
+    isLength: { min: 8, max: 12 },
+    password: {},
   },
 });
 

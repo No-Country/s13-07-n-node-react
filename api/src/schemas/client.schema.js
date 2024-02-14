@@ -17,14 +17,6 @@ const clientSchemaDefinition = new mongoose.Schema({
       description: "The last name of the client.",
     },
   },
-  documentNumber: {
-    type: String,
-    required: true,
-    swagger: {
-      type: "string",
-      description: "The document number of the client.",
-    },
-  },
   phone: {
     type: String,
     swagger: {
@@ -72,7 +64,7 @@ const clientSchemaDefinition = new mongoose.Schema({
       description: "The barcode of the client.",
     },
   },
-  image_url: {
+  imageUrl: {
     type: String,
     default: "https://res.cloudinary.com/dxq0pypxu/image/upload/v1696476957/nn12qmebo7v6qhbwbkdf.png",
     swagger: {
