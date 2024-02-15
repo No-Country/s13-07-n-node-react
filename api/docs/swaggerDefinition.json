@@ -1,0 +1,367 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Spotter",
+		"version": "1.0.0",
+		"description": "Documentación de API"
+	},
+	"servers": [
+		{
+			"url": "https://spotter-gym.onrender.com/api/v1",
+			"description": "Servidor de Producción"
+		},
+		{
+			"url": "https://spotter.4.us-1.fl0.io/api/v1",
+			"description": "Servidor de Producción (Backup)"
+		},
+		{
+			"url": "http://localhost:3001/api/v1",
+			"description": "Servidor de desarrollo"
+		}
+	],
+	"components": {
+		"securitySchemes": {
+			"BearerAuth": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT"
+			}
+		},
+		"schemas": {
+			"client": {
+				"type": "object",
+				"properties": {
+					"firstName": {
+						"type": "string",
+						"description": "El nombre del cliente."
+					},
+					"lastName": {
+						"type": "string",
+						"description": "El apellido del cliente."
+					},
+					"email": {
+						"type": "string",
+						"description": "La dirección de correo electrónico del cliente.",
+						"format": "email"
+					},
+					"password": {
+						"type": "string",
+						"description": "La contraseña del cliente."
+					},
+					"phone": {
+						"type": "string",
+						"description": "El número de teléfono del cliente."
+					},
+					"photoUrl": {
+						"type": "string",
+						"description": "URL de la foto del cliente."
+					},
+					"isActive": {
+						"type": "boolean",
+						"description": "Indica si el cliente está activo o inactivo."
+					},
+					"_id": {
+						"type": "objectid"
+					},
+					"__v": {
+						"type": "number"
+					}
+				},
+				"required": [
+					"firstName",
+					"lastName",
+					"email",
+					"password"
+				]
+			}
+		},
+		"responses": {
+			"SuccessResponse": {
+				"description": "The request was successful: La solicitud fue exitosa"
+			},
+			"CreatedResponse": {
+				"description": "Resource created successfully: Recurso creado exitosamente"
+			},
+			"ServerError": {
+				"description": "Internal server error: Error interno del servidor"
+			},
+			"UnauthorizedError": {
+				"description": "Unauthorized access: Acceso no autorizado"
+			},
+			"BadRequestError": {
+				"description": "Bad Request: Error en la solicitud"
+			},
+			"NotFound": {
+				"description": "Resource not found: Recurso no encontrado"
+			},
+			"Error409": {
+				"description": "Conflict error: Error de conflicto"
+			}
+		}
+	},
+	"paths": {
+		"/clients/register": {
+			"post": {
+				"summary": "Registra un nuevo cliente",
+				"description": "Registra un nuevo cliente con la información proporcionada",
+				"tags": [
+					"Clients"
+				],
+				"requestBody": {
+					"description": "Datos del cliente a crear",
+					"required": true,
+					"content": {
+						"application/json": {
+							"example": {
+								"firstName": "Paula",
+								"lastName": "Mendoza",
+								"email": "paula.mendoza@spotter.com",
+								"password": "Admin123$"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
+					},
+					"409": {
+						"$ref": "#/components/responses/Error409"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/clients/login": {
+			"post": {
+				"summary": "Iniciar sesión de cliente",
+				"description": "Inicia sesión de un cliente utilizando su correo electrónico y contraseña.",
+				"tags": [
+					"Clients"
+				],
+				"requestBody": {
+					"description": "Datos de inicio de sesión del cliente",
+					"required": true,
+					"content": {
+						"application/json": {
+							"example": {
+								"email": "paula.mendoza@spotter.com",
+								"password": "Admin123$"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
+					},
+					"401": {
+						"$ref": "#/components/responses/UnauthorizedError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/clients": {
+			"get": {
+				"summary": "Obtener todos los clientes activos",
+				"description": "Obtiene una lista de todos los clientes activos en el sistema",
+				"tags": [
+					"Clients"
+				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"401": {
+						"$ref": "#/components/responses/UnauthorizedError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/clients/{clientId}": {
+			"get": {
+				"summary": "Obtener un cliente por ID",
+				"description": "Obtiene un cliente específico por su ID",
+				"tags": [
+					"Clients"
+				],
+				"parameters": [
+					{
+						"name": "clientId",
+						"in": "path",
+						"required": true,
+						"description": "ID del cliente a obtener",
+						"schema": {
+							"type": "string",
+							"example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"401": {
+						"$ref": "#/components/responses/UnauthorizedError"
+					},
+					"404": {
+						"$ref": "#/components/responses/NotFound"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			},
+			"put": {
+				"summary": "Actualizar un cliente por ID",
+				"description": "Actualiza un cliente específico por su ID",
+				"tags": [
+					"Clients"
+				],
+				"parameters": [
+					{
+						"name": "clientId",
+						"in": "path",
+						"required": true,
+						"description": "ID del cliente a actualizar",
+						"schema": {
+							"type": "string",
+							"example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "Datos del cliente a actualizar",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"firstName": {
+										"type": "string",
+										"example": "New FirstName"
+									},
+									"lastName": {
+										"type": "string",
+										"example": "New Lastname"
+									},
+									"phone": {
+										"type": "string",
+										"example": "123-456-7890"
+									},
+									"birthdate": {
+										"type": "date",
+										"example": "1998-04-12"
+									},
+									"imageUrl": {
+										"type": "string",
+										"example": "https://res.cloudinary.com/dxq0pypxu/image/upload/v1696476957/nn12qmebo7v6qhbwbkdf.png"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"401": {
+						"$ref": "#/components/responses/UnauthorizedError"
+					},
+					"404": {
+						"$ref": "#/components/responses/NotFound"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			},
+			"delete": {
+				"summary": "Desactivar un cliente por ID",
+				"description": "Desactiva un cliente específico por su ID",
+				"tags": [
+					"Clients"
+				],
+				"parameters": [
+					{
+						"name": "clientId",
+						"in": "path",
+						"required": true,
+						"description": "ID del cliente a desactivar",
+						"schema": {
+							"type": "string",
+							"example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"401": {
+						"$ref": "#/components/responses/UnauthorizedError"
+					},
+					"404": {
+						"$ref": "#/components/responses/NotFound"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/images/upload": {
+			"post": {
+				"summary": "Cargar una imagen",
+				"description": "Carga una imagen y devuelve un URL",
+				"tags": [
+					"Images"
+				],
+				"requestBody": {
+					"description": "Imagen a cargar",
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"image": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"$ref": "#/components/responses/CreatedResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		}
+	}
+}
