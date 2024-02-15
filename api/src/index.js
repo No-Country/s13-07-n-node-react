@@ -9,16 +9,16 @@ import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import routes from "./routes/routes.js";
-const app = express();
-config(app, [
-  morgan("dev"),
-  cors(),
-  express.urlencoded({ extended: true }),
-  express.json(),
-  cookieParser(),
-]);
+import configureSwagger from "./config/swagger/swagger.js";
 
-app.use("/api/v1", routes)
+const app = express();
+config(app, [morgan("dev"), cors(), express.urlencoded({ extended: true }), express.json(), cookieParser()]);
+
+// Utiliza la aplicación configurada que incluye todas las rutas
+app.use("/api/v1", routes);
+
+// Configurar Swagger UI
+configureSwagger(app);
 
 // Configura Express para servir archivos estáticos desde la carpeta "public"
 app.use(express.static("public"));
