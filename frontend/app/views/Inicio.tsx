@@ -4,6 +4,8 @@ import CardClient from "../Components/CardClient";
 import Header from '../Components/Header';
 import SectionButton from '../Components/SectionButton';
 import CardContainer from '../Components/CardContainer';
+import Footer from '../Components/Footer';
+import Navbar from '../Components/Navbar';
 
 
 const Inicio = () => {
@@ -24,6 +26,8 @@ const Inicio = () => {
           <SectionButton section={"Actividades"} description={"Distintas actividades y clases que ofrece tu gimnasio"} />
           <CardContainer link='Actividades'/>
         </div>
+        <Navbar/>
+        <Footer/>
     </div>
   )
 }

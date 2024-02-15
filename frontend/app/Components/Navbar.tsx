@@ -1,7 +1,8 @@
-import DumbbellIco from "./ui/DumbbellIco";
 import ChartMixedIco from "./ui/ChartMixedIco";
-import ProfileIco from "./ui/ProfileIco";
+import DumbbellIco from "./ui/DumbbellIco";
 import HomeIco from "./ui/HomeIco";
+import ProfileIco from "./ui/ProfileIco";
+
 
 const Navbar = () => {
     return (
