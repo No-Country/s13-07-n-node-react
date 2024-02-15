@@ -1,5 +1,6 @@
+import Inicio from '@/app/views/Inicio';
 import React from 'react'
-import Inicio from '../views/Inicio';
+
 
 const page = () => {
   return (
