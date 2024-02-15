@@ -10,8 +10,8 @@ function SectionButton({section, description}:{section:string, description:strin
             <h2 className='text-[16px] font-medium'>{section}</h2>
             <p className='text-[9px] font-light'>{description}</p>
         </div>
-        <div>
-            <Image className='w-[24px] h-[24px]' src={flecha} alt='arrow' />
+        <div className='rounded-full bg-primaryDefault'>
+            <Image className='w-[24px] h-[24px] ' src={flecha} alt='arrow' />
         </div>
     </div>
   )
