@@ -1,7 +1,7 @@
 import pkg from "http-status";
 import { user } from "../db/schemas/user.schema.js";
-import cloudinary from "../middleware/upload.cjs";
-import { hassPass } from "../middleware/encrypt.js";
+import cloudinary from "../middlewares/upload.cjs";
+import { hassPass } from "../middlewares/encrypt.js";
 const { NOT_FOUND, CREATED, OK } = pkg;
 export const userServiceFilter = async () => {
   return await user.find().populate("role");

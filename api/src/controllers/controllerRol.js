@@ -6,7 +6,7 @@ import {
   rolServiceSearch,
   rolServiceActive,
   rolServiceDeactivate,
-} from "../service/service.rol.js";
+} from "../services/service.rol.js";
 const { OK } = pkg;
 export const filterRol = async (req, res) => {
   return res.json({ rol: await rolServiceFilter(), status: OK });

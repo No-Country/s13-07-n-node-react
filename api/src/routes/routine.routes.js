@@ -17,3 +17,5 @@ router.put("/activate/:routineId", activateRoutine);
 router.put("/update/:routineId", updateRoutine);
 router.get("/all", getAllRoutines);
 router.get("/search", searchRoutineByName);
+
+export default router;

@@ -7,7 +7,7 @@ import {
   searchUser,
   updateUser,
 } from "../controllers/controllerUser.js";
-import { upload } from "../Middleware/muter.cjs";
+import { upload } from "../middlewares/muter.cjs";
 
 export const routesUser = express();
 routesUser.get("/", filterUser);

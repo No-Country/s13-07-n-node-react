@@ -6,7 +6,7 @@ import {
   userServiceSearch,
   userServiceActive,
   userServiceDeactivate,
-} from "../service/service.user.js";
+} from "../services/service.user.js";
 const { OK } = pkg;
 export const filterUser = async (req, res) => {
   return res.json({ user: await userServiceFilter(), status: OK });

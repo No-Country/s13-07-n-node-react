@@ -6,7 +6,7 @@ import {
   exerciseServiceSearch,
   exerciseServiceActive,
   exerciseServiceDeactivate,
-} from "../service/service.exercise.js";
+} from "../services/service.exercise.js";
 const { OK } = pkg;
 export const filterExercise = async (req, res) => {
   return res.json({ exercise: await exerciseServiceFilter(), status: OK });
