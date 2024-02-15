@@ -10,11 +10,15 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import routes from "./routes/routes.js";
 const app = express();
+config(app, [
+  morgan("dev"),
+  cors(),
+  express.urlencoded({ extended: true }),
+  express.json(),
+  cookieParser(),
+]);
 
-config(app, [morgan("dev"), cors(), express.urlencoded({ extended: true }), express.json(), cookieParser()]);
-
-// Utiliza las rutas definidas
-app.use("/api/v1", routes);
+app.use("/api/v1", routes)
 
 // Configura Express para servir archivos estáticos desde la carpeta "public"
 app.use(express.static("public"));
