@@ -13,4 +13,6 @@ Scenario: Verificacion de Roles de Usuario
         | Dueño      | 
         | Empleado   |
         | Cliente    |
-    Then se verifica la autenticacion y authorizacion sean adecuadas mostrados en perfil de usuario
+    When se verifica que las credenciales otorgadas correspondan al rol 
+    Then se muestra la página de gestion con todas las funcionalidades disponibles segun rol
+

@@ -2,7 +2,6 @@ import { Given, When, Then, Before, After } from '@cucumber/cucumber';
 import { chromium, firefox, Page} from 'playwright';
 import { Elements } from '../pages/objectModel';
 
-
 let browser;
 let page: Page
 let elements: Elements
@@ -30,7 +29,7 @@ When('inspecciono todos los enlaces en la página', async () => {
 });
 
 // Escenario @leer-sheets de excel y google
-Then('cada enlace debería responder con un estado HTTP 200 OK', async () => {
+Then('cada enlace debería responder con un estado HTTP 200 OK al invocarlos', async () => {
 
 });
 

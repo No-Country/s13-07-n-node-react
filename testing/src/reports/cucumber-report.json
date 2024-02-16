@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "verificacion-status-de-links-en-la-webapp;verificar-estado-de-los-enlaces-en-la-página-principal",
+        "id": "verificacion-status-de-links/enlaces-en-la-webapp;verificar-un-enlace",
         "keyword": "Scenario",
         "line": 10,
-        "name": "Verificar estado de los enlaces en la página principal",
+        "name": "Verificar un enlace",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1376551400
+              "duration": 2053261199
             }
           },
           {
@@ -23,50 +23,41 @@
             "line": 7,
             "name": "el usuario 'a' accede con su contraseña 'b' en la web app 'c'",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:20"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:19"
             },
             "result": {
               "status": "passed",
-              "duration": 16195700
+              "duration": 13463600
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 11,
-            "name": "que estoy en la página principal de la aplicación",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:24"
-            },
+            "name": "que el usuario esta en la pagina de inicio",
             "result": {
-              "status": "passed",
-              "duration": 1659799
+              "status": "undefined",
+              "duration": 0
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 12,
-            "name": "inspecciono todos los enlaces en la página",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:28"
-            },
+            "name": "el usuario hace clic en el enlace \"Acerca de nosotros\"",
             "result": {
-              "status": "passed",
-              "duration": 1140499
+              "status": "undefined",
+              "duration": 0
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 13,
-            "name": "cada enlace debería responder con un estado HTTP 200 OK",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:33"
-            },
+            "name": "el usuario deberia ser redirido a la pagina \"Acerca de nosotros\"",
             "result": {
-              "status": "passed",
-              "duration": 1020599
+              "status": "undefined",
+              "duration": 0
             }
           },
           {
@@ -74,7 +65,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 124200
+              "duration": 221600
             }
           }
         ],
@@ -84,17 +75,102 @@
             "line": 9
           },
           {
-            "name": "@nav_id:01",
+            "name": "@id:00",
             "line": 9
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "verificacion-status-de-links/enlaces-en-la-webapp;verificar-estado-de-los-enlaces-en-la-página-principal",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Verificar estado de los enlaces en la página principal",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1600350800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "el usuario 'a' accede con su contraseña 'b' en la web app 'c'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 766399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "que estoy en la página principal de la aplicación",
+            "match": {
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1894299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "inspecciono todos los enlaces en la página",
+            "match": {
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1805599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "cada enlace debería responder con un estado HTTP 200 OK al invocarlos",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 153200
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smokeTest",
+            "line": 15
+          },
+          {
+            "name": "@id:01",
+            "line": 15
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "verificacion-status-de-links-en-la-webapp",
+    "id": "verificacion-status-de-links/enlaces-en-la-webapp",
     "line": 1,
     "keyword": "Feature",
-    "name": "Verificacion status de Links en la webApp",
+    "name": "Verificacion status de Links/Enlaces en la webApp",
     "tags": [],
     "uri": "src\\features\\test_cases\\verificacion_links.feature"
   }

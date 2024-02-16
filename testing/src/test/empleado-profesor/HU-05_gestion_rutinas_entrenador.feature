@@ -1,4 +1,5 @@
 Feature: Gestión de Rutinas Personalizadas para Clientes
+HU-05
     Como entrenador 
     Quiero poder crear rutinas de entrenamiento personalizadas para mis clientes
     Para adaptar los entrenamientos a sus necesidades y objetivos
