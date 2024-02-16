@@ -18,12 +18,12 @@ const Inicio = () => {
         </div>
         <CardClient/>
         <div>
-          <SectionButton section={"Profesores"} description={"Accede a los profesores de tu sede"} />
+          <SectionButton active={true} section={"Profesores"} description={"Accede a los profesores de tu sede"} />
           <CardContainer link='Profesores'/>
         </div>
 
         <div>
-          <SectionButton section={"Actividades"} description={"Distintas actividades y clases que ofrece tu gimnasio"} />
+          <SectionButton active={true} section={"Actividades"} description={"Distintas actividades y clases que ofrece tu gimnasio"} />
           <CardContainer link='Actividades'/>
         </div>
         <Navbar/>
