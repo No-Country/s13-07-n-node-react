@@ -3,7 +3,7 @@ import React from 'react'
 import flecha from "../../public/Arrow - Right 2.svg";
 
 
-function SectionButton({section, description}:{section:string, description:string}) {
+function SectionButton({section, description, active = true}:{section:string, description:string, active:boolean}) {
   return (
     <div className='w-[100%] flex justify-between items-center mt-[24px]'>
         <div>
@@ -11,7 +11,7 @@ function SectionButton({section, description}:{section:string, description:strin
             <p className='text-[9px] font-light'>{description}</p>
         </div>
         <div className='rounded-full bg-primaryDefault'>
-            <Image className='w-[24px] h-[24px] ' src={flecha} alt='arrow' />
+            {active && <Image className='w-[24px] h-[24px] ' src={flecha} alt='arrow' />}
         </div>
     </div>
   )
