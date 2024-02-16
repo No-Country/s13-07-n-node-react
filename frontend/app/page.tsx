@@ -16,12 +16,12 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 2500);
     // lógica para iniciar sesión
     // ...
   };
@@ -57,7 +57,7 @@ export default function Home() {
                 <input
                   type='email'
                   id='email'
-                  className='text-primaryDefault bg-gray-800 mb-4 p-2 border-none rounded-lg w-full pl-10 border border-gray-300 rounded-md'
+                  className='text-primaryDefault bg-gray-800 mb-4 p-2 border-none rounded-lg w-full pl-10 border border-gray-300'
                   value={'name@spotter.com'}
                 />
                 <div className='absolute left-2 top-1/3 transform -translate-y-1/2'>
