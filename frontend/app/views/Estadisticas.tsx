@@ -3,15 +3,16 @@ import Header from '../Components/Header';
 import SectionButton from '../Components/SectionButton';
 import TabChartStatics from '../Components/TabChartStatics';
 import ChartsLine from '../Components/ChartsLine';
+import GlobalContainer from '../Components/GlobalContainer';
 
 const Estadisticas = () => {
   return (
-    <div className='w-[100%] px-[16px] pt-[32px]'>
+    <GlobalContainer>
       <Header/>
-      <SectionButton section='Tu rendimiento' description='Basado en los ejercicios completados esta semana'/>
+      <SectionButton active={true} section='Tu rendimiento' description='Basado en los ejercicios completados esta semana'/>
       <TabChartStatics/>
       <ChartsLine/>
-    </div>
+    </GlobalContainer>
   )
 }
 
