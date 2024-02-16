@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import React from 'react'
-import logo from "../../public/Group 5.png"
+import logo from "../../public/Group 5.png";
+
+
+
+
 const PushNotification = ({removePush}:{removePush:()=> void}) => {
   return (
     <div className='flex justify-center items-center w-full absolute top-0 right-0 left-0'>
@@ -10,7 +14,7 @@ const PushNotification = ({removePush}:{removePush:()=> void}) => {
             <button onClick={removePush} type="button" className="ms-auto -mx-1.5 -my-1.5 bg-white justify-center items-center flex-shrink-0 text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white " data-dismiss-target="#toast-notification" aria-label="Close">
                 <span className="sr-only">Close</span>
                 <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                 </svg>
             </button>
         </div>

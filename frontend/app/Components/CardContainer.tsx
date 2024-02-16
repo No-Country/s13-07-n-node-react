@@ -11,12 +11,37 @@ function CardContainer({link}:{link:string}) {
     <div>
       {link === "Profesores" && (
         <div className='w-[100%] grid grid-cols-12 mt-[24px]'>
-          <div className='col-span-6 flex justify-center items-center mt-[0.5rem]'>
+          <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
               <CardProfessor rate={4.6} image={professor2} name="Julian Alvarez" available={true}/>
           </div>
-          <div className='col-span-6 flex justify-center items-center mt-[0.5rem]'>
+          <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
               <CardProfessor rate={4.6} image={professor1} name="Mara Gomez" available={true}/>
           </div>
+          <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
+              <CardProfessor rate={4.6} image={professor2} name="Julian Alvarez" available={true}/>
+          </div>
+          <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
+              <CardProfessor rate={4.6} image={professor1} name="Mara Gomez" available={true}/>
+          </div>
+          <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
+              <CardProfessor rate={4.6} image={professor2} name="Julian Alvarez" available={true}/>
+          </div>
+          <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
+              <CardProfessor rate={4.6} image={professor1} name="Mara Gomez" available={true}/>
+          </div>
+          <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
+              <CardProfessor rate={4.6} image={professor2} name="Julian Alvarez" available={true}/>
+          </div>
+          <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
+              <CardProfessor rate={4.6} image={professor1} name="Mara Gomez" available={true}/>
+          </div>
+          <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
+              <CardProfessor rate={4.6} image={professor2} name="Julian Alvarez" available={true}/>
+          </div>
+          <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
+              <CardProfessor rate={4.6} image={professor1} name="Mara Gomez" available={true}/>
+          </div>
+          
         </div>
       )}
       {
