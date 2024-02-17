@@ -9,7 +9,7 @@ import SlideUpComponent from './SlideUpComponent';
 function CardContainer({link}:{link:string}) {
 
   const [professorDetail, setProfessorDetail] = useState({})
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const showDetails =({rate, image, name, available}:any)=>{
     //console.log({rate, image, name, available})
@@ -38,8 +38,6 @@ function CardContainer({link}:{link:string}) {
           <div className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
               <CardProfessor onShowDetails={showDetails} rate={4.6} image={professor2} name="Julian Alvarez" available={true}/>
           </div>
-          
-          
         </div>
       )}
       {
