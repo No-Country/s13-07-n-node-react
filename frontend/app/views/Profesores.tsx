@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Header from '../Components/Header';
 import SectionButton from '../Components/SectionButton';
