@@ -1,8 +1,13 @@
+"use client"
+import ProfessorDetails from '@/app/Components/ProfessorDetails'
+import CalificarProfesor from '@/app/views/CalificarProfesor'
 import React from 'react'
 
-const page = () => {
+const page = ({ params }: { params: { profesor: string } }) => {
   return (
-    <div>page</div>
+    <div>
+      <CalificarProfesor params={params} />
+    </div>
   )
 }
 

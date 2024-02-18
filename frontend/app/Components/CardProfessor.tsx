@@ -4,10 +4,10 @@ import disponible from "../../public/Ellipse 26.png";;
 import estrella from "../../public/star.png";
 
 
-function CardProfessor({image, name, available, rate, onShowDetails}:{image:any, name:string, available:boolean, rate:number, onShowDetails:({name, rate, image, available}:any)=> void}) {
+function CardProfessor({image, name, available, rate, }:{image:any, name:string, available:boolean, rate:number}) {
     
     return (
-        <div className='w-[152px] h-[158px] rounded-[20px] relative pointer' onClick={()=>{onShowDetails({image, name, available, rate, onShowDetails})}}>
+        <div className='w-[152px] h-[158px] rounded-[20px] relative pointer'>
             <Image  alt='professor' src={image} />
             <div className='absolute top-0 left-0 right-0 bottom-0 w-full h-full flex justify-between items-end p-[0.5rem]'>
                 <div>
