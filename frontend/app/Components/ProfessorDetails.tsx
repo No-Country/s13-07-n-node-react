@@ -4,17 +4,17 @@ import X from "../../public/x.png"
 import start from "../../public/star.png"
 import starColor from "../../public/star-color.png"
 import mujer from "../../public/card-header-women.png"
+import { useGlobalStore } from '../store/GlobalStore';
 
 
 function ProfessorDetails({ params }: { params: {profesor: string;}}) {
  
   const calificacion = ["profesor","puntaje", "gracias"];
   const  [flujo, setFlujo] = useState(calificacion[0])
-  
   return (
     <div className={`w-full h-full  fixed  left-0 right-0 bottom-0  backdrop-blur-[5px]  bg-opacity-60`}>
       
-      <button onClick={()=>{}}>
+      <button onClick={()=> {}} >
         <Image src={X} alt="x" className="w-[24px] h-[24px] absolute right-5 top-5" />
       </button>
       <div className="w-full  absolute bottom-0 right-0 left-0">
@@ -23,7 +23,7 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
           <><Image src={mujer} alt="profesor" className="w-full" />
           <div className="w-full p-[20px] h-full bg-black">
               <div className="flex justify-between items-center">
-                <h3 className="text-[24px]">{params.profesor}</h3>
+                <h3 className="text-[24px]">{params.profesor} </h3>
                 
                 <p className="flex justify-between items-center">
                     <span className="flex items-center">Rate 4.6</span>
@@ -57,13 +57,13 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
               </div>
               <div>
                 <p className="mt-[30px]">
-                  <div className="flex justify-center items-center">
+                  <p className="flex justify-center items-center">
                     <Image className="w-[24px] h-[24px] mx-2" src={starColor} alt="star-color" />
                     <Image className="w-[24px] h-[24px] mx-2" src={starColor} alt="star-color" />
                     <Image className="w-[24px] h-[24px] mx-2" src={starColor} alt="star-color" />
                     <Image className="w-[24px] h-[24px] mx-2" src={starColor} alt="star-color" />
                     <Image className="w-[24px] h-[24px] mx-2" src={starColor} alt="star-color" />
-                  </div>
+                  </p>
                   <p className="mt-[16px] font-semibold">Deja un comentario</p>
                 </p>
                 <button onClick={() => { setFlujo(calificacion[2]); } } type="button" className="mt-[12px] text-white w-full focus:outline-none  bg-primaryDefault hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
