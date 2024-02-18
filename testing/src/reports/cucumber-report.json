@@ -1,111 +1,111 @@
 [
   {
-    "description": "    Verificar que otdos los enlaces en la pagina funcionen correctamente para asegurar de una navegacion adecuada\n    * Protocolo de navegacion\n    * status de conexion\n    * redireccion del enlace",
+    "description": "    Verificar que todos los enlaces en la pagina funcionen correctamente para asegurar de una navegacion adecuada\n    * Protocolo de navegacion\n    * Status de conexion\n    * Redireccion de los enlaces\n    * Ausencia de error http",
     "elements": [
       {
         "description": "",
-        "id": "nav-|-ts-02-|-verificacion-de-propiedades-y-status-en-los-links/enalces;verificar-status-y-propiedades-del-enlace-seleccionado",
+        "id": "nav-|-ts-01-|-ts-02|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna;verificar-status-y-propiedades-de-todos-los-enlaces-por-pagina",
         "keyword": "Scenario",
-        "line": 20,
-        "name": "Verificar status y propiedades del enlace seleccionado",
+        "line": 21,
+        "name": "Verificar status y propiedades de todos los enlaces por pagina",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1342888099
+              "duration": 1399768500
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 8,
+            "line": 9,
             "name": "el usuario 'userA@mail.com' accede con su contraseña 'wxyz1234*' en la web app 'www.spooter.com'",
             "match": {
               "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:19"
             },
             "result": {
               "status": "passed",
-              "duration": 11218899
+              "duration": 14904000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
-            "name": "accedo en la pagina \"Nombre de la pagina\"",
+            "line": 13,
+            "name": "accedo en la pagina \"entrenamiento\"",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:23"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:24"
             },
             "result": {
               "status": "passed",
-              "duration": 1504999
+              "duration": 2345899
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 13,
-            "name": "se realiza click el enlace \"entrenamiento\"",
+            "line": 14,
+            "name": "se realiza clic en todos los enlaces buscados",
             "match": {
               "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:28"
             },
             "result": {
               "status": "passed",
-              "duration": 2557399
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 14,
-            "name": "debe redirigir corretamente a la pagina \"Mis Rutinas\"",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:32"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2779100
+              "duration": 1132499
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 15,
-            "name": "deber devolver un codigo de estado HTTP 200 OK",
+            "name": "deben redirigir corretamente a la url de destino",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:36"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 1464199
+              "duration": 964000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 16,
-            "name": "debe ser accesible y cargar correctamente",
+            "name": "deben devolver un codigo de estado HTTP 200 OK",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:41"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:36"
             },
             "result": {
               "status": "passed",
-              "duration": 1674899
+              "duration": 1380900
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 17,
-            "name": "el enlace debe utilizar el protocolo correcto (HTTP o HTTPS)",
+            "name": "deben ser accesible y cargar correctamente",
+            "match": {
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1699499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "los enlaces debe utilizar el protocolo correcto (HTTP o HTTPS)",
             "match": {
               "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:45"
             },
             "result": {
               "status": "passed",
-              "duration": 2007999
+              "duration": 1956900
             }
           },
           {
@@ -113,126 +113,87 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 332900
+              "duration": 333000
             }
           }
         ],
         "tags": [
           {
             "name": "@Nav",
-            "line": 10
+            "line": 11
           },
           {
-            "name": "@TS-02",
-            "line": 10
+            "name": "@TS-01",
+            "line": 11
           }
         ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "nav-|-ts-02-|-verificacion-de-propiedades-y-status-en-los-links/enalces;verificar-status-y-propiedades-del-enlace-seleccionado",
+        "id": "nav-|-ts-01-|-ts-02|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna;verificar-ausencia-de-errores-http",
         "keyword": "Scenario",
-        "line": 21,
-        "name": "Verificar status y propiedades del enlace seleccionado",
+        "line": 24,
+        "name": "Verificar ausencia de errores http",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1428670699
+              "duration": 1463371600
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 8,
+            "line": 9,
             "name": "el usuario 'userA@mail.com' accede con su contraseña 'wxyz1234*' en la web app 'www.spooter.com'",
             "match": {
               "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:19"
             },
             "result": {
               "status": "passed",
-              "duration": 747500
+              "duration": 761700
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
-            "name": "accedo en la pagina \"Nombre de la pagina\"",
+            "line": 25,
+            "name": "que estoy en la pagina \"nombre de la pagina\"",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:23"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:54"
             },
             "result": {
               "status": "passed",
-              "duration": 506500
+              "duration": 2084600
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 13,
-            "name": "se realiza click el enlace \"nosotros\"",
+            "line": 26,
+            "name": "se buscan todos los enlaces internos",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:28"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:58"
             },
             "result": {
               "status": "passed",
-              "duration": 453200
+              "duration": 1368000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 14,
-            "name": "debe redirigir corretamente a la pagina \"Acerca de Nosotros\"",
+            "line": 27,
+            "name": "se verifica que no haya un codigo de http de error",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:32"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:62"
             },
             "result": {
               "status": "passed",
-              "duration": 365700
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "deber devolver un codigo de estado HTTP 200 OK",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:36"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 355699
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 16,
-            "name": "debe ser accesible y cargar correctamente",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:41"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 190899
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 17,
-            "name": "el enlace debe utilizar el protocolo correcto (HTTP o HTTPS)",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:45"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 98700
+              "duration": 1196900
             }
           },
           {
@@ -240,28 +201,32 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 89899
+              "duration": 219099
             }
           }
         ],
         "tags": [
           {
             "name": "@Nav",
-            "line": 10
+            "line": 23
           },
           {
             "name": "@TS-02",
-            "line": 10
+            "line": 23
+          },
+          {
+            "name": "@TC-01",
+            "line": 23
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "nav-|-ts-02-|-verificacion-de-propiedades-y-status-en-los-links/enalces",
+    "id": "nav-|-ts-01-|-ts-02|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna",
     "line": 1,
     "keyword": "Feature",
-    "name": "Nav | TS 02 | Verificacion de propiedades y status en los links/enalces",
+    "name": "Nav | TS 01 | TS 02| Verificacion de propiedades y status en los links/enlaces de redireccion interna",
     "tags": [],
-    "uri": "src\\features\\test_cases\\Nav_TS-02_verificar-links.feature"
+    "uri": "src\\features\\test_cases\\Nav_TS-01_verificar-links.feature"
   }
 ]
