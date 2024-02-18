@@ -17,19 +17,32 @@ Before( { timeout: 10000 }, async () => {
 });
 
 Given('el usuario {string} accede con su contraseña {string} en la web app {string}', async function (user: string, pass: string, URL: string)  {
-    // await page.goto(URL)
-});
-
-Given('que estoy en la página principal de la aplicación', async () => {
 
 });
 
-When('inspecciono todos los enlaces en la página', async () => {
+Given('accedo en la pagina {string}', async (link: string) => {
+
 
 });
 
-// Escenario @leer-sheets de excel y google
-Then('cada enlace debería responder con un estado HTTP 200 OK al invocarlos', async () => {
+When('se realiza click el enlace {string}', async (enlace: string) => {
+
+});
+
+Then('debe redirigir corretamente a la pagina {string}', async (enlace: string) => {
+    
+});
+
+Then('deber devolver un codigo de estado HTTP 200 OK', async () => {
+
+});
+
+
+Then('debe ser accesible y cargar correctamente', async () => {
+
+});
+
+Then('el enlace debe utilizar el protocolo correcto \\(HTTP o HTTPS)', async () => {
 
 });
 

@@ -11,17 +11,13 @@ Scenario: Registro de historial de entrenamiento
     When accede a la sección de "Historial de Entrenamiento"
     Then debería poder ver un registro de sus sesiones de entrenamiento anteriores
 
-@US-13 @TS-01 @TC-01
+@US-13 @TS-01 @TC-02
 Scenario: Visualización del Progreso Muscular
     When accede a la sección de "Progreso Muscular"
     Then debería poder ver un gráfico que muestre su progreso en términos de masa muscular a lo largo del tiempo
-
-@US-13 @TS-01 @TC-01
-Scenario: Presentación de Datos en Formato Gráfico
-    When accede a la sección de "Progreso Muscular"
     Then debería poder visualizar los datos de progreso en un formato gráfico claro y fácil de entender, como gráficos de líneas o de barras
 
-@US-13 @TS-01 @TC-01
+@US-13 @TS-01 @TC-03
 Scenario: Actualización Automática de los Datos de Progreso
     Given el cliente está autenticado en la aplicación del gimnasio
     When realiza una nueva sesión de entrenamiento
