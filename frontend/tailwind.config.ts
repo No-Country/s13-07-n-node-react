@@ -18,8 +18,27 @@ const config: Config = {
         primaryLigth:"#FCCF97",
         gray200:"#E9ECEF",
         gray600: "#6C757D",
-        gray700:"#495057"
+        gray700:"#495057",
+        gray800:"#343a40",
+        gray900: "#212529"
       },
+      borderRadius: {
+        'custom1': '10px 0px 0px 10px',
+        'custom2': '0px 10px 10px 0px'
+      },
+      borderWidth: {
+        '1.5': '1.5px',
+      },
+      fontSize: {
+        '28': '28px',
+      },
+      width: {
+        'custom': '328px',
+      },
+      height: {
+        'custom': '85px',
+      },
+      
     },
   },
   plugins: [],
