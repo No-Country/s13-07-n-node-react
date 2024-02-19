@@ -6,11 +6,12 @@ import SectionButton from '../Components/SectionButton';
 import CardContainer from '../Components/CardContainer';
 import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
+import GlobalContainer from '../Components/GlobalContainer';
 
 
 const Inicio = () => {
   return (
-    <div className='w-[100%] px-[16px] pt-[32px]'>
+    <GlobalContainer>
         <Header/>
         <div className="mt-[36px]">
             <h1 className="text-[16px] h-[19px] font-[sans]">Bienvenido a Spotter</h1>
@@ -18,17 +19,17 @@ const Inicio = () => {
         </div>
         <CardClient/>
         <div>
-          <SectionButton section={"Profesores"} description={"Accede a los profesores de tu sede"} />
+          <SectionButton active={true} section={"Profesores"} description={"Accede a los profesores de tu sede"} />
           <CardContainer link='Profesores'/>
         </div>
 
         <div>
-          <SectionButton section={"Actividades"} description={"Distintas actividades y clases que ofrece tu gimnasio"} />
+          <SectionButton active={true} section={"Actividades"} description={"Distintas actividades y clases que ofrece tu gimnasio"} />
           <CardContainer link='Actividades'/>
         </div>
         <Navbar/>
         <Footer/>
-    </div>
+    </GlobalContainer>
   )
 }
 
