@@ -1,3 +1,6 @@
+
+
+
 export const createBearsSlice =(set:any, get:any)=>{ 
     return {
         bears: 0,

@@ -4,13 +4,14 @@ import X from "../../public/x.png"
 import start from "../../public/star.png"
 import starColor from "../../public/star-color.png"
 import mujer from "../../public/card-header-women.png"
-import { useGlobalStore } from '../store/GlobalStore';
 
 
 function ProfessorDetails({ params }: { params: {profesor: string;}}) {
  
   const calificacion = ["profesor","puntaje", "gracias"];
   const  [flujo, setFlujo] = useState(calificacion[0])
+
+  
   return (
     <div className={`w-full h-full  fixed  left-0 right-0 bottom-0  backdrop-blur-[5px]  bg-opacity-60`}>
       
