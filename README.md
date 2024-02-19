@@ -1,5 +1,6 @@
 # s13-07-n-node-react
 APP PARA GIMNASIOS - SPOTTER
+
 El sistema esta diseñado para gimnasios y  lo pueden utilizar tanto el dueño del gimnasio, los profesores y los clientes.	
 Esta app cuenta con las siguientes funciones.	
 INGRESO:	
@@ -19,6 +20,7 @@ FUNCIONALIDADES PARA EL CLIENTE
 •	ver las explicaciones de los ejercicios en la rutina
 •	activar o desactivar su cuenta (desactivar su cuenta si únicamente tiene toda su membresía pagada y no quiere continuar en el gimnasio el mes que viene)
 •	el cliente podrá su historial y podrá visualizar su evolución tales como su peso, musculatura, velocidad, etc)
+
 FUNCIONALIDADES EMPLEADOS/PROFESORES	
 •	Ingresar en la app
 •	ver su recibo de sueldo, comisiones por clientes, etc
