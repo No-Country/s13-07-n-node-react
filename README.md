@@ -2,7 +2,8 @@
 APP PARA GIMNASIOS - SPOTTER
 
 El sistema esta diseñado para gimnasios y  lo pueden utilizar tanto el dueño del gimnasio, los profesores y los clientes.	
-Esta app cuenta con las siguientes funciones.	
+Esta app cuenta con las siguientes funciones.
+
 INGRESO:	
 Login(registro con auth o de manera normal)	
 3 Dashboard (1 para cliente , 1 para empleado, 1 para dueño)	
