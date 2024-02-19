@@ -20,10 +20,6 @@ export const createClientValidation = generateValidationRules("createClient", {
     isLength: { min: 8, max: 12 },
     password: {},
   },
-  birthdate: {
-    notEmpty: {},
-    isDate: {},
-  },
 });
 
 export const updateClientValidation = generateValidationRules("updateClient", {

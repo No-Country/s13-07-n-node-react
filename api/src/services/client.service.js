@@ -7,7 +7,7 @@ dotenv.config();
 
 export const createClientService = async (req, res) => {
   try {
-    const { firstName, lastName, documentNumber, phone, email, password, birthdate } = req.body;
+    const { firstName, lastName, email, password } = req.body;
 
     // Convertir el email a minúsculas
     const lowerCaseEmail = email.toLowerCase();
@@ -25,11 +25,8 @@ export const createClientService = async (req, res) => {
     const newClient = new ClientModel({
       firstName,
       lastName,
-      documentNumber,
-      phone,
       email: lowerCaseEmail,
       password: hashedPassword,
-      birthdate,
     });
 
     const savedClient = await newClient.save();

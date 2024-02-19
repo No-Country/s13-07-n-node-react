@@ -30,7 +30,8 @@
     "nodemailer": "^6.9.9",
     "passport-jwt": "^4.0.1",
     "path": "^0.12.7",
-    "swagger": "^0.7.5"
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
