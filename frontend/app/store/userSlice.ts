@@ -1,10 +1,8 @@
 // userSlice.js
 
-type User = {
-    user: string
-}
 
 export const createUserSlice = (set:any, get:any) => ({
   user: "",
-  setUser: (user: string) => set({ user }),
+  setUser: (user:string) => set({ user:user }),
+  // ... más acciones relacionadas con el usuario
 });
