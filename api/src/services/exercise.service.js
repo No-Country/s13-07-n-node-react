@@ -1,8 +1,11 @@
 import { exercise } from "../db/schemas/exercise.schema.js";
 import pkg from "http-status";
 const { NOT_FOUND, CREATED, OK } = pkg;
-export const exerciseServiceFilter = async () => {
-  return await exercise.find();
+export const exerciseServiceFilter = async (name) => {
+  if (name) {
+    return await exercise.find({ name }).exec();
+  }
+  return await exercise.find().exec();
 };
 
 export const exerciseServicePost = async (body) => {
@@ -11,7 +14,7 @@ export const exerciseServicePost = async (body) => {
   if (!name || name == "") {
     return {
       status: NOT_FOUND,
-      message: "fill in the name field",
+      message: "Complete el campo nombre",
     };
   }
 
@@ -19,7 +22,7 @@ export const exerciseServicePost = async (body) => {
   if (search) {
     return {
       status: NOT_FOUND,
-      message: "Error exercise it already exists",
+      message: "Error el ejercicio ya existe",
     };
   }
   const exerciseCreate = await exercise.create({ name: name.toLowerCase() });
@@ -35,7 +38,7 @@ export const exerciseServiceUpdate = async (body, id) => {
   if (!name || name == "") {
     return {
       status: NOT_FOUND,
-      message: "fill in the name field",
+      message: "Complete el nombre del campo",
     };
   }
   const search = await exercise.findOne({ _id: id });
@@ -43,38 +46,28 @@ export const exerciseServiceUpdate = async (body, id) => {
     await exercise.findOneAndUpdate({ _id: id }, { name: name.toLowerCase() });
     return {
       status: OK,
-      message: "exercise updated successfully",
+      message: "Ejercicio actualizado correctamente",
     };
   } else {
     return {
       status: NOT_FOUND,
-      message: "update exercise not found",
+      message: "Ejercicio no encontrado",
     };
   }
-};
-
-export const exerciseServiceSearch = async (name) => {
-  if (!name || name == "") {
-    return {
-      status: NOT_FOUND,
-      message: "update exercise not found",
-    };
-  }
-  return await exercise.findOne({ name: name.toLowerCase() });
 };
 
 export const exerciseServiceActive = async (id) => {
   if (!id || id == "") {
     return {
       status: NOT_FOUND,
-      message: "exercise not found",
+      message: "Ejercicio no encontrado",
     };
   }
   const search = await exercise.findOne({ _id: id });
   if (!search) {
     return {
       status: NOT_FOUND,
-      message: "exercise not found",
+      message: "Ejercicio no encontrado",
     };
   } else {
     if (!search.active) {
@@ -82,12 +75,12 @@ export const exerciseServiceActive = async (id) => {
       search.save();
       return {
         status: OK,
-        message: "activated exercise",
+        message: "Ejercicio activado",
       };
     } else {
       return {
         status: NOT_FOUND,
-        message: "exercise is already activated",
+        message: "El ejercicio fue activado correctamente",
       };
     }
   }
@@ -97,14 +90,14 @@ export const exerciseServiceDeactivate = async (id) => {
   if (!id || id == "") {
     return {
       status: NOT_FOUND,
-      message: "exercise not found",
+      message: "Ejercicio no encontrado",
     };
   }
   const search = await exercise.findOne({ _id: id });
   if (!search) {
     return {
       status: NOT_FOUND,
-      message: "exercise not found",
+      message: "Ejercicio no encontrado",
     };
   } else {
     if (search.active) {
@@ -112,12 +105,12 @@ export const exerciseServiceDeactivate = async (id) => {
       search.save();
       return {
         status: OK,
-        message: "disabled exercise",
+        message: "Ejercicio desactivado",
       };
     } else {
       return {
         status: NOT_FOUND,
-        message: "the exercise is already deactivated",
+        message: "El ejercicio ya se encuentra activado",
       };
     }
   }

@@ -3,13 +3,14 @@ import {
   userServiceFilter,
   userServicePost,
   userServiceUpdate,
-  userServiceSearch,
   userServiceActive,
   userServiceDeactivate,
-} from "../services/service.user.js";
+  userServiceLogin,
+} from "../services/user.services.js";
 const { OK } = pkg;
 export const filterUser = async (req, res) => {
-  return res.json({ user: await userServiceFilter(), status: OK });
+  const { firstName, lastName, phone, email } = req.query;
+  return res.json({ user: await userServiceFilter(firstName, lastName, phone, email), status: OK });
 };
 
 export const postUser = async (req, res) => {
@@ -19,21 +20,12 @@ export const postUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   if (req.file) {
-    const user = await userServiceUpdate(
-      req.body,
-      req.params.id,
-      req.file.path
-    );
+    const user = await userServiceUpdate(req.body, req.params.id, req.file.path);
     res.json(user);
   } else {
     const user = await userServiceUpdate(req.body, req.params.id);
     res.json(user);
   }
-};
-
-export const searchUser = async (req, res) => {
-  const user = await userServiceSearch(req.query.name);
-  res.json(user);
 };
 
 export const activateUser = async (req, res) => {
@@ -42,6 +34,12 @@ export const activateUser = async (req, res) => {
 };
 
 export const deactivatUser = async (req, res) => {
-  const rol = await userServiceDeactivate(req.params.id);
-  res.json(rol);
+  const user = await userServiceDeactivate(req.params.id);
+  res.json(user);
+};
+
+export const loginUser = async (req, res) => {
+  const { email, pass } = req.body;
+  const user = await userServiceLogin(email, pass);
+  res.json(user);
 };
