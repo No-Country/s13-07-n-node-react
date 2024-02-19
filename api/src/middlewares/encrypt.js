@@ -10,11 +10,13 @@ export const descriptPass = async (schema, email, pass) => {
   if (userSearch) {
     const comparePass = await bcryptjs.compare(pass, userSearch.pass);
     if (comparePass) {
-      delete userSearch.pass;
+      let user = userSearch.toJSON();
+      delete user.pass;
+
       return {
         status: OK,
         message: "Acceso permitido",
-        user: userSearch,
+        user,
       };
     } else {
       return {
