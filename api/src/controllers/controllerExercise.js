@@ -22,8 +22,6 @@ export const updateExercise = async (req, res) => {
   res.json(exercise);
 };
 
-
-
 export const activateExercise = async (req, res) => {
   const exercise = await exerciseServiceActive(req.params.id);
   res.json(exercise);

@@ -1,11 +1,5 @@
 import express from "express";
-import {
-  filterRol,
-  postRol,
-  updateRol,
-  activateRol,
-  deactivateRol,
-} from "../controllers/controllerRol.js";
+import { filterRol, postRol, updateRol, activateRol, deactivateRol } from "../controllers/controllerRol.js";
 
 export const routesRol = express();
 
