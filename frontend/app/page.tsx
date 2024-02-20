@@ -3,7 +3,7 @@
 export default function Home() {
 
   return (
-    <div className="">
+    <div className="bg-gray-900">
       {/* <Navbar /> */}
       Hola
     </div>

@@ -13,22 +13,22 @@ import Calendario from "../Components/Calendario";
 
 const Entrenamiento = () => {
     return (
-        <div className='px-4 pt-8 bg-gray-900'>
+        <div className='px-4 pt-8 bg-gray-900 mb-14'>
             <Header />
-            {/* <Navbar /> */}
+            <Navbar />
             <div className='mt-9'>
                 <SectionButton
-                    section='Calendario de entrenamiento'
+                    section='Mi entranamiento'
                     description='Sigue tu entrenamiento'
                     active
                 />
             </div>
             <CardChartUser />
-            <div className='mt-9'>
+            <div className=''>
                 <SectionButton
-                    section='Tus rutinas'
+                    section='Tus rutinas para hoy'
                     description='Sigue tu lista de ejercicios personalizada'
-                    active={false}
+                    active
                 />
             </div>
             <div className="h-52 overflow-hidden overflow-x-auto">
@@ -38,21 +38,21 @@ const Entrenamiento = () => {
                         tiempo={30}
                         calorias={200}
                         active
-                        ejercicio=""
+                        ejercicio="Hoy - Sentadillas"
                     />
                     <CardRutinas
                         imagen={ImagenRutinaEspalda}
                         tiempo={30}
                         calorias={300}
                         active
-                        ejercicio=""
+                        ejercicio="Hoy - Espalda"
                     />
                     <CardRutinas
                         imagen={ImagenRutinaCuerdas}
                         tiempo={20}
                         calorias={100}
                         active
-                        ejercicio=""
+                        ejercicio="Hoy - Cuerda"
                     />
                 </div>
             </div>
