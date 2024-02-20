@@ -6,8 +6,9 @@ import ProfileIco from "./ui/ProfileIco";
 
 const Navbar = () => {
     return (
+
         <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2  border border-gray-800 rounded-3xl bottom-0 left-1/2 dark:bg-[#21252970] dark:border-gray-800 overflow-hidden backdrop-blur-[2px]'>
-            <div className='grid h-full max-w-lg grid-cols-4 mx-auto   '>
+            <div className='grid h-full max-w-lg grid-cols-4 mx-auto'>
                 <button
                     data-tooltip-target='tooltip-home'
                     type='button'

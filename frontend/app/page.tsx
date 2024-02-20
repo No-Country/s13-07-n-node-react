@@ -1,11 +1,12 @@
-"use client"
+'use client';
+import React from 'react';
 
-export default function Home() {
 
+export default function Page() {
+ 
   return (
     <div className="bg-gray-900">
-      {/* <Navbar /> */}
-      Hola
+      aqui va la landing page
     </div>
   );
 }

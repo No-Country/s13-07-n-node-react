@@ -1,11 +1,14 @@
 import Image from 'next/image';
-import React from 'react'
-import disponible from "../../public/Ellipse 26.png";
-import estrella from "../../public/star.png"
-function CardProfessor({image, name, available, rate}:{image:any, name:string, available:boolean, rate:number}) {
+import React, { useState } from 'react';
+import disponible from "../../public/Ellipse 26.png";;
+import estrella from "../../public/star.png";
+
+
+function CardProfessor({image, name, available, rate, }:{image:any, name:string, available:boolean, rate:number}) {
+    
     return (
-        <div className='w-[152px] h-[158px] rounded-[20px] relative'>
-            <Image alt='professor' src={image} />
+        <div className='w-[152px] h-[158px] rounded-[20px] relative pointer'>
+            <Image  alt='professor' src={image} />
             <div className='absolute top-0 left-0 right-0 bottom-0 w-full h-full flex justify-between items-end p-[0.5rem]'>
                 <div>
                     <h2>{name}</h2>
