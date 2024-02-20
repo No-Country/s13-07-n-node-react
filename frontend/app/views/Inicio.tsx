@@ -11,6 +11,7 @@ import GlobalContainer from '../Components/GlobalContainer';
 
 const Inicio = () => {
   return (
+
     <GlobalContainer>
         <Header/>
         <div className="mt-[36px]">
@@ -19,12 +20,12 @@ const Inicio = () => {
         </div>
         <CardClient/>
         <div>
-          <SectionButton active={true} section={"Profesores"} description={"Accede a los profesores de tu sede"} />
+          <SectionButton section={"Profesores"} description={"Accede a los profesores de tu sede"} active/>
           <CardContainer link='Profesores'/>
         </div>
 
         <div>
-          <SectionButton active={true} section={"Actividades"} description={"Distintas actividades y clases que ofrece tu gimnasio"} />
+          <SectionButton section={"Actividades"} description={"Distintas actividades y clases que ofrece tu gimnasio"} active />
           <CardContainer link='Actividades'/>
         </div>
         <Navbar/>

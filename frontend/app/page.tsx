@@ -3,11 +3,10 @@ import React from 'react';
 
 
 export default function Page() {
-  
-
+ 
   return (
-    <div>
-      Aqui va la landing page
+    <div className="bg-gray-900">
+      aqui va la landing page
     </div>
   );
 }
