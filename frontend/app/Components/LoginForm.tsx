@@ -6,6 +6,8 @@ import mailIcon from '../../public/mail-icon-input.svg';
 import Loader from "../Components/Loader";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { login } from '../utils/inicioSesion';
+import Swal from 'sweetalert2';
 export default function LoginForm() {
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -33,6 +35,7 @@ export default function LoginForm() {
       .required('El email es requerido'),
     password: Yup.string()
       .min(8, 'La contraseña debe tener al menos  8 caracteres')
+      .max(12,"la contraseña debe ser igual o menor a 12 caracteres")
       .required('La contraseña es requerida'),
   });
 
@@ -42,8 +45,36 @@ export default function LoginForm() {
       password:""
     },
     validationSchema,
-    onSubmit: (values, {resetForm}) => {
-      console.log(values)
+    onSubmit: async  (values, {resetForm}) => {
+      
+      setLoading(true)
+      const response = await login(values)
+      if(!response.ok){
+        console.log(response)
+        if(response.errors){
+          Swal.fire({
+            icon: "error",
+            title: `Contraseña incorrecta`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+
+        if(response.message){
+          Swal.fire({
+            icon: "error",
+            title: `Email incorrecto`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+        
+      }else{
+        
+      }
+     
+      
+      setLoading(false)
       resetForm();
       
     },
@@ -86,7 +117,7 @@ export default function LoginForm() {
                   value={formik.values.email}
                 />
                 {formik.touched.email && formik.errors.email ? (
-                  <div>{formik.errors.email}</div>
+                  <div className='mt-1'>{formik.errors.email}</div>
                 ) : null}
                 <div className='absolute left-2 top-1/3 transform -translate-y-1/2'>
                   <Image src={mailIcon} alt='Imagen' width={20} height={20} />
@@ -105,7 +136,7 @@ export default function LoginForm() {
                 placeholder={'**********'}
               />
               {formik.touched.password && formik.errors.password ? (
-                <div>{formik.errors.password}</div>
+                <div className='mt-1'>{formik.errors.password}</div>
               ) : null}
               <div className='flex justify-between items-center mb-4'>
                 <div className='flex items-center mb-4'>
