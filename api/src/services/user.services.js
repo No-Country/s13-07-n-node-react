@@ -4,8 +4,8 @@ import { descriptPass, hassPass } from "../middlewares/encrypt.js";
 import { sendEmail } from "../middlewares/nodeMailer.js";
 import cloudinary from "../config/cloudinary/cloudinary-config.js";
 const { NOT_FOUND, CREATED, OK } = pkg;
-export const userServiceFilter = async (firstName, lastName, phone, email) => {
-  if (firstName || lastName || phone || email) {
+export const userServiceFilter = async (firstName, lastName, phone, email, role_id) => {
+  if (firstName || lastName || phone || email || role_id) {
     return await user
       .find({
         $or: [
@@ -13,6 +13,7 @@ export const userServiceFilter = async (firstName, lastName, phone, email) => {
           { lastName: lastName?.toLowerCase() },
           { phone: phone },
           { email: email?.toLowerCase() },
+          { role_id: { _id: role_id } },
         ],
       })
       .populate("role_id");
