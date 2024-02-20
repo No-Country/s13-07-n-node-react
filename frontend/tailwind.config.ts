@@ -16,11 +16,11 @@ const config: Config = {
       colors: {
         primaryDefault:"#F58A07",
         'primary-dark': '#905104',
-        'primary-light': '#FCCF97'
+        'primary-light': '#FCCF97',
         primaryLigth:"#FCCF97",
         gray200:"#E9ECEF",
         gray600: "#6C757D",
-        gray700:"#495057"
+        gray700:"#495057",
       },
     },
   },

@@ -1,10 +1,10 @@
+"use client"
 import React from "react";
 import Header from "../Components/Header";
 import SectionButton from "../Components/SectionButton";
 import CardChartUser from "../Components/CardChartUser";
 import CardRutinas from "../Components/CardRutinas";
 import Navbar from "../Components/Navbar";
-
 import ImagenRutinaSentadilla from "@/public/ImagenRutina1.png";
 import ImagenRutinaEspalda from "@/public/ImagenRutina2.png";
 import ImagenRutinaCuerdas from "@/public/ImagenRutina3.png";

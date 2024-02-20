@@ -4,7 +4,8 @@ import Image from 'next/image';
 import spotterLogo from '../../public/spooter-logo.svg';
 import mailIcon from '../../public/mail-icon-input.svg';
 import Loader from "../Components/Loader";
-
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 export default function LoginForm() {
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -26,6 +27,28 @@ export default function LoginForm() {
     // ...
   };
 
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email('Ingrese un email válido')
+      .required('El email es requerido'),
+    password: Yup.string()
+      .min(8, 'La contraseña debe tener al menos  8 caracteres')
+      .required('La contraseña es requerida'),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password:""
+    },
+    validationSchema,
+    onSubmit: (values, {resetForm}) => {
+      console.log(values)
+      resetForm();
+      
+    },
+  });
+
   return (
     <div className='flex items-center justify-center h-screen'>
       {!showForm && (
@@ -39,7 +62,7 @@ export default function LoginForm() {
       )}
       {showForm && (
         <form
-          onSubmit={handleSubmit}
+          onSubmit={formik.handleSubmit}
           className='bg-black text-white p-4 sm:p-6 md:p-8 lg:p-10'
         >
           {loading ? (
@@ -57,9 +80,14 @@ export default function LoginForm() {
                 <input
                   type='email'
                   id='email'
+                  placeholder='Correo electronico'
                   className='text-primaryDefault bg-gray-800 mb-4 p-2 border-none rounded-lg w-full pl-10 border border-gray-300'
-                  value={'name@spotter.com'}
+                  onChange={formik.handleChange}
+                  value={formik.values.email}
                 />
+                {formik.touched.email && formik.errors.email ? (
+                  <div>{formik.errors.email}</div>
+                ) : null}
                 <div className='absolute left-2 top-1/3 transform -translate-y-1/2'>
                   <Image src={mailIcon} alt='Imagen' width={20} height={20} />
                 </div>
@@ -72,8 +100,13 @@ export default function LoginForm() {
                 type='password'
                 id='password'
                 className='mb-4 p-2 border-none rounded-lg w-full text-primaryDefault bg-gray-800'
-                value={'**********'}
+                onChange={formik.handleChange}
+                value={formik.values.password}
+                placeholder={'**********'}
               />
+              {formik.touched.password && formik.errors.password ? (
+                <div>{formik.errors.password}</div>
+              ) : null}
               <div className='flex justify-between items-center mb-4'>
                 <div className='flex items-center mb-4'>
                   <input
