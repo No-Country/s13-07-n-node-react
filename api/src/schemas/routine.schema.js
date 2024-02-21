@@ -30,7 +30,7 @@ const routineSchemaDefinition = new mongoose.Schema({
   },
   isActive: {
     type: Boolean,
-    default: true, // Puedes establecer un valor predeterminado si lo deseas
+    default: true, 
     swagger: {
       type: "boolean",
       description: "Indicates whether the routine is active or not.",
