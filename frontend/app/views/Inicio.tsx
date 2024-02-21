@@ -7,9 +7,12 @@ import CardContainer from '../Components/CardContainer';
 import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
 import GlobalContainer from '../Components/GlobalContainer';
+import { useGlobalStore } from '../store/GlobalStore';
 
 
 const Inicio = () => {
+  const {user} = useGlobalStore((state)=>state);
+  console.log(user)
   return (
 
     <GlobalContainer>
