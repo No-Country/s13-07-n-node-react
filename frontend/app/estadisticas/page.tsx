@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import logo from '../../public/spooter-logo.svg';
 import profilePic from '../../public/profile-icon.svg';
@@ -5,6 +6,8 @@ import arrowRigth from '../../public/Arrow - Right 2.svg';
 import arrowDown from '../../public/arrow-down.svg';
 import arrowDownWhite from '../../public/arrow-down-white.svg';
 import CardActivity from '../Components/ui/ChartMixedIco';
+import Navbar from '../Components/Navbar';
+import Grafic1 from '../Components/Grafic1';
 
 export default function Estadisticas() {
   return (
@@ -59,7 +62,7 @@ export default function Estadisticas() {
         </div>
 
         <div className='p-4 border rounded shadow'>
-          <CardActivity />
+          <Grafic1 />
         </div>
         <div>
           <div>
@@ -100,6 +103,7 @@ export default function Estadisticas() {
           <Image src={arrowDownWhite} alt='arrow-down' />
         </div>
       </main>
+      <Navbar />
     </div>
   );
 }
