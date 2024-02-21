@@ -3,13 +3,14 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema({
-  name: String,
+  firstName: String,
   lastName: String,
   phone: String,
   email: String,
   pass: String,
+  description: String,
   image: String,
-  role: { type: Schema.Types.ObjectId, ref: "Rol" },
+  role_id: { type: Schema.Types.ObjectId, ref: "Rol" },
   active: { type: Boolean, default: true },
 });
 

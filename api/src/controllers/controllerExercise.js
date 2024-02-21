@@ -3,13 +3,13 @@ import {
   exerciseServiceFilter,
   exerciseServicePost,
   exerciseServiceUpdate,
-  exerciseServiceSearch,
   exerciseServiceActive,
   exerciseServiceDeactivate,
-} from "../services/service.exercise.js";
+} from "../services/exercise.service.js";
 const { OK } = pkg;
 export const filterExercise = async (req, res) => {
-  return res.json({ exercise: await exerciseServiceFilter(), status: OK });
+  const { name } = req.query;
+  return res.json({ exercise: await exerciseServiceFilter(name), status: OK });
 };
 
 export const postExercise = async (req, res) => {
@@ -19,11 +19,6 @@ export const postExercise = async (req, res) => {
 
 export const updateExercise = async (req, res) => {
   const exercise = await exerciseServiceUpdate(req.body, req.params.id);
-  res.json(exercise);
-};
-
-export const searchExercise = async (req, res) => {
-  const exercise = await exerciseServiceSearch(req.query.name);
   res.json(exercise);
 };
 

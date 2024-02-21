@@ -35,7 +35,8 @@ const routineSchemaDefinition = new mongoose.Schema({
       type: "boolean",
       description: "Indicates whether the routine is active or not.",
     },
-}});
+  },
+});
 
 const Routine = mongoose.model("Routine", routineSchemaDefinition);
 
