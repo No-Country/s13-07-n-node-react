@@ -10,6 +10,7 @@ import { login } from '../utils/inicioSesion';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation'
 import { useGlobalStore } from '../store/GlobalStore';
+import { dashboardRedirect } from '../utils/DashbordRedirect';
 
 
 
@@ -19,7 +20,7 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false)
   const router = useRouter()
-  const {setUser} = useGlobalStore((state) => state)
+  const {setUser, setRolUser} = useGlobalStore((state) => state)
   
   useEffect(() => {
       
@@ -55,11 +56,11 @@ export default function LoginForm() {
           localStorage.setItem('user-spotter-email', JSON.stringify(values.email))
           localStorage.setItem('user-spotter-pass', JSON.stringify(values.pass))
         }
-            
+      
+      
       setLoading(true)
       const response = await login(values);
-      //console.log(response)
-
+      
       if(response.status === 200){
         Swal.fire({
             icon: "success",
@@ -69,8 +70,17 @@ export default function LoginForm() {
         });
         setLoading(false)
         resetForm();
-        setUser(response.user)
+        setUser(response.user);
+        const dashRedirect = await dashboardRedirect(response.user.role_id);
+        setRolUser(dashRedirect)
+
+        
+        //Aqui va una  validacion de acuerdo al rol del usuario en base a ello redirige a dashboards distintos
+        if(dashRedirect === "cliente"){
+          router.push("/inicio");
+        }
         router.push("/inicio");
+        
         return;
       }
 
@@ -86,8 +96,7 @@ export default function LoginForm() {
         return;
       }
       
-      //en el caso de que todo sea correcto guarda la sesion en el localstorage y redirige a la pantalla de inicio
-
+      
       
     },
   });
@@ -130,9 +139,9 @@ export default function LoginForm() {
                   onChange={formik.handleChange}
                   value={formik.values.email}
                 />
-                {/*{formik.touched.email && formik.errors.email ? (
-                  <div className='mt-1'>{formik.errors.email}</div>
-                ) : null}*/}
+                {formik.touched.email && formik.errors.email ? (
+                  <div className='my-1 text-primaryDefault'>{String(formik.errors.email)}</div>
+                ) : null}
                 <div className='absolute left-2 top-1/3 transform -translate-y-1/2'>
                   <Image src={mailIcon} alt='Imagen' width={20} height={20} />
                 </div>
@@ -149,9 +158,9 @@ export default function LoginForm() {
                 value={formik.values.pass}
                 placeholder={'**********'}
               />
-              {/*{formik.touched.pass && formik.errors.pass ? (
-                <div className='mt-1'>{formik.errors.pass}</div>
-              ) : null}*/}
+              {formik.touched.pass && formik.errors.pass ? (
+                <div className='my-1 text-primaryDefault'>{String(formik.errors.pass)}</div>
+              ) : null}
               <div className='flex justify-between items-center mb-4'>
                 <div className='flex items-center mb-4'>
                   <input

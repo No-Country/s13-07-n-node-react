@@ -11,10 +11,11 @@ import { useGlobalStore } from '../store/GlobalStore';
 
 
 const Inicio = () => {
-  const {user} = useGlobalStore((state)=>state);
-  console.log(user)
-  return (
+  const {user, rolUser} = useGlobalStore((state)=>state);
+  console.log(user, rolUser)
 
+
+  return (
     <GlobalContainer>
         <Header/>
         <div className="mt-[36px]">
