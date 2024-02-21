@@ -34,6 +34,7 @@ export const createPlan = async (name, description, price, durationMonth) => {
   }
 };
 
+//obtener todos los planes (Revisar)
 export const getAllPlans = async () => {
     try {
       const plans = await Plan.find();
@@ -43,7 +44,7 @@ export const getAllPlans = async () => {
     }
   };
   
-  // Obtener plan por Id
+  // Obtener plan por Id (revisar)
   export const getPlanById = async (planId) => {
     try {
       const plan = await Plan.findById(planId);
