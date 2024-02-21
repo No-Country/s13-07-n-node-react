@@ -1,4 +1,6 @@
-import * as instructors from '../controllers/instructors.controller.js'
+import { InstructorsController } from "../controllers/instructors.controller.js"
+
+const instructors = new InstructorsController()
 
 const INSTRUCTORS_PATH = '/instructors'
 const AN_INSTRUCTOR_PATH = INSTRUCTORS_PATH.concat('/:id')
