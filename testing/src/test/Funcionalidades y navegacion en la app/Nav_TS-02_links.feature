@@ -12,8 +12,8 @@ Scenario: Verificar enlaces principales de navegacion en la webapp
     Then los enlaces internos a las paginas pagina son correctos
 
 @Nav @TS-02 @TC-02
-Scenario: Verificar ausencia de enlaces rotos
+Scenario: Verificar ausencia de errores http
     Given que estoy en la pagina "nombre de la pagina"
     When se buscan todos los enlaces internos
-    Then se verifica que no haya un codigo de http de error    
+    Then se verifica que no haya un codigo de http de error        
 

@@ -1,6 +1,6 @@
 [
   {
-    "description": "    Verificar que todos los enlaces en la pagina funcionen correctamente para asegurar de una navegacion adecuada\n    * Protocolo de navegacion\n    * Status de conexion\n    * Redireccion de los enlaces\n    * Ausencia de error http",
+    "description": "    Verificar que todos los enlaces en la pagina funcionen correctamente para asegurar de una navegacion adecuada\n    * Protocolo de navegacion\n    * Status de conexion\n    * Redireccion de los enlaces",
     "elements": [
       {
         "description": "",
@@ -14,46 +14,59 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1399768500
+              "duration": 1893305700
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 9,
+            "line": 8,
             "name": "el usuario 'userA@mail.com' accede con su contraseña 'wxyz1234*' en la web app 'www.spooter.com'",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:19"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:22"
             },
             "result": {
               "status": "passed",
-              "duration": 14904000
+              "duration": 13468199
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 13,
-            "name": "accedo en la pagina \"entrenamiento\"",
+            "line": 12,
+            "name": "accedo en la pagina \"https://www.google.com\"",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:24"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:27"
             },
             "result": {
               "status": "passed",
-              "duration": 2345899
+              "duration": 2501141399
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 14,
+            "line": 13,
             "name": "se realiza clic en todos los enlaces buscados",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:28"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 1132499
+              "duration": 3007516999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "se muestra el total de enlaces encontrados",
+            "match": {
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3185685100
             }
           },
           {
@@ -62,11 +75,11 @@
             "line": 15,
             "name": "deben redirigir corretamente a la url de destino",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:32"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:46"
             },
             "result": {
               "status": "passed",
-              "duration": 964000
+              "duration": 3006291899
             }
           },
           {
@@ -75,11 +88,11 @@
             "line": 16,
             "name": "deben devolver un codigo de estado HTTP 200 OK",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:36"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:51"
             },
             "result": {
               "status": "passed",
-              "duration": 1380900
+              "duration": 3021119100
             }
           },
           {
@@ -88,11 +101,11 @@
             "line": 17,
             "name": "deben ser accesible y cargar correctamente",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:41"
+              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:57"
             },
             "result": {
               "status": "passed",
-              "duration": 1699499
+              "duration": 3010201499
             }
           },
           {
@@ -101,99 +114,11 @@
             "line": 18,
             "name": "los enlaces debe utilizar el protocolo correcto (HTTP o HTTPS)",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:45"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1956900
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 333000
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@Nav",
-            "line": 11
-          },
-          {
-            "name": "@TS-01",
-            "line": 11
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "nav-|-ts-01-|-ts-02|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna;verificar-ausencia-de-errores-http",
-        "keyword": "Scenario",
-        "line": 24,
-        "name": "Verificar ausencia de errores http",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1463371600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 9,
-            "name": "el usuario 'userA@mail.com' accede con su contraseña 'wxyz1234*' en la web app 'www.spooter.com'",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 761700
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 25,
-            "name": "que estoy en la pagina \"nombre de la pagina\"",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:54"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2084600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 26,
-            "name": "se buscan todos los enlaces internos",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:58"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1368000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 27,
-            "name": "se verifica que no haya un codigo de http de error",
-            "match": {
               "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:62"
             },
             "result": {
               "status": "passed",
-              "duration": 1196900
+              "duration": 3010614600
             }
           },
           {
@@ -201,22 +126,18 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 219099
+              "duration": 3013086600
             }
           }
         ],
         "tags": [
           {
             "name": "@Nav",
-            "line": 23
+            "line": 10
           },
           {
-            "name": "@TS-02",
-            "line": 23
-          },
-          {
-            "name": "@TC-01",
-            "line": 23
+            "name": "@TS-01",
+            "line": 10
           }
         ],
         "type": "scenario"
