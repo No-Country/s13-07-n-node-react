@@ -1,31 +1,32 @@
 import mongoose from 'mongoose';
 
-const membresiaSchema = new mongoose.Schema({
-    usuarioId: {
+const membershipSchema = new mongoose.Schema({
+    userId: {
         type: Schema.Types.ObjectId,
-        ref: 'Usuario', 
+        ref: 'User', 
         required: true
     },
-    planActual: {
+    currentPlan: {
         type: Schema.Types.ObjectId,
         ref: 'Plan', 
         required: true
     },
-    fechaInicio: {
+    startDate: {
         type: Date,
         required: true
     },
-    fechaFin: {
+    endDate: {
         type: Date,
         required: true
     },
-    historialPlanes: [{
-        planAnterior: {
+    planHistory: [{
+        previousPlan: {
             type: Schema.Types.ObjectId,
-            ref: 'Plan'  //Array para guardar plan anterior
+            ref: 'Plan' 
         }
     }]
 });
-const Membresia = mongoose.model('Membresia', membresiaSchema);
 
-export default Membresia;
+const Membership = mongoose.model('Membership', membershipSchema);
+
+export default Membership;

@@ -1,80 +1,76 @@
-import Membresia from "../models/Membresia.js";
+import Membership from "../models/Membership.js";
 
-// Crear una nueva membresía
-export const createMembresia = async (usuarioId, planId, fechaInicio, fechaFin) => {
+// Create a new membership
+export const createMembership = async (userId, planId, startDate, endDate) => {
   try {
-    const nuevaMembresia = new Membresia({
-      usuarioId,
-      planActual: planId,
-      fechaInicio,
-      fechaFin,
+    const newMembership = new Membership({
+      userId,
+      currentPlan: planId,
+      startDate,
+      endDate,
     });
-    const savedMembresia = await nuevaMembresia.save();
-    return savedMembresia;
+    const savedMembership = await newMembership.save();
+    return savedMembership;
   } catch (error) {
-    throw new Error(`Error al crear la membresía: ${error.message}`);
+    throw new Error(`Error creating membership: ${error.message}`);
   }
 };
 
-// Obtener todas las membresías
-export const getAllMembresias = async () => {
+export const getAllMemberships = async () => {
   try {
-    const membresias = await Membresia.find();
-    return membresias;
+    const memberships = await Membership.find();
+    return memberships;
   } catch (error) {
-    throw new Error(`Error al obtener las membresías: ${error.message}`);
+    throw new Error(`Error getting memberships: ${error.message}`);
   }
 };
 
-// Bbtener  membresía por ID
-export const getMembresiaById = async (membresiaId) => {
+
+export const getMembershipById = async (membershipId) => {
   try {
-    const membresia = await Membresia.findById(membresiaId);
-    return membresia;
+    const membership = await Membership.findById(membershipId);
+    return membership;
   } catch (error) {
-    throw new Error(`Error al obtener la membresía: ${error.message}`);
+    throw new Error(`Error getting membership: ${error.message}`);
   }
 };
 
-// Actualizar  membresía ID
-export const updateMembresiaById = async (membresiaId, nuevoPlanId, nuevaFechaFin) => {
+export const updateMembershipById = async (membershipId, newPlanId, newEndDate) => {
   try {
-    const membresia = await Membresia.findById(membresiaId);
-    if (!membresia) {
-      throw new Error("No se encontró ninguna membresía con el ID proporcionado.");
+    const membership = await Membership.findById(membershipId);
+    if (!membership) {
+      throw new Error("No membership found with the provided ID.");
     }
 
-    membresia.planAnterior = membresia.planActual;  //se guarda plan actua, como plan anterior
-    membresia.planActual = nuevoPlanId;   //planActual se reemplaza por el Nuevo plan
-    membresia.fechaFin = nuevaFechaFin;   //se actualiza la fecha de fin del plan
+    membership.planHistory.push({ previousPlan: membership.currentPlan });
+    membership.currentPlan = newPlanId;
+    membership.endDate = newEndDate;
 
-    await membresia.save();
-    return membresia;
+    await membership.save();
+    return membership;
   } catch (error) {
-    throw new Error(`Error al actualizar la membresía: ${error.message}`);
+    throw new Error(`Error updating membership: ${error.message}`);
   }
 };
 
-//Eliminar  membresía por ID
-export const deleteMembresiaById = async (membresiaId) => {
+export const deleteMembershipById = async (membershipId) => {
   try {
-    const deletedMembresia = await Membresia.findByIdAndDelete(membresiaId);
-    return deletedMembresia;
+    const deletedMembership = await Membership.findByIdAndDelete(membershipId);
+    return deletedMembership;
   } catch (error) {
-    throw new Error(`Error al eliminar la membresía: ${error.message}`);
+    throw new Error(`Error deleting membership: ${error.message}`);
   }
 };
 
-//Historial de planes
-export const getHistorialPlanesById = async (membresiaId) => {
+export const getPlanHistoryById = async (membershipId) => {
   try {
-    const membresia = await Membresia.findById(membresiaId);
-    if (!membresia) {
-      throw new Error("No se encontró ninguna membresía con el ID proporcionado.");
+    const membership = await Membership.findById(membershipId);
+    if (!membership) {
+      throw new Error("No membership found with the provided ID.");
     }
-    const historialPlanes = membresia.historialPlanes;
-    return historialPlanes;
+    const planHistory = membership.planHistory;
+    return planHistory;
   } catch (error) {
-    throw new Error(`Error al obtener el historial de planes de la membresía: ${error.message}`);
+    throw new Error(`Error getting plan history of membership: ${error.message}`);
   }
 };

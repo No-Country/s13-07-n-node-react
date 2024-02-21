@@ -9,13 +9,12 @@ import {
 } from "../controllers/routine.controller.js";
 const router = Router();
 
-//Rutas CRUD para routine
 
 router.post("/create", createRoutine);
 router.put("/deactivate/:routineId", deactivateRoutine);
 router.put("/activate/:routineId", activateRoutine);
 router.put("/update/:routineId", updateRoutine);
-router.get("/all", getAllRoutines);
+router.get("/all", getAllRoutines); 
 router.get("/search", searchRoutineByName);
 
 export default router;
