@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { Instructors } from './instructors.routes.js'
 import routineRoutes from "./routine.routes.js";
 import TypeRoutineRoutes from "./typeRoutine.routes.js";
 import clientRoutes from "./client.routes.js";
@@ -16,4 +17,8 @@ router.use("/images", ImageRoutes);
 router.use("/rol", routesRol);
 router.use("/user", routesUser);
 router.use("/exercise", routesExercise);
+
+// Instructors routes
+Instructors.config( router )
+
 export default router;
