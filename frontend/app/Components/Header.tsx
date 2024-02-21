@@ -3,16 +3,13 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import logo from "../../public/Frame 145 1.svg";
 import campana from "../../public/bell-outline.svg"
-import { usePathname } from 'next/navigation'
 import avatar from "../../public/Roberta Casas.png";
 import PushNotification from './PushNotification';
 
 
 const Header = () => {
-  const currentUrl = usePathname()
+  
   const [show, setShow] = useState(false)
-  // Accede a la propiedad pathname del objeto router para obtener la ruta actual
-    console.log(currentUrl)
   return (
     <div id='logo' className='flex justify-between items-center relative'>
         

@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import backgroundImage from "../../public/Rectangle 2.png";
 import Image from 'next/image';
 import avatar from "../../public/Roberta Casas.png"
 import megatlon from "../../public/image 1.png";
-import codigoBarras from "../../public/Frame.png"
-
+import { useGlobalStore } from '../store/GlobalStore';
+import codigoQR from "../../public/QR Code.png"
+import ModalQR from './ModalQR';
 
 const CardClient = () => {
-    
+    const {user, rolUser} = useGlobalStore<any>((state)=>state);
+    console.log(user, rolUser)
+    const [showModal, setShowModal] = useState(false);
     return (
     <div className='w-[328px] h-[146px] mt-[24px] relative'>
         <Image src={backgroundImage} alt='background-image' />
@@ -19,7 +22,7 @@ const CardClient = () => {
                 <div className="col-span-4  flex flex-col justify-center">
                     <div className='my-[0.2rem]'>
                         <h2 className='font-bold text-[12px]'>Nombre</h2>
-                        <p className='text-[10px]'>Paula Mendoza</p>
+                        <p className='text-[10px]'>{user.firstName} {user.lastName} </p>
                     </div>
                     <div className='my-[0.2rem]'>
                         <h2 className='font-bold text-[12px]'>Vencimiento</h2>
@@ -33,11 +36,14 @@ const CardClient = () => {
                 </div>
                 <div className="col-span-4 flex flex-col justify-between items-end px-[13px] py-[14px]">
                     <Image className='w-[56px]' src={megatlon} alt='megatlon' />
-                    <Image className='w-[113px]' src={codigoBarras} alt='megatlon' />
+                    <button onClick={()=>{setShowModal(!showModal)}}>
+                        <Image className='w-[113px]' src={codigoQR} alt='megatlon' />
+                    </button>
+                    {showModal && (<ModalQR onShow={()=>{setShowModal(!showModal)}} email={user.email} firstName={user.firstName} />)}
                 </div>
             </div>
         </div>
     </div>
   )
 }
-export default CardClient
+export default CardClient;
