@@ -8,12 +8,9 @@ import codigoQR from "../../public/QR Code.png"
 import ModalQR from './ModalQR';
 
 const CardClient = () => {
-    const {user, rolUser} = useGlobalStore((state)=>state);
+    const {user, rolUser} = useGlobalStore<any>((state)=>state);
     console.log(user, rolUser)
-    const [showModal, setShowModal] = useState(false)
-
-    
-    
+    const [showModal, setShowModal] = useState(false);
     return (
     <div className='w-[328px] h-[146px] mt-[24px] relative'>
         <Image src={backgroundImage} alt='background-image' />
@@ -25,9 +22,7 @@ const CardClient = () => {
                 <div className="col-span-4  flex flex-col justify-center">
                     <div className='my-[0.2rem]'>
                         <h2 className='font-bold text-[12px]'>Nombre</h2>
-                        
                         <p className='text-[10px]'>{user.firstName} {user.lastName} </p>
-                        
                     </div>
                     <div className='my-[0.2rem]'>
                         <h2 className='font-bold text-[12px]'>Vencimiento</h2>
