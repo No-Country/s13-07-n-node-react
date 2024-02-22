@@ -1,16 +1,14 @@
 import { rolServiceFilter } from './rol.services.js'
+import { userServiceFilter } from './user.services.js'
 export class InstructorService {
-
-   async role_id() {
-      return await rolServiceFilter( 'profesor/a' )._id
-   }
 
    async all( params = {} ) {
       params
       const roles = await rolServiceFilter( 'instructors' )
-      console.info( roles[0]._id )
+      const role_id = roles[0]._id
+      const instructors = await userServiceFilter( {role_id})
       
-      return roles
+      return instructors
    }
 
    async create( params = {} ) {
