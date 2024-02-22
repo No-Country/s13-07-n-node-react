@@ -11,9 +11,7 @@ import { useGlobalStore } from '../store/GlobalStore';
 
 const InicioCliente = () => {
   const {user, rolUser} = useGlobalStore((state)=>state);
-  console.log(user, rolUser)
-
-
+  //console.log(user, rolUser)
   return (
     <GlobalContainer>
         <Header/>

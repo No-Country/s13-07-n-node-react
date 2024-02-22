@@ -8,8 +8,8 @@ import { useRouter } from 'next/navigation'
 
 const Navbar = () => {
     const router = useRouter();
-    const {user, rolUser} = useGlobalStore((state)=>state);
-    console.log(user, rolUser)
+    const {rolUser} = useGlobalStore((state)=>state);
+    //console.log(rolUser)
     return (
 
         <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2  border border-gray-800 rounded-3xl bottom-0 left-1/2 dark:bg-[#21252998] dark:border-gray-800 overflow-hidden backdrop-blur-[2px]'>
