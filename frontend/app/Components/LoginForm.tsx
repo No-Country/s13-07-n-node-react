@@ -13,8 +13,6 @@ import { useGlobalStore } from '../store/GlobalStore';
 import { dashboardRedirect } from '../utils/DashbordRedirect';
 
 
-
-
 export default function LoginForm() {
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -60,7 +58,6 @@ export default function LoginForm() {
       
       setLoading(true)
       const response = await login(values);
-      
       if(response.status === 200){
         Swal.fire({
             icon: "success",
