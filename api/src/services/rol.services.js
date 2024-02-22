@@ -28,6 +28,13 @@ export const rolServicePost = async (body) => {
 export const rolServiceUpdate = async (body, id) => {
   const { name } = body;
   const search = await rol.findOne({ _id: id });
+  const searchdate = await rol.findOne({ name: name.toLowerCase() });
+  if (searchdate) {
+    return {
+      status: NOT_FOUND,
+      message: "El rol no se puede actualizar el nombre ingresado ya se encuentra registrado",
+    };
+  }
   if (search) {
     await rol.findOneAndUpdate({ _id: id }, { name: name.toLowerCase() });
     return {

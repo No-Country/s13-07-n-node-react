@@ -17,7 +17,7 @@ transporter.verify().then(() => {
 
 export const sendEmail = async (email) => {
   // send mail with defined transport object
-   await transporter.sendMail({
+  await transporter.sendMail({
     from: process.env.NODE_MAILER_NAME, // sender address
     to: email, // list of receivers
     subject: "Registro de Spotter", // Subject line
