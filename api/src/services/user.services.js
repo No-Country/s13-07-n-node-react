@@ -37,13 +37,11 @@ export const userServicePost = async (body, file) => {
       message: "the data is already registered",
     };
   }
-  let variable;
+  const DEFAULT_IMAGE = "https://res.cloudinary.com/djasayobv/image/upload/v1702842963/rmryjkk8ukcdjmsrzjwq.jpg";
   if (file) {
     const imageUrl = await cloudinary.uploader.upload(file);
     const { url } = imageUrl;
     body["url"] = url;
-  } else {
-    variable ="https://res.cloudinary.com/djasayobv/image/upload/v1702842963/rmryjkk8ukcdjmsrzjwq.jpg";
   }
 
   const passHash = await hassPass(pass);
@@ -53,7 +51,7 @@ export const userServicePost = async (body, file) => {
     phone: phone,
     description: description.toLowerCase(),
     email: email.toLowerCase(),
-    image: body.url || variable,
+    image: body.url || DEFAULT_IMAGE,
     role_id: role_id,
     pass: passHash,
   });
