@@ -19,6 +19,8 @@ export default function LoginForm() {
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false)
+  const [emailToRemember, setEmailToRemember] = useState("")
+  const [passwordToRemember, setPasswordToRemember] = useState("")
   const router = useRouter()
   const {setUser, setRolUser} = useGlobalStore((state) => state)
   
@@ -27,8 +29,22 @@ export default function LoginForm() {
     const timer = setTimeout(() => {
       setShowForm(true);
     }, 1000);
+
+    if (typeof window !== 'undefined') {
+      const storedEmail = JSON.parse(localStorage.getItem('user-spotter-email') || '{}')
+      const storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || '{}')
+      if (storedEmail && storedpass) {
+        // Aquí debes manejar cómo establecer el valor del campo de contraseña en useFormik
+        // Esto puede requerir el uso de un estado local para manejar el valor inicial de password
+        setEmailToRemember(storedEmail)
+        setPasswordToRemember(storedpass)
+      }
+    }
+
     return () => clearTimeout(timer);
   }, []);
+
+  console.log(emailToRemember, passwordToRemember)
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -40,21 +56,20 @@ export default function LoginForm() {
       .required('La contraseña es requerida'),
   });
 
-    const storedEmail = JSON.parse(localStorage.getItem('user-spotter-email') || '{}')
-    const storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || '{}')
-
+  
   const formik = useFormik({
-    initialValues: {
-      email: storedEmail || '',
-      pass: storedpass || '',
+    initialValues:{ 
+      email: emailToRemember || "",
+      pass: passwordToRemember || "",
     },
     validationSchema,
     onSubmit: async  (values, {resetForm}) => {
         if (rememberMe) {
           // Almacena la contraseña en una cookie o localStorage
-          // (No recomendado por razones de seguridad)
-          localStorage.setItem('user-spotter-email', JSON.stringify(values.email))
-          localStorage.setItem('user-spotter-pass', JSON.stringify(values.pass))
+            if (typeof window !== 'undefined') {
+              localStorage.setItem('user-spotter-email', JSON.stringify(values.email))
+              localStorage.setItem('user-spotter-pass', JSON.stringify(values.pass))
+            }
         }
       
       
