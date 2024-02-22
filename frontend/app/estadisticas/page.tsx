@@ -8,6 +8,7 @@ import arrowDownWhite from '../../public/arrow-down-white.svg';
 import CardActivity from '../Components/ui/ChartMixedIco';
 import Navbar from '../Components/Navbar';
 import Grafic1 from '../Components/Grafic1';
+import Grafic2 from '../Components/Grafic2';
 
 export default function Estadisticas() {
   return (
@@ -61,7 +62,7 @@ export default function Estadisticas() {
           </h2>
         </div>
 
-        <div className='p-4 border rounded shadow'>
+        <div>
           <Grafic1 />
         </div>
         <div>
@@ -95,12 +96,15 @@ export default function Estadisticas() {
           </div>
           <h2 className='text-center bg-gray900 h-8 w-8 rounded-lg'>...</h2>
         </div>
-        <div className='p-4 border rounded shadow'>
-          <CardActivity />
+        <div className='p-4 '>
+          <Grafic2 />
         </div>
         <div className='flex justify-between items-center gap-4'>
           <h2 className='text-'>Ultima Semana</h2>
           <Image src={arrowDownWhite} alt='arrow-down' />
+        </div>
+        <div>
+          <h2>Ultima Semana</h2>
         </div>
       </main>
       <Navbar />
