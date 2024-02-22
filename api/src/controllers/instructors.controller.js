@@ -1,13 +1,27 @@
 import { InstructorService } from '../services/instructors.service.js'
 
+const HOST = process.env.HOST
+const PORT = process.env.PORT_SERVER
+
 const instructors = new InstructorService()
 
 export class InstructorsController {
    async index( req, res ) {
       let response = { message: 'no instructors' }
-      const collection = await instructors.all() 
+      const collection = await instructors.all()
       
-      if( collection.length > 0 ) { response = { data: collection } }
+      const data = collection.map( e => {
+         return {
+            id: e._id
+            , firstName: e.firstName
+            , lastName: e.lastName 
+            , image_url: e.image_url
+            , active: e.active
+            , url: `${HOST}:${PORT}/api/v1/instructors/${e._id}`
+         }
+      })
+
+      if( collection.length > 0 ) { response = { data } }
       
       res.json( response )
    }
