@@ -1,12 +1,21 @@
-import { rol } from '../db/schemas/rol.schema.js'
-import { user } from '../db/schemas/user.schema.js'
+import { rolServiceFilter } from './rol.services.js'
 export class InstructorService {
+
+   async role_id() {
+      return await rolServiceFilter( 'profesor/a' )._id
+   }
 
    async all( params = {} ) {
       params
-      const instructor_rol = await rol.find( { name: 'profesor/a'.toLowerCase() } )
-      const instructors = await user.find( {role_id: instructor_rol.id })
+      const roles = await rolServiceFilter( 'instructors' )
+      console.info( roles[0]._id )
       
-      return instructors
+      return roles
    }
+
+   async create( params = {} ) {
+      params
+      throw new Object({message: 'Not implemented'})
+   }
+
 }
