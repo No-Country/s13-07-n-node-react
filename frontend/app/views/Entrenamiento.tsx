@@ -13,7 +13,7 @@ import Calendario from "../Components/Calendario";
 
 const Entrenamiento = () => {
     return (
-        <div className='px-4 pt-8 bg-gray-900 mb-14'>
+        <div className='px-4 pt-8  mb-14'>
             <Header />
             <Navbar />
             <div className='mt-9'>

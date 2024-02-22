@@ -1,13 +1,12 @@
-import Inicio from '@/app/views/Inicio';
+import Micuenta from '@/app/views/Micuenta'
 import React from 'react'
-
 
 const page = () => {
   return (
     <div>
-        <Inicio/>
+      <Micuenta/>
     </div>
   )
 }
 
-export default page;
+export default page

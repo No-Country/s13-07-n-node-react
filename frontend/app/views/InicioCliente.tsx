@@ -9,12 +9,9 @@ import Navbar from '../Components/Navbar';
 import GlobalContainer from '../Components/GlobalContainer';
 import { useGlobalStore } from '../store/GlobalStore';
 
-
-const Inicio = () => {
+const InicioCliente = () => {
   const {user, rolUser} = useGlobalStore((state)=>state);
-  console.log(user, rolUser)
-
-
+  //console.log(user, rolUser)
   return (
     <GlobalContainer>
         <Header/>
@@ -38,4 +35,4 @@ const Inicio = () => {
   )
 }
 
-export default Inicio;
+export default InicioCliente;

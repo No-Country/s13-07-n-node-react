@@ -1,6 +1,6 @@
-import LoginForm from '@/app/Components/LoginForm'
+"use client"
 import React from 'react'
-
+import LoginForm from "../../Components/LoginForm"
 const page = () => {
   return (
     <div>
@@ -9,4 +9,4 @@ const page = () => {
   )
 }
 
-export default page
+export default page;

@@ -9,7 +9,7 @@ import ModalQR from './ModalQR';
 
 const CardClient = () => {
     const {user, rolUser} = useGlobalStore<any>((state)=>state);
-    console.log(user, rolUser)
+    //console.log(user, rolUser)
     const [showModal, setShowModal] = useState(false);
     return (
     <div className='w-[328px] h-[146px] mt-[24px] relative'>
