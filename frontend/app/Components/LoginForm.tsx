@@ -13,8 +13,6 @@ import { useGlobalStore } from '../store/GlobalStore';
 import { dashboardRedirect } from '../utils/DashbordRedirect';
 
 
-
-
 export default function LoginForm() {
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -75,7 +73,6 @@ export default function LoginForm() {
       
       setLoading(true)
       const response = await login(values);
-      
       if(response.status === 200){
         Swal.fire({
             icon: "success",
@@ -88,14 +85,22 @@ export default function LoginForm() {
         setUser(response.user);
         const dashRedirect = await dashboardRedirect(response.user.role_id);
         setRolUser(dashRedirect)
-
-        
         //Aqui va una  validacion de acuerdo al rol del usuario en base a ello redirige a dashboards distintos
         if(dashRedirect === "cliente"){
-          router.push("/inicio");
+          router.push("/inicio/cliente");
         }
-        router.push("/inicio");
         
+        if(dashRedirect === "dueño"){
+          router.push("/inicio/duennio");
+        }
+
+        if(dashRedirect === "profesor/a"){
+          router.push("/inicio/profesor")
+        }
+
+        if(dashRedirect === "secretario/a"){
+          router.push("/inicio/secretario")
+        }
         return;
       }
 

@@ -4,18 +4,19 @@ import X from "../../public/x.png"
 import start from "../../public/star.png"
 import starColor from "../../public/star-color.png"
 import mujer from "../../public/card-header-women.png"
-
+import { useRouter } from 'next/navigation'
 
 function ProfessorDetails({ params }: { params: {profesor: string;}}) {
  
   const calificacion = ["profesor","puntaje", "gracias"];
   const  [flujo, setFlujo] = useState(calificacion[0])
+  const router = useRouter()
 
   
   return (
     <div className={`w-full h-full  fixed  left-0 right-0 bottom-0  backdrop-blur-[5px]  bg-opacity-60`}>
       
-      <button onClick={()=> {}} >
+      <button onClick={()=> {router.push('/Profesores')}} >
         <Image src={X} alt="x" className="w-[24px] h-[24px] absolute right-5 top-5" />
       </button>
       <div className="w-full  absolute bottom-0 right-0 left-0">
@@ -82,7 +83,7 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
                 <p className="mt-[30px] mb-[44px] text-center font-semibold">
                   Gracias por calificar a Mara
                 </p>
-                <button onClick={() => { setFlujo(calificacion[0]);  } } type="button" className="mt-[12px] text-white w-full focus:outline-none  bg-primaryDefault hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
+                <button onClick={() => {  router.push('/Profesores')   } } type="button" className="mt-[12px] text-white w-full focus:outline-none  bg-primaryDefault hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
                   Continuar
                 </button>
               </div>
