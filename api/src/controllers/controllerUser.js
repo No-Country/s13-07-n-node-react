@@ -14,7 +14,7 @@ export const filterUser = async (req, res) => {
 };
 
 export const postUser = async (req, res) => {
-  const user = await userServicePost(req.body, req.file.path);
+  const user = await userServicePost(req.body, req.file?.path);
   res.json(user);
 };
 

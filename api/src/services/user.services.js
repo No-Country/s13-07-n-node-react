@@ -23,7 +23,7 @@ export const userServiceFilter = async (firstName, lastName, phone, email, role_
 
 export const userServicePost = async (body, file) => {
   const { firstName, lastName, phone, email, pass, role_id, description } = body;
-  if (!firstName || !lastName || !phone || !email || !pass || !role_id || !file || !description) {
+  if (!firstName || !lastName || !phone || !email || !pass || !role_id || !description) {
     return {
       status: NOT_FOUND,
       message: "complete all fields",
@@ -37,16 +37,23 @@ export const userServicePost = async (body, file) => {
       message: "the data is already registered",
     };
   }
-  const imageUrl = await cloudinary.uploader.upload(file);
+  let variable;
+  if (file) {
+    const imageUrl = await cloudinary.uploader.upload(file);
+    const { url } = imageUrl;
+    body["url"] = url;
+  } else {
+    variable ="https://res.cloudinary.com/djasayobv/image/upload/v1702842963/rmryjkk8ukcdjmsrzjwq.jpg";
+  }
+
   const passHash = await hassPass(pass);
-  const { url } = imageUrl;
   const userCreate = await user.create({
     firstName: firstName.toLowerCase(),
     lastName: lastName.toLowerCase(),
     phone: phone,
     description: description.toLowerCase(),
     email: email.toLowerCase(),
-    image: url,
+    image: body.url || variable,
     role_id: role_id,
     pass: passHash,
   });
