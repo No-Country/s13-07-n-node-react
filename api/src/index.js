@@ -32,5 +32,5 @@ db();
 // Inicio del servidor
 const PORT = process.env.PORT_SERVER || 3000;
 app.listen(PORT, () => {
-  console.log(`Server listening on port http://localhost:${PORT}`);
+  console.log(`>> listening on port ${HOST}:${PORT === 443 ? '' : PORT}`);
 });
