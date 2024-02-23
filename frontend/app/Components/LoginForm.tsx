@@ -56,15 +56,15 @@ export default function LoginForm() {
   let storedEmail:any;
   let storedpass:any;
   if (typeof window !== 'undefined') {
-      storedEmail = JSON.parse(localStorage.getItem('user-spotter-email') || '')
-      storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || '')
+      storedEmail = JSON.parse(localStorage.getItem('user-spotter-email') || "{}")
+      storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || "{}")
   }
 
   
   const formik = useFormik({
     initialValues:{ 
-      email: storedEmail || "",
-      pass: storedpass || "",
+      email: storedEmail === "{}" || "",
+      pass: storedpass === "{}" || "",
     },
     validationSchema,
     onSubmit: async  (values, {resetForm}) => {
