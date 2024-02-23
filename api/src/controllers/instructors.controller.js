@@ -14,6 +14,17 @@ function url_to_reviews_for(instructor_id) {
    return `${url_for(instructor_id)}/reviews`
 }
 
+function parse(instructor) {
+   const { _id, firstName, lastName, image, active, rating, phone, email } = instructor
+   const url = url_for(_id)
+   const url_reviews = url_to_reviews_for(_id)
+   return Object.assign({ id: _id }, {
+      firstName, lastName, image, active, rating, phone, email
+      , url
+      , url_reviews
+   })
+}
+
 export class InstructorsController {
    async index(req, res) {
       let response = { message: 'no instructors' }
@@ -21,16 +32,7 @@ export class InstructorsController {
 
       if (collection.length > 0) {
          const data = collection.map(e => {
-            return {
-               id: e._id
-               , firstName: e.firstName
-               , lastName: e.lastName
-               , image_url: e.image_url
-               , active: e.active
-               , rating: e.rating || 0
-               , url: `${url_for(e._id)}`
-               , url_reviews: url_to_reviews_for(e._id)
-            }
+            return parse( e )
          })
 
          response = { data }
@@ -45,14 +47,7 @@ export class InstructorsController {
       const { id } = req.params
       const instructor = await instructors.find_by({ id })
       if (instructor) {
-         const { _id, firstName, lastName, image, active, rating, phone, email } = instructor
-         const url = url_for(_id)
-         const url_reviews = url_to_reviews_for(_id)
-         const result = Object.assign({ id: _id }, {
-            firstName, lastName, image, active, rating, phone, email
-            , url
-            , url_reviews
-         })
+         const result = parse( instructor )
          response.data = result
          response.message = 'instructor founded'
          RESPONSE_CODE = 200
@@ -107,14 +102,12 @@ export class InstructorsController {
          },
          status: 400
       }
-      const { firstName, lastName, email, pass } = req.body
 
       try {
-         const instructor = await instructors.create({ firstName, lastName, email, pass })
+         const instructor = await instructors.create( req.body )
 
-         console.info('>>', instructor)
          response.body.message = "instructor created"
-         response.body.data = instructor
+         response.body.data = parse( instructor )
          response.status = 201
       } catch (error) {
          console.error('>> ERROR', error)
