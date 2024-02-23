@@ -60,11 +60,12 @@ export default function LoginForm() {
       storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || "{}")
   }
 
-  
+  console.log( typeof storedEmail,typeof storedpass)
+
   const formik = useFormik({
     initialValues:{ 
-      email: storedEmail === "{}" ? "" : storedEmail,
-      pass: storedpass === "{}" ? "" : storedpass,
+      email: typeof storedEmail === "object" ? "" : storedEmail,
+      pass: typeof storedpass === "object" ? "" : storedpass,
     },
     validationSchema,
     onSubmit: async  (values, {resetForm}) => {
