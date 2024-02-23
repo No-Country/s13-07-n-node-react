@@ -60,7 +60,7 @@ export default function LoginForm() {
       storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || "{}")
   }
 
-  console.log( typeof storedEmail,typeof storedpass)
+  //console.log( typeof storedEmail,typeof storedpass)
 
   const formik = useFormik({
     initialValues:{ 
