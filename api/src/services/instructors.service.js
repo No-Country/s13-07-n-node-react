@@ -4,14 +4,9 @@ import { hassPass } from '../middlewares/encrypt.js'
 import { user } from '../db/schemas/user.schema.js'
 
 function add_rating_to(instructor) {
-   let rating = 0
    if (instructor.reviews.length > 0) {
-      rating = instructor.reviews.reduce((a, instructor) => {
-         a + instructor.rating
-      }, 0) / instructor.reviews.length
+      instructor.rating = instructor.reviews.reduce((a, e) => a + e.rating, 0) / instructor.reviews.length
    }
-
-   instructor.rating = rating
 }
 
 export class InstructorService {
@@ -50,10 +45,9 @@ export class InstructorService {
 
    async register_review_for( id, params = {}) {
       const { reviewer, rating, comment } = params
-      params
       const instructor = await this.find_by( { id } )
-      console.info( '>>', instructor )
       instructor.reviews.push( { reviewer, rating, comment } )
+      add_rating_to( instructor )
       await instructor.save()
    }
 

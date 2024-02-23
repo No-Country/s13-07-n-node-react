@@ -42,63 +42,70 @@ export class InstructorsController {
    }
 
    async show(req, res) {
-      let RESPONSE_CODE = 404
-      const response = { message: 'instructor not found', data: null }
+      const response = { 
+         body: { message: 'instructor not found' },
+         status: 404
+      }
       const { id } = req.params
       const instructor = await instructors.find_by({ id })
       if (instructor) {
-         const result = parse( instructor )
-         response.data = result
-         response.message = 'instructor founded'
-         RESPONSE_CODE = 200
+         response.body.data = parse( instructor )
+         response.body.message = 'instructor found'
+         response.status = 200
+
+         console.info( '>>', response )
+         console.info( '>>', instructor )
       }
-      res.status(RESPONSE_CODE).json(response)
+      res.status(response.status).json(response.body)
    }
 
    async show_reviews(req, res) {
-      let RESPONSE_CODE = 404
-      const response = { message: 'reviews not found', data: null }
+      const response = {
+         body: {
+            message: 'reviews not found'
+         },
+         status: 200
+      }
+
       const { id } = req.params
       const reviews = await instructors.reviews_for(id)
       if (reviews) {
          if (reviews.rating === 0 && reviews.reviews.length === 0) {
             response.message = 'instructor has not reviews'
          } else {
-            response.message = 'reviews founded'
-            response.data = reviews
+            response.body.message = 'reviews found'
+            response.body.data = reviews
          }
-         RESPONSE_CODE = 200
+         response.status = 200
       }
-      res.status(RESPONSE_CODE).json(response)
+      res.status(response.status).json(response.body)
    }
 
    async enter_review(req, res) {
-      let CODE = 404
-      const response = { message: 'reviews not found' }
+      const response = {
+         body: { message: 'reviews not found' }
+         , status: 404
+      }
       const { id } = req.params
       const { reviewer, rating, comment } = req.body
-      console.info('>> ENTER REVIEW FOR', id)
-      console.info('>> WITH', req.body)
-
 
       try {
          await instructors.register_review_for(id, { reviewer, rating, comment })
 
-         CODE = 204
-         response.message = 'review added for instructor'
+         response.body.message = 'review added for instructor'
+         response.status = 201
       } catch (error) {
          console.error('>> ERROR', error)
          response.message = error
       }
 
-      console.info('>> RESPONSE', response)
-      res.status(CODE).json(response)
+      res.status(response.status).json(response.body)
    }
 
    async create(req, res) {
       const response = {
          body: {
-            message: 'not implemented', data: null
+            message: 'not implemented'
          },
          status: 400
       }

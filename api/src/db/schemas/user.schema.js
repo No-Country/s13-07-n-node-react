@@ -10,6 +10,9 @@ const userSchema = new Schema({
   pass: String,
   description: String,
   image: String,
+  rating: {
+    type: Number, default: 0
+  },
   role_id: { type: Schema.Types.ObjectId, ref: "Rol" },
   active: { type: Boolean, default: true },
   reviews: [{
