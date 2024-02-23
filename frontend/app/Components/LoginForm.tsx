@@ -63,8 +63,8 @@ export default function LoginForm() {
   
   const formik = useFormik({
     initialValues:{ 
-      email: storedEmail === "{}" || "",
-      pass: storedpass === "{}" || "",
+      email: storedEmail === "{}" ? "" : storedEmail,
+      pass: storedpass === "{}" ? "" : storedpass,
     },
     validationSchema,
     onSubmit: async  (values, {resetForm}) => {
