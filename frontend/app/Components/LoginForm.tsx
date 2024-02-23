@@ -18,26 +18,12 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false)
   const router = useRouter()
-  const {setUser, setRolUser} = useGlobalStore((state) => state)
+  const {setUser, setRolUser, rolUser} = useGlobalStore((state) => state)
   
   useEffect(() => {
-      
     const timer = setTimeout(() => {
       setShowForm(true);
     }, 1000);
-
-    {/*
-    if (typeof window !== 'undefined') {
-      const storedEmail = JSON.parse(localStorage.getItem('user-spotter-email') || '{}')
-      const storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || '{}')
-      if (storedEmail && storedpass) {
-        // Aquí debes manejar cómo establecer el valor del campo de contraseña en useFormik
-        // Esto puede requerir el uso de un estado local para manejar el valor inicial de password
-        
-      }
-    }
-    */}
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -60,7 +46,6 @@ export default function LoginForm() {
       storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || "{}")
   }
 
-  //console.log( typeof storedEmail,typeof storedpass)
 
   const formik = useFormik({
     initialValues:{ 
@@ -125,6 +110,29 @@ export default function LoginForm() {
       }
     },
   });
+
+
+  //esta validación permite determinar sino se ha iniciado sesión antes.
+  if(rolUser !== ""){
+
+    if(rolUser === "cliente"){
+      router.push("/inicio/cliente");
+    }
+        
+    if(rolUser === "dueño"){
+      router.push("/inicio/duennio");
+    }
+
+    if(rolUser === "profesor/a"){
+      router.push("/inicio/profesor")
+    }
+
+    if(rolUser === "secretario/a"){
+      router.push("/inicio/secretario")
+    }
+    
+    return;
+  }
 
 
 
