@@ -17,6 +17,7 @@ export class InstructorsController {
             , lastName: e.lastName 
             , image_url: e.image_url
             , active: e.active
+            , rating: e.rating || 0
             , url: `${HOST}:${PORT}/api/v1/instructors/${e._id}`
          }
       })

@@ -8,6 +8,17 @@ export class InstructorService {
       const role_id = roles[0]._id
       const instructors = await userServiceFilter( {role_id})
       
+      instructors.forEach( e => {
+         let rating = 0
+         if (e.reviews.length > 0) {
+            rating = e.reviews.reduce((a, e) => {
+               a + e.rating
+            }, 0) / e.reviews.length
+         }
+
+         e.rating = rating
+      })
+      
       return instructors
    }
 
