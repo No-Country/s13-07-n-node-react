@@ -79,7 +79,7 @@ export class InstructorsController {
 
    async enter_review(req, res) {
       let CODE = 404
-      const response = { message: 'reviews not found'}
+      const response = { message: 'reviews not found' }
       const { id } = req.params
       const { reviewer, rating, comment } = req.body
       console.info('>> ENTER REVIEW FOR', id)
@@ -92,22 +92,41 @@ export class InstructorsController {
          CODE = 204
          response.message = 'review added for instructor'
       } catch (error) {
-         console.error( '>> ERROR', error )
+         console.error('>> ERROR', error)
          response.message = error
       }
 
-      console.info( '>> RESPONSE', response )
-      res.status( CODE ).json( response )
+      console.info('>> RESPONSE', response)
+      res.status(CODE).json(response)
    }
 
    async create(req, res) {
-      const { firstName, lastName, email, password } = req.body
+      const response = {
+         body: {
+            message: 'not implemented', data: null
+         },
+         status: 400
+      }
+      const { firstName, lastName, email, pass } = req.body
 
-      const instructor = await instructors.create({ firstName, lastName, email, password })
+      try {
+         const instructor = await instructors.create({ firstName, lastName, email, pass })
 
-      console.info('>>', instructor)
-      res.send('wip')
+         console.info('>>', instructor)
+         response.body.message = "instructor created"
+         response.body.data = instructor
+         response.status = 201
+      } catch (error) {
+         console.error('>> ERROR', error)
+         if( error.message == 'instructor is registered' ) {
+            response.status = 403
+         }
+         response.body.message = error.message
+      }
+
+      res.status( response.status ).json( response.body )
    }
+
    update(req, res) {
       res.send('wip')
    }
