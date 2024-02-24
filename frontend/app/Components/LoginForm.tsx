@@ -17,32 +17,17 @@ export default function LoginForm() {
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false)
-  const [emailToRemember, setEmailToRemember] = useState("")
-  const [passwordToRemember, setPasswordToRemember] = useState("")
   const router = useRouter()
-  const {setUser, setRolUser} = useGlobalStore((state) => state)
+  const {setUser, setRolUser, rolUser} = useGlobalStore((state) => state)
   
   useEffect(() => {
-      
     const timer = setTimeout(() => {
       setShowForm(true);
     }, 1000);
-
-    if (typeof window !== 'undefined') {
-      const storedEmail = JSON.parse(localStorage.getItem('user-spotter-email') || '{}')
-      const storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || '{}')
-      if (storedEmail && storedpass) {
-        // Aquí debes manejar cómo establecer el valor del campo de contraseña en useFormik
-        // Esto puede requerir el uso de un estado local para manejar el valor inicial de password
-        setEmailToRemember(storedEmail)
-        setPasswordToRemember(storedpass)
-      }
-    }
-
     return () => clearTimeout(timer);
   }, []);
 
-  console.log(emailToRemember, passwordToRemember)
+
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -54,14 +39,22 @@ export default function LoginForm() {
       .required('La contraseña es requerida'),
   });
 
-  
+  let storedEmail:any;
+  let storedpass:any;
+  if (typeof window !== 'undefined') {
+      storedEmail = JSON.parse(localStorage.getItem('user-spotter-email') || "{}")
+      storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || "{}")
+  }
+
+
   const formik = useFormik({
     initialValues:{ 
-      email: emailToRemember || "",
-      pass: passwordToRemember || "",
+      email: typeof storedEmail === "object" ? "" : storedEmail,
+      pass: typeof storedpass === "object" ? "" : storedpass,
     },
     validationSchema,
     onSubmit: async  (values, {resetForm}) => {
+      
         if (rememberMe) {
           // Almacena la contraseña en una cookie o localStorage
             if (typeof window !== 'undefined') {
@@ -115,11 +108,31 @@ export default function LoginForm() {
         resetForm();
         return;
       }
-      
-      
-      
     },
   });
+
+
+  //esta validación permite determinar sino se ha iniciado sesión antes.
+  if(rolUser !== ""){
+
+    if(rolUser === "cliente"){
+      router.push("/inicio/cliente");
+    }
+        
+    if(rolUser === "dueño"){
+      router.push("/inicio/duennio");
+    }
+
+    if(rolUser === "profesor/a"){
+      router.push("/inicio/profesor")
+    }
+
+    if(rolUser === "secretario/a"){
+      router.push("/inicio/secretario")
+    }
+    
+    return;
+  }
 
 
 
