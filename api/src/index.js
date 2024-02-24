@@ -1,9 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import { db } from "./db/connections.js";
-import { routesRol } from "./routes/rol.routes.js";
-import { routesUser } from "./routes/user.routes.js";
-import { routesExercise } from "./routes/exercise.routes.js";
+
 import { config } from "./middlewares/middleware.js";
 import cors from "cors";
 import morgan from "morgan";
@@ -31,11 +29,9 @@ app.get("/", (req, res) => {
 // Inicialización de la base de datos
 db();
 
-app.use("/rol", routesRol);
-app.use("/user", routesUser);
-app.use("/exercise", routesExercise);
 // Inicio del servidor
 const PORT = process.env.PORT_SERVER || 3000;
 app.listen(PORT, () => {
-  console.log(`Server listening on port http://localhost:${PORT}`);
+  const HOST = process.env.HOST
+  console.log(`>> listening on ${HOST}${PORT === 443 ? '' : ':'.concat( PORT )}`);
 });
