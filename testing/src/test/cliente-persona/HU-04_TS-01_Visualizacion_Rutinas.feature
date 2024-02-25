@@ -1,4 +1,4 @@
-Feature: US 04 | TS 01 Rutinas clientes
+Feature: US 04 | TS 01 | Visualizacion de Rutinas Semanales
     Como cliente-persona del Gym
     Quiero poder ver mis rutinas semanales en la app
     Para planificar mis entrenamientos y alcanzar mis objetivos de manera efectiva

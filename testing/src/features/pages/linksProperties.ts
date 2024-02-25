@@ -1,5 +1,5 @@
 // login-page.ts
-import { Page, chromium } from 'playwright';
+import { Page, chromium, ElectronApplication } from 'playwright';
 import { expect } from 'chai';
 
 
@@ -160,6 +160,32 @@ export class Links {
         }
         console.log('Total elementos https: '+ conteoHTTP)
         // return conteoHTTP;
+    }
+
+    public async buscarElementosHttp(){
+            // Definir una función para extraer elementos con atributos HTTP
+        const extractHttpElements = async () => {
+            // Buscar todos los elementos que contienen atributos HTTP específicos
+            const httpElements = await this.page.$$('[href], [src]');
+            // Crear un array para almacenar los valores de los atributos HTTP
+            const httpAttributes: string[] = [];
+            // Iterar sobre los elementos encontrados
+            for (const element of httpElements) {
+                // Obtener el valor del atributo 'href' y 'src'
+                const hrefAttribute = await element.getAttribute('href');
+                const srcAttribute = await element.getAttribute('src');
+
+                // Si el valor del atributo 'href' es válido, agregarlo al array
+                if (hrefAttribute) httpAttributes.push(hrefAttribute);
+
+                // Si el valor del atributo 'src' es válido, agregarlo al array
+                if (srcAttribute) httpAttributes.push(srcAttribute);
+            }
+            // Retornar el array de atributos HTTP
+            // return httpAttributes;
+            console.log('Cantidad de elementos Https:// = ' + httpAttributes.length)
+        };
+        await extractHttpElements()
     }
 
     public async contarElementosSrc(){

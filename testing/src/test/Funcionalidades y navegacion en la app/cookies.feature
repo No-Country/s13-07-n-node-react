@@ -2,12 +2,12 @@ Feature: Gestion de Cookies
     * Crear escenarios de pruebas que incluyan la creacion, modificacion y eliminacion de cookies
     * Verificar la seguridad de las mismas para prevenir ataques CSRF, XSS, etc.
 
-Scenario: Creacion de cookies
+Scenario: Iniciar sesión con cookies habilitadas
 
-Scenario: Modificacion de cookies
+Scenario: Verificar estadísticas de usuario con cookies habilitadas
 
-Scenario: Eliminacion de cookies
+Scenario: No se puede iniciar sesión con cookies deshabilitadas
 
-Scenario: Seguridad en las cookies
+Scenario: No se pueden ver estadísticas de usuario con cookies deshabilitadas
 
-
+Scenario: Sesión cerrada al eliminar cookies

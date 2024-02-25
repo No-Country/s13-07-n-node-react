@@ -9,8 +9,8 @@
   "scripts": {
     "test": "cucumber-js test",
     "report": "npx ts-node src/helper/report.ts",
-    "codegen": "npx playwright codegen www.google.com",
-    "codegen:host:spooter": "npx playwright codegen http://localhost:3000/auth/login",
+    "codegen": "npx playwright codegen https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso",
+    "codegen:host:spotter": "npx playwright codegen http://localhost:3000/acceso",
     "json:report": "node json_report.js",
     "html:report": "node html_report.js",
     "emulador:android11": "emulator @nightwatch-android-11",

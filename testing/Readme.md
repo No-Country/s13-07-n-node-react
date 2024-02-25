@@ -1,3 +1,9 @@
+---
+runme:
+  id: 01HQDGQYZ8SJ117N3TA7DGMV9J
+  version: v3
+---
+
 # ___Test Plan___
 
 ## `Objetivo`
@@ -75,6 +81,7 @@ El plan de pruebas cubrirá las funcionalidades de la app según la lista de req
 ### Testing APIs
 
 - [Postman]()
+- [Swagger](https://spotter-gym.onrender.com/docs/#/)
 
 ### Reporte de Bugs encontrados
 

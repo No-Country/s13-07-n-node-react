@@ -1,124 +1,59 @@
 [
   {
-    "description": "    Verificar que todos los enlaces en la pagina funcionen correctamente para asegurar de una navegacion adecuada\n    * Protocolo de navegacion\n    * Status de conexion\n    * Redireccion de los enlaces",
+    "description": "    Feature Description",
     "elements": [
       {
         "description": "",
-        "id": "nav-|-ts-01-|-ts-02|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna;verificar-status-y-propiedades-de-todos-los-enlaces-por-pagina",
+        "id": "manejo-de-ingresos-incorrectos-en-el-formulario-de-login;campo-de-email-vacio",
         "keyword": "Scenario",
-        "line": 21,
-        "name": "Verificar status y propiedades de todos los enlaces por pagina",
+        "line": 8,
+        "name": "Campo de email vacio",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1893305700
+              "duration": 1827239799
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 8,
-            "name": "el usuario 'userA@mail.com' accede con su contraseña 'wxyz1234*' en la web app 'www.spooter.com'",
+            "line": 6,
+            "name": "estoy en la pagina de login en spotter 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:22"
+              "location": "src\\features\\steps_definitions\\login_steps.ts:23"
             },
             "result": {
               "status": "passed",
-              "duration": 13468199
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 12,
-            "name": "accedo en la pagina \"https://www.google.com\"",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2501141399
+              "duration": 1530840700
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 13,
-            "name": "se realiza clic en todos los enlaces buscados",
+            "line": 9,
+            "name": "no se ingresa ningun caracter en campo de email",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:32"
+              "location": "src\\features\\steps_definitions\\login_steps.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 3007516999
+              "duration": 4232855799
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 14,
-            "name": "se muestra el total de enlaces encontrados",
+            "line": 10,
+            "name": "debria ver un mensaje de email es requerido",
             "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:37"
+              "location": "src\\features\\steps_definitions\\login_steps.ts:44"
             },
             "result": {
               "status": "passed",
-              "duration": 3185685100
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "deben redirigir corretamente a la url de destino",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3006291899
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 16,
-            "name": "deben devolver un codigo de estado HTTP 200 OK",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:51"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3021119100
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 17,
-            "name": "deben ser accesible y cargar correctamente",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:57"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3010201499
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 18,
-            "name": "los enlaces debe utilizar el protocolo correcto (HTTP o HTTPS)",
-            "match": {
-              "location": "src\\features\\steps_definitions\\verifylinks_steps.ts:62"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3010614600
+              "duration": 2554889299
             }
           },
           {
@@ -126,28 +61,217 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 3013086600
+              "duration": 1011867499
             }
           }
         ],
-        "tags": [
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "manejo-de-ingresos-incorrectos-en-el-formulario-de-login;campo-de-password-vacio",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Campo de password vacio",
+        "steps": [
           {
-            "name": "@Nav",
-            "line": 10
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1914079400
+            }
           },
           {
-            "name": "@TS-01",
-            "line": 10
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "estoy en la pagina de login en spotter 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\login_steps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1520319199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "no se ingresa ningun caracter en campo de contraseña",
+            "match": {
+              "location": "src\\features\\steps_definitions\\login_steps.ts:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4010028299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "debria ver un mensaje de contraseña es requerida",
+            "match": {
+              "location": "src\\features\\steps_definitions\\login_steps.ts:69"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2699253000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1013635300
+            }
           }
         ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "manejo-de-ingresos-incorrectos-en-el-formulario-de-login;contraseña-con-numero-minimo-de-caracteres",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Contraseña con numero minimo de caracteres",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1860200199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "estoy en la pagina de login en spotter 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\login_steps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1516659299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "ingreso una contraseña de 7 caracteres",
+            "match": {
+              "location": "src\\features\\steps_definitions\\login_steps.ts:82"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3799469799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "deberia ver un mensaje indicando la contraseña debe ser mayor a 8 caracteres",
+            "match": {
+              "location": "src\\features\\steps_definitions\\login_steps.ts:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2681101300
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1004680100
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "manejo-de-ingresos-incorrectos-en-el-formulario-de-login;contraseña-con-numero-maximo-de-caracteres",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "Contraseña con numero maximo de caracteres",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1804718599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "estoy en la pagina de login en spotter 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\login_steps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1626427799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 21,
+            "name": "ingreso una contraseña de 13 caracteres",
+            "match": {
+              "location": "src\\features\\steps_definitions\\login_steps.ts:107"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4025246600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "deberia ver un mensaje indicando que la contraseña debe ser menor a 12 caracteres",
+            "match": {
+              "location": "src\\features\\steps_definitions\\login_steps.ts:119"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3069662099
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1009066699
+            }
+          }
+        ],
+        "tags": [],
         "type": "scenario"
       }
     ],
-    "id": "nav-|-ts-01-|-ts-02|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna",
+    "id": "manejo-de-ingresos-incorrectos-en-el-formulario-de-login",
     "line": 1,
     "keyword": "Feature",
-    "name": "Nav | TS 01 | TS 02| Verificacion de propiedades y status en los links/enlaces de redireccion interna",
+    "name": "Manejo de Ingresos Incorrectos en el Formulario de Login",
     "tags": [],
-    "uri": "src\\features\\test_cases\\Nav_TS-01_verificar-links.feature"
+    "uri": "src\\features\\test_cases\\Func_TS-01_login-usuarios.feature"
   }
 ]

@@ -1,13 +1,13 @@
 import { Given, When, Then, Before, After } from '@cucumber/cucumber';
-import { chromium, firefox, Page, ElementHandle} from 'playwright';
-import { Elements } from '../pages/objectModel';
-import { Links } from '../pages/linksProperties'; 
+import { chromium, firefox, Page, webkit} from 'playwright';
+import { Elements } from '../../../features/pages/objectModel';
+import { Links } from '../../../features/pages/linksProperties'; 
 
 let browser;
 let page: Page
 let elements: Elements
 let links: Links
-let segundos = 3000
+let segundos = 2100
 const browserName = 'firefox'
 const escenario1 = '@agregar-producto'
 const escenario2 = '@eliminar-producto'
@@ -15,22 +15,37 @@ const escenario2 = '@eliminar-producto'
 Before( async () => {
     browser = await firefox.launch({ headless: false });
     page = await browser.newPage();
+    const context = await browser.newContext();
     elements = new Elements(page)
     links = new Links(page)
 });
 
-Given('el usuario {string} accede con su contraseña {string} en la web app {string}', async function (user: string, pass: string, URL: string)  {
+Given('ingreso en la url {string}', async function (URL: string)  {
+    await page.goto(URL)
+    await page.waitForTimeout(segundos)
+});
+
+When('ingreso usuario {string} y contraseña {string}', async function (user: string, pass: string)  {
+    elements.enterUsername(user)
+    await page.waitForTimeout(segundos)
+    elements.enterPassword(pass)
+    await page.getByRole('button', { name: 'Confirmar' }).click();
 
 });
 
 // Nav | TS 01
-Given('accedo en la pagina {string}', async (URL: string) => {
-    await page.goto(URL)
+Given('que se realiza clic en {string}', async (button: string) => {
+    await page.getByRole('button', { name: button }).click();
+
+});
+
+When('accedo en la pagina {string}', async (path: string) => {
+    await page.waitForTimeout(segundos)
+    elements.verifyURL(path)
 
 });
 
 When('se realiza clic en todos los enlaces buscados', async () => {
-    await page.waitForTimeout(segundos)
 
 });
 
@@ -40,6 +55,7 @@ Then('se muestra el total de enlaces encontrados', async () => {
     console.log('Enlaces con a encontrados: ' + enlaces.a)
     console.log("Enlaces con src encontrados: ", enlaces.src);
     console.log("Enlaces con href encontrados: ", enlaces.href);
+    links.buscarElementosHttp()
     
 });
 
@@ -53,7 +69,6 @@ Then('deben devolver un codigo de estado HTTP 200 OK', async () => {
     links.checkLinksOnPage()
 });
 
-
 Then('deben ser accesible y cargar correctamente', async () => {
     await page.waitForTimeout(segundos)
 
@@ -61,7 +76,7 @@ Then('deben ser accesible y cargar correctamente', async () => {
 
 Then('los enlaces debe utilizar el protocolo correcto \\(HTTP o HTTPS)', async () => {
     await page.waitForTimeout(segundos)
-
+    
 });
 
 After( async () => {

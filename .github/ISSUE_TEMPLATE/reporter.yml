@@ -35,6 +35,7 @@ body:
         - Crash
         - Performance
         - Contenido
+        - Accesibilidad
     validations:
       required: true
 
@@ -42,7 +43,7 @@ body:
     id: prioridad
     attributes:
       label: ✔️ Prioridad
-      description: 
+      description: Prioridad asignada al bug encontrado
       options:
         - Baja
         - Media
@@ -55,7 +56,7 @@ body:
     id: Dispositivo
     attributes:
       label: ✔️ Dispositivo
-      description: 
+      description: Dispositivo utilzado en el cual se encontro el bug
       options:
         - PC - Windows 
         - PC - Ubuntu
@@ -69,7 +70,7 @@ body:
     id: Navegador
     attributes:
       label: ✔️ Navegador
-      description: 
+      description: navegador utilizado en cual se econtro el bug
       options:
         - Firefox
         - Chrome
