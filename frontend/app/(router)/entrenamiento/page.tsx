@@ -1,4 +1,6 @@
-import Entrenamiento from "../views/Entrenamiento"
+import Entrenamiento from "@/app/views/Entrenamiento"
+
+
 
 const page = () => {
   return (

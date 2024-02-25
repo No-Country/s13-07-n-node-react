@@ -6,11 +6,14 @@ import SectionButton from '../Components/SectionButton';
 import CardContainer from '../Components/CardContainer';
 import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
+import GlobalContainer from '../Components/GlobalContainer';
+import { useGlobalStore } from '../store/GlobalStore';
 
-
-const Inicio = () => {
+const InicioCliente = () => {
+  const {user, rolUser} = useGlobalStore((state)=>state);
+  //console.log(user, rolUser)
   return (
-    <div className='w-[100%] px-[16px] pt-[32px] '>
+    <GlobalContainer>
         <Header/>
         <div className="mt-[36px]">
             <h1 className="text-[16px] h-[19px] font-[sans]">Bienvenido a Spotter</h1>
@@ -28,8 +31,8 @@ const Inicio = () => {
         </div>
         <Navbar/>
         <Footer/>
-    </div>
+    </GlobalContainer>
   )
 }
 
-export default Inicio;
+export default InicioCliente;
