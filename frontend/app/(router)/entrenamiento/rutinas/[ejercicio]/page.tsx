@@ -4,6 +4,7 @@ import Header from "@/app/Components/Header";
 import CardEjercicio from '@/app/Components/CardEjercicios';
 import EjerciciosJSON from "@/mock/ejercicios.json";
 import Link from 'next/link';
+import GlobalContainer from '@/app/Components/GlobalContainer';
 
 const Page = ({ params }: { params: any }) => {
     const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0); 
@@ -20,10 +21,10 @@ const Page = ({ params }: { params: any }) => {
     const ejercicio = EjerciciosJSON.exercises[currentExerciseIndex];
 
     return (
-        <div className='px-4 pt-8 bg-gray-900 pb-8'>
+        <GlobalContainer>
             <Header />
             <CardEjercicio ejercicio={ejercicio} EjerciciosJSON={EjerciciosJSON } />
-            <div className='mt-4 w-full flex justify-evenly'>
+            <div className='my-4 w-full flex justify-evenly'>
                 {isLastExercise ? (
                     <Link href={`${params.ejercicio}/finalizado`}>
                         <button className='w-full px-8 py-2 text-center bg-primaryDefault rounded-lg' >
@@ -41,7 +42,7 @@ const Page = ({ params }: { params: any }) => {
                     </>
                 )}
             </div>
-        </div>
+        </GlobalContainer>
     );
 };
 

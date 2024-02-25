@@ -1,13 +1,14 @@
 import flecha from "../../public/Arrow - Right 2.svg";
 import SettingIco from "../../public/SettingIco.svg";
 import EjerciciosSemana from "../Components/EjerciciosSemana";
+import GlobalContainer from "../Components/GlobalContainer";
 import Header from '../Components/Header'
 import SectionButton from '../Components/SectionButton'
 import Image from 'next/image'
 
 const Rutinas = () => {
   return (
-    <div className='px-4  pb-16'>
+    <GlobalContainer>
         <Header />
         <div className="flex justify-between items-center">
             <div className="flex items-center mt-4 gap-2">
@@ -17,7 +18,7 @@ const Rutinas = () => {
             <Image src={SettingIco} alt="setting icon" />
         </div>
         <EjerciciosSemana />
-    </div>
+    </GlobalContainer>
   )
 }
 
