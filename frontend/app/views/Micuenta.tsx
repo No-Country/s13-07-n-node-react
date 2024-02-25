@@ -3,7 +3,8 @@ import Navbar from '../Components/Navbar'
 
 const Micuenta = () => {
   return (
-    <div>Mi cuenta
+    <div>
+      Mi cuenta
         <Navbar/>
     </div>
   )

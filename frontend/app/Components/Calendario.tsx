@@ -46,9 +46,9 @@ const Calendario = () => {
     }
 
     useEffect(() => {
-        console.log(mesActual);
+        //console.log(mesActual);
         setDias(obtenerDiasMes(mesActual, fechaActual.getFullYear()));
-    }, [mesActual]);
+    }, [fechaActual, mesActual]);
 
     const cambiarMes = (direccion: "atras" | "adelante") => {
         let nuevoMes = mesActual;
