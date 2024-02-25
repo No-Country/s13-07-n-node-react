@@ -12,7 +12,6 @@ function add_rating_to(instructor) {
 export class InstructorService {
    async instructor_role_id() {
       const roles = await rolServiceFilter( 'profesor/a' )
-      console.log( roles )
       return roles[0]._id
    }
 
