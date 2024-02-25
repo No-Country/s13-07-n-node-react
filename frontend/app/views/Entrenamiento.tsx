@@ -10,10 +10,13 @@ import ImagenRutinaEspalda from "@/public/ImagenRutina2.png";
 import ImagenRutinaCuerdas from "@/public/ImagenRutina3.png";
 import ImagenRutinaBiceps from "@/public/ImagenRutinaBiceps.png";
 import Calendario from "../Components/Calendario";
+import Spotify from "../Components/Spotify";
 
 const Entrenamiento = () => {
     return (
+
         <div className='px-4 pt-8  mb-14'>
+
             <Header />
             <Navbar />
             <div className='mt-9'>
@@ -38,21 +41,21 @@ const Entrenamiento = () => {
                         tiempo={30}
                         calorias={200}
                         active
-                        ejercicio="Hoy - Sentadillas"
+                        ejercicio="Sentadillas"
                     />
                     <CardRutinas
                         imagen={ImagenRutinaEspalda}
                         tiempo={30}
                         calorias={300}
                         active
-                        ejercicio="Hoy - Espalda"
+                        ejercicio="Espalda"
                     />
                     <CardRutinas
                         imagen={ImagenRutinaCuerdas}
                         tiempo={20}
                         calorias={100}
                         active
-                        ejercicio="Hoy - Cuerda"
+                        ejercicio="Cuerda"
                     />
                 </div>
             </div>
@@ -96,6 +99,7 @@ const Entrenamiento = () => {
                 />
             </div>
             <Calendario />
+            <Spotify />
         </div>
     );
 };
