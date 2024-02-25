@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 const Rutinas = () => {
   return (
-    <div className='px-4 pt-8 bg-gray-900 mb-14'>
+    <div className='px-4 pt-8 bg-gray-900 pb-16'>
         <Header />
         <div className="flex justify-between items-center">
             <div className="flex items-center mt-4 gap-2">
