@@ -1,13 +1,14 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
+import GlobalContainer from '../Components/GlobalContainer'
 
 const Micuenta = () => {
   return (
-    <div>
+    <GlobalContainer>
       Mi cuenta
         <Navbar/>
-    </div>
+    </GlobalContainer>
   )
 }
 
-export default Micuenta
+export default Micuenta;

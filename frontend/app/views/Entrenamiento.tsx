@@ -11,12 +11,12 @@ import ImagenRutinaCuerdas from "@/public/ImagenRutina3.png";
 import ImagenRutinaBiceps from "@/public/ImagenRutinaBiceps.png";
 import Calendario from "../Components/Calendario";
 import Spotify from "../Components/Spotify";
+import GlobalContainer from "../Components/GlobalContainer";
 
 const Entrenamiento = () => {
     return (
 
-        <div className='px-4 pt-8  mb-14'>
-
+        <GlobalContainer>
             <Header />
             <Navbar />
             <div className='mt-9'>
@@ -100,7 +100,7 @@ const Entrenamiento = () => {
             </div>
             <Calendario />
             <Spotify />
-        </div>
+        </GlobalContainer>
     );
 };
 
