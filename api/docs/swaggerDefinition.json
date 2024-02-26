@@ -194,6 +194,40 @@
 		, "instructors/{id}": {
 			"tags":[ "Instructors" ],
 			"summary": "Muestra información del instructor"
+			, "delete": {
+				"summary": "Elimina el instructor"
+				,"description": "Aun No Implementado"
+				, "tags": [ "Instructors" ]
+				, "parameters": [
+					{
+						"name": "instructorID"
+						,"in": "path"
+						,"required": "true"
+						, "description": "ID del instructor a mostrar"
+						, "schema": {
+							"type": "string"
+							, "example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+			}
+			, "patch": {
+				"summary": "Actualiza algún atributo editable del instructor"
+				, "description": "Aún No Implementado"
+				, "tags": [ "Instructors" ]
+				, "parameters": [
+					{
+						"name": "instructorID"
+						,"in": "path"
+						,"required": "true"
+						, "description": "ID del instructor a mostrar"
+						, "schema": {
+							"type": "string"
+							, "example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+			}
 			, "get": {
 				"summary": "Retorna los datos del instructor"
 				, "tags": [ "Instructors" ]
