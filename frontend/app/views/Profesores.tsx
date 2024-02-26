@@ -9,13 +9,16 @@ import GlobalContainer from '../Components/GlobalContainer';
 
 const Profesores = () => {
   return (
-    <GlobalContainer>
+    <div>
+      <GlobalContainer>
         <Header/>
         <Navbar/>
         <SectionButton section='Profesores' active={false} description='Conoce a los profesores de tu sede' />
         <CardContainer link='Profesores'/>
-        <Footer/>
     </GlobalContainer>
+    <Footer/>
+    </div>
+    
   )
 }
 

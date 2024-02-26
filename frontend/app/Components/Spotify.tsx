@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 const Spotify = () => {
   return (
-    <div className='w11/12 bg-gray-800 p-4 rounded-xl'>
+    <div className='mb-[4rem] w11/12 bg-gray-800 p-4 rounded-xl'>
         <div className='flex gap-3'>
             <Image src={SpotifyIco} alt="spotify" />
             <p className='text-[#1ED760]'>Abrir aplicación</p>
