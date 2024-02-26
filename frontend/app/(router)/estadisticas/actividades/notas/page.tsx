@@ -1,13 +1,15 @@
 'use client';
 import Image from 'next/image';
-import arrowLeft from '../../../../public/Arrow-Left.svg';
-import imageSingMore from '../../../../public/+.svg';
-import Header from '../../../Components/Header2';
+import arrowLeft from '../../../../../public/Arrow-Left.svg';
+import imageSingMore from '../../../../../public/+.svg';
+import Header from '../../../../Components/Header';
 import Navbar from '@/app/Components/Navbar';
+import GlobalContainer from '@/app/Components/GlobalContainer';
 
 export default function Activity() {
   return (
-    <div className='pl-4 pr-4 flex justify-center aling-center flex-col'>
+    <GlobalContainer>
+      <div className='flex justify-center aling-center flex-col'>
       <Header />
       <div className='flex items-center mt-7'>
         <Image width={24.6} height={24} src={arrowLeft} alt='arrow-left' />
@@ -50,5 +52,7 @@ export default function Activity() {
       </div>
       <Navbar />
     </div>
+    </GlobalContainer>
+    
   );
 }

@@ -1,17 +1,18 @@
 'use client';
 import Image from 'next/image';
-import arrowLeft from '../../../public/Arrow-Left.svg';
-import arrowUp from '../../../public/Arrow-up.svg';
-import running from '../../../public/Running.svg';
-import cicle from '../../../public/cicle.svg';
-import Header from '../../Components/Header2';
-import Grafic3 from '../../Components/Grafic3';
+import arrowLeft from '../../../../public/Arrow-Left.svg';
+import arrowUp from '../../../../public/Arrow-up.svg';
+import running from '../../../../public/Running.svg';
+import cicle from '../../../../public/cicle.svg';
+import Header from '../../../Components/Header';
+import Grafic3 from '../../../Components/Grafic3';
 import Navbar from '@/app/Components/Navbar';
-import arrowDown from '../../../public/arrow-down-white.svg';
+import arrowDown from '../../../../public/arrow-down-white.svg';
+import GlobalContainer from '@/app/Components/GlobalContainer';
 
 export default function Activity() {
   return (
-    <div className='pl-4 pr-4 '>
+    <GlobalContainer>
       <Header />
       <div className='flex items-center mt-7'>
         <Image width={24.6} height={24} src={arrowLeft} alt='arrow-left' />
@@ -159,6 +160,6 @@ export default function Activity() {
         </p>
       </div>
       <Navbar />
-    </div>
+    </GlobalContainer>
   );
 }
