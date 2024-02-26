@@ -9,9 +9,9 @@ Chart.register(ArcElement, CategoryScale, Title, ChartDataLabels);
 Chart.register({
   id: 'drawCircles',
   afterUpdate(chart) {
-    const arcs = chart.getDatasetMeta(0).data;
+    const arcs:any = chart.getDatasetMeta(0).data;
 
-    arcs.forEach((arc) => {
+    arcs.forEach((arc:any) => {
       arc.round = {
         x: (chart.chartArea.left + chart.chartArea.right) / 2,
         y: (chart.chartArea.top + chart.chartArea.bottom) / 2,
@@ -21,10 +21,10 @@ Chart.register({
       };
     });
   },
-  afterDraw: (chart) => {
+  afterDraw: (chart:any) => {
     const { ctx } = chart;
 
-    chart.getDatasetMeta(0).data.forEach((arc) => {
+    chart.getDatasetMeta(0).data.forEach((arc:any) => {
       const endAngle = Math.PI / 2 - arc.endAngle;
 
       ctx.save();
@@ -72,7 +72,7 @@ const options = {
   },
   legend: {
     labels: {
-      filter: function (item, chart) {
+      filter: function (item:any, chart:any) {
         // Oculta 'Restante' de la leyenda
         return item.text !== 'Restante';
       },
