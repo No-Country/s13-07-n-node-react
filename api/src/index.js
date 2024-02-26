@@ -30,8 +30,8 @@ app.get("/", (req, res) => {
 db();
 
 // Inicio del servidor
-const PORT = process.env.PORT_SERVER || 3000;
+const PORT = process.env.PORT_SERVER || 3001;
 app.listen(PORT, () => {
-  const HOST = process.env.HOST
-  console.log(`>> listening on ${HOST}${PORT === 443 ? '' : ':'.concat( PORT )}`);
+  const HOST = process.env.HOST;
+  console.log(`>> listening on ${HOST}${PORT === 443 ? "" : ":".concat(PORT)}`);
 });

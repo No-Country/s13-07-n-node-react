@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Instructors } from './instructors.routes.js'
+import { Instructors } from "./instructors.routes.js";
 import routineRoutes from "./routine.routes.js";
 import TypeRoutineRoutes from "./typeRoutine.routes.js";
 import gymRoutes from "./gym.routes.js";
@@ -17,9 +17,9 @@ router.use("/user", routesUser);
 router.use("/exercise", routesExercise);
 
 // Instructors routes
-Instructors.config( router )
+Instructors.config(router);
 
 router.use("/gyms", gymRoutes);
-router.use("/muscle",routesMuscle )
+router.use("/muscle", routesMuscle);
 
 export default router;
