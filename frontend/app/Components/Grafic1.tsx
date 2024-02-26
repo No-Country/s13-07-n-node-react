@@ -13,7 +13,7 @@ const data = {
       label: 'First dataset',
       data: [0, 25, 50, 75, 100, 75, 100],
       fill: true,
-      backgroundColor: 'rgba(255, 255, 255, 0.2)', // Relleno blanco
+      backgroundColor: 'rgba(255, 206, 86, 1)e', // Relleno blanco
       borderColor: 'rgba(255, 206, 86, 1)',
       tension: 0.5,
     },
@@ -36,10 +36,18 @@ const options = {
   },
   scales: {
     y: {
+      grid: {
+        display: false,
+      },
       ticks: {
         min: 0,
         max: 100,
         stepSize: 25,
+      },
+    },
+    x: {
+      grid: {
+        display: false,
       },
     },
   },
@@ -47,7 +55,7 @@ const options = {
 
 export default function App() {
   return (
-    <div className='w-full h-full p-10 rounded-xl shadow-md'>
+    <div className='h-customGraphic w-customGraphic flex justify-center items-center'>
       <Line data={data} legend={legend} options={options} />
     </div>
   );
