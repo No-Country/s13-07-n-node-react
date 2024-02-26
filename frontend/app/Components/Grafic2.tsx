@@ -21,10 +21,10 @@ const data = {
   ],
 };
 
-const options = {
+const options:any = {
   plugins: {
     datalabels: {
-      color: function (context) {
+      color: function (context: { chart: { data: { labels: { [x: string]: string; }; }; }; dataIndex: string | number; }) {
         return context.chart.data.labels[context.dataIndex] === 'Natación'
           ? '#905104'
           : '#fff';
@@ -34,10 +34,10 @@ const options = {
         weight: '600',
         family: 'Work Sans',
       },
-      formatter: (value, ctx) => {
+      formatter: (value: number, ctx: { chart: { data: { datasets: { data: any; }[]; labels: { [x: string]: string; }; }; }; dataIndex: string | number; }) => {
         let sum = 0;
         let dataArr = ctx.chart.data.datasets[0].data;
-        dataArr.map((data) => {
+        dataArr.map((data: number) => {
           sum += data;
         });
         let percentage = ((value * 100) / sum).toFixed(2) + '%';
