@@ -190,8 +190,8 @@
 					}
 				}
 			}
-		},
-		"instructors/{id}": {
+		}
+		, "instructors/{id}": {
 			"tags":[ "Instructors" ],
 			"summary": "Muestra información del instructor"
 			, "get": {
@@ -234,6 +234,18 @@
 			, "get": {
 				"summary": "Retorna una lista de todas las reviews"
 				, "tags": [ "Instructors" ]
+				, "parameters": [
+					{
+						"name": "instructorID"
+						,"in": "path"
+						,"required": "true"
+						, "description": "ID del instructor a mostrar"
+						, "schema": {
+							"type": "string"
+							, "example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
 				, "responses": {
 					"200": {
 						"description": "Se pudo procesar la solicitud"
@@ -266,6 +278,58 @@
 								}
 							}
 						}
+					}
+				}
+			}
+			, "post": {
+				"summary": "Permite la creación de la reseña/review para el instructor indicado en la URL"
+				, "tags": [ "Instructors" ]
+				, "parameters": [
+					{
+						"name": "instructorID"
+						,"in": "path"
+						,"required": "true"
+						, "description": "ID del instructor a mostrar"
+						, "schema": {
+							"type": "string"
+							, "example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+				, "requestBody": {
+					"description": "Datos para la reseña"
+					, "required": "true"
+					, "content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"reviewer": {
+										"type": "string",
+										"required": "true",
+										"summary": "Nombre y apellido de la persona"
+									},
+									"rating": {
+										"type": "number",
+										"required": "true",
+										"summary": "Puntaje que la persona le da al instructor"
+									},
+									"comment": {
+										"type": "string",
+										"summary": "Comentario que escribe la persona que hace la reseña"
+									}
+								}
+							}
+							, "example": {
+								"reviewer": "Paula Mendoza"
+								, "rating": "4"
+							}
+						}
+					}
+				}
+				, "responses": {
+					"204": {
+						"description": "El registro de la reseña se realizó con éxito. No retorna contenido"
 					}
 				}
 			}
