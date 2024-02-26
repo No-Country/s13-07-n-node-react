@@ -9,18 +9,18 @@ import {
   Legend,
 } from 'recharts';
 
-export default function WeightChart({ initialWeight }) {
-  const [weightData, setWeightData] = useState([]);
+export default function WeightChart({ initialWeight, data }:any) {
+  const [weightData, setWeightData] = useState<any>([]);
 
   // Actualiza weightData cuando initialWeight cambia
   useEffect(() => {
-    setWeightData((prevWeightData) => [
-      ...prevWeightData,
-      { name: 'Peso', Peso: initialWeight },
-    ]);
+    //setWeightData((prevWeightData) => [
+    //  ...prevWeightData,
+    //  { name: 'Peso', Peso: initialWeight },
+    //]);
 
     setWeightData([...weightData, { name: 'Peso', Peso: initialWeight }]);
-  }, [initialWeight]);
+  }, [initialWeight, weightData]);
 
   return (
     <LineChart width={300} height={300} data={weightData}>
