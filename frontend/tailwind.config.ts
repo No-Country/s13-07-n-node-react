@@ -19,6 +19,8 @@ const config: Config = {
         primaryDefault:"#F58A07",
         primaryDark:"#905104",
         primaryDef:"#F58A07",
+        'primary-dark': '#905104',
+        'primary-light': '#FCCF97',
         primaryLigth:"#FCCF97",
         gray200:"#E9ECEF",
         gray600: "#6C757D",
@@ -26,6 +28,7 @@ const config: Config = {
         gray800:"#343a40",
         gray900: "#212529",
         gray1000:"#141414"
+
       },
       borderRadius: {
         'custom1': '10px 0px 0px 10px',

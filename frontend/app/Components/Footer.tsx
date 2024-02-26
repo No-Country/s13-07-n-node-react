@@ -1,8 +1,11 @@
+import Image from "next/image";
 import React from "react";
+import FooterImage from "../../public/Footer_img.png";
+
 
 const Footer = () => {
     return (
-        <nav className='bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-950'>
+        <nav className='mb-[4rem] bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-950'>
             <div className='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl mt-4'>
                 <div
                     id='mega-menu-full-image'
@@ -25,9 +28,9 @@ const Footer = () => {
                                 >
                                     <path
                                         stroke='currentColor'
-                                        stroke-linecap='round'
-                                        stroke-linejoin='round'
-                                        stroke-width='2'
+                                        strokeLinecap='round'
+                                        strokeLinejoin='round'
+                                        strokeWidth='2'
                                         d='m1 1 4 4 4-4'
                                     />
                                 </svg>
@@ -63,7 +66,7 @@ const Footer = () => {
                                 className='block py-2 px-3 text-gray-900  hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700'
                             >
                                 Contact
-                            <img src="./Footer_img.png" alt="" className="w-96" />
+                            <Image src={FooterImage} alt="" width={96} height={96} className="w-96"/>
                             </a>
                         </li>
                     </ul>

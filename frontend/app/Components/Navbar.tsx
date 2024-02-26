@@ -1,17 +1,24 @@
+"use client"
+import { useGlobalStore } from "../store/GlobalStore";
 import ChartMixedIco from "./ui/ChartMixedIco";
 import DumbbellIco from "./ui/DumbbellIco";
 import HomeIco from "./ui/HomeIco";
 import ProfileIco from "./ui/ProfileIco";
-
+import { useRouter } from 'next/navigation'
 
 const Navbar = () => {
+    const router = useRouter();
+    const {rolUser} = useGlobalStore((state)=>state);
+    //console.log(rolUser)
     return (
-        <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-white border border-gray-200 rounded-full bottom-0 left-1/2 dark:bg-gray-700 dark:border-gray-600'>
+
+        <div className='fixed z-50 w-full h-16 max-w-lg -translate-x-1/2  border border-gray-800 rounded-3xl bottom-0 left-1/2 dark:bg-[#21252998] dark:border-gray-800 overflow-hidden backdrop-blur-[2px]'>
             <div className='grid h-full max-w-lg grid-cols-4 mx-auto'>
                 <button
+                    onClick={()=>{router.push(`/inicio/${rolUser}`)}}
                     data-tooltip-target='tooltip-home'
                     type='button'
-                    className='inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-gray-50 dark:hover:bg-gray-800 group'
+                    className='inline-flex flex-col items-center justify-center px-5 rounded-s-3xl  group opacity-100 '
                 >
                     <HomeIco />
                     <span className='sr-only'>Home</span>
@@ -25,9 +32,10 @@ const Navbar = () => {
                     <div className='tooltip-arrow' data-popper-arrow></div>
                 </div>
                 <button
+                    onClick={()=>{router.push(`/entrenamiento`)}}
                     data-tooltip-target='tooltip-wallet'
                     type='button'
-                    className='inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group'
+                    className='inline-flex flex-col items-center justify-center px-5  group'
                 >
                     <DumbbellIco />
                     <span className='sr-only'>Wallet</span>
@@ -41,9 +49,10 @@ const Navbar = () => {
                     <div className='tooltip-arrow' data-popper-arrow></div>
                 </div>
                 <button
+                onClick={()=>{router.push(`/estadisticas`)}}
                     data-tooltip-target='tooltip-settings'
                     type='button'
-                    className='inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group'
+                    className='inline-flex flex-col items-center justify-center px-5  group'
                 >
                     <ChartMixedIco />
                     <span className='sr-only'>Settings</span>
@@ -57,9 +66,10 @@ const Navbar = () => {
                     <div className='tooltip-arrow' data-popper-arrow></div>
                 </div>
                 <button
+                onClick={()=>{router.push(`/micuenta`)}}
                     data-tooltip-target='tooltip-profile'
                     type='button'
-                    className='inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-gray-50 dark:hover:bg-gray-800 group'
+                    className='inline-flex flex-col items-center justify-center px-5 rounded-e-3xl  group'
                 >
                     <ProfileIco />
                     <span className='sr-only'>Profile</span>
