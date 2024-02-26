@@ -9,7 +9,7 @@ const CardChartUser = () => {
             <div className='w-full m-auto flex justify-between items-center border-b pb-1 border-gray-700'>
                 <div className=''>
                     <h2 className='font-bold text-[16px] text-gray-100'>
-                        Calentadario
+                        Calendario
                     </h2>
                     <p className='text-[12px] text-gray-400 font-medium'>
                         5/7 Días Completados

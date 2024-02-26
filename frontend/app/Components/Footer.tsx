@@ -1,9 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import FooterImage from "../../public/Footer_img.png"
+import FooterImage from "../../public/Footer_img.png";
+
+
 const Footer = () => {
     return (
-        <nav className='bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-950'>
+        <nav className='mb-[4rem] bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-950'>
             <div className='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl mt-4'>
                 <div
                     id='mega-menu-full-image'

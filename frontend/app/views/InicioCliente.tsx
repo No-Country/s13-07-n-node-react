@@ -13,7 +13,8 @@ const InicioCliente = () => {
   const {user, rolUser} = useGlobalStore((state)=>state);
   //console.log(user, rolUser)
   return (
-    <GlobalContainer>
+    <div>
+      <GlobalContainer>
         <Header/>
         <div className="mt-[36px]">
             <h1 className="text-[16px] h-[19px] font-[sans]">Bienvenido a Spotter</h1>
@@ -30,8 +31,11 @@ const InicioCliente = () => {
           <CardContainer link='Actividades'/>
         </div>
         <Navbar/>
-        <Footer/>
+        
     </GlobalContainer>
+    <Footer/>
+    </div>
+    
   )
 }
 

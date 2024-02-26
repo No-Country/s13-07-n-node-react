@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 
 const EjerciciosSemana = () => {
     return (
-        <div>
+        <div className="">
             <Navbar />
             <div className='mt-4'>
                 <div className='h-60 overflow-hidden overflow-x-auto'>

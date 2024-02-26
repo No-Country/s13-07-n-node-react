@@ -7,6 +7,7 @@ import { useGlobalStore } from '../store/GlobalStore';
 import codigoQR from "../../public/QR Code.png"
 import ModalQR from './ModalQR';
 
+
 const CardClient = () => {
     const {user, rolUser} = useGlobalStore<any>((state)=>state);
     //console.log(user, rolUser)
