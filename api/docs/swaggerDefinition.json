@@ -15,7 +15,7 @@
 			"description": "Servidor de Producción (Backup)"
 		},
 		{
-			"url": "http://localhost:3001/api/v1",
+			"url": "http://localhost:9000/api/v1",
 			"description": "Servidor de desarrollo"
 		}
 	],
@@ -28,6 +28,21 @@
 			}
 		},
 		"schemas": {
+			"Instructor": {
+				"type": "object",
+				"properties": {
+					"id": { "type": "string" }
+					,"firstName": { "type": "string", "required": "true" }
+					,"lastName": { "type": "string", "required": "true" }
+					,"image": {"type": "string" }
+					,"active": { "type": "boolean" }
+					,"rating": { "type": "number" }
+					,"phone": { "type": "string" }
+					, "email": { "type": "string" }
+					, "url": { "type": "string" }
+					, "url_reviews": { "type": "string" }
+				}
+			},
 			"client": {
 				"type": "object",
 				"properties": {
@@ -100,7 +115,261 @@
 		}
 	},
 	"paths": {
-		"/clients/register": {
+		"/instructors": {
+			"summary": "Representa la collección de todos los profesores, profesoras e instructores del gimnasio"
+			, "get": {
+				"summary": "Retorna la lista de instructores del gimnasio"
+				,"tags": [
+					"Instructors"
+				]
+				,"responses": {
+					"200": {
+						"description": "Se pudo completar la solicitud con el servidor",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"$ref": "#/components/schemas/Instructor"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"summary": "Registra el instructor cargado",
+				"tags": [
+					"Instructors"
+				],
+				"requestBody": {
+					"description": "Datos del instructor a registar",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object"
+								, "properties":{
+									"firstName": { "type": "string", "reqrired": "true" }
+									, "lastName": { "type": "string", "required": "true" }
+									, "email": { "type": "string", "required": "true" }
+									, "pass": { "type": "string", "required": "true" }
+									, "phone": { "type": "string" }
+									, "description": { "type": "string" }
+								}
+							}
+							,"example": {
+								"firstName": "Mara",
+								"lastName": "Gomez",
+								"email": "maragomez@spotter-gym.com.ar",
+								"password": "qwerty123",
+								"description": "Instructor del gimnasio"
+								, "phone": "algún número valido de teléfono"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "El instructor se registó exitosamente"
+					},
+					"400": {
+						"description": "La solicitud no se pudo procesar"
+					},
+					"403": {
+						"description": "El instructor está registrado"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		}
+		, "instructors/{id}": {
+			"tags":[ "Instructors" ],
+			"summary": "Muestra información del instructor"
+			, "delete": {
+				"summary": "Elimina el instructor"
+				,"description": "Aun No Implementado"
+				, "tags": [ "Instructors" ]
+				, "parameters": [
+					{
+						"name": "instructorID"
+						,"in": "path"
+						,"required": "true"
+						, "description": "ID del instructor a mostrar"
+						, "schema": {
+							"type": "string"
+							, "example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+			}
+			, "patch": {
+				"summary": "Actualiza algún atributo editable del instructor"
+				, "description": "Aún No Implementado"
+				, "tags": [ "Instructors" ]
+				, "parameters": [
+					{
+						"name": "instructorID"
+						,"in": "path"
+						,"required": "true"
+						, "description": "ID del instructor a mostrar"
+						, "schema": {
+							"type": "string"
+							, "example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+			}
+			, "get": {
+				"summary": "Retorna los datos del instructor"
+				, "tags": [ "Instructors" ]
+				, "parameters": [
+					{
+						"name": "instructorID"
+						,"in": "path"
+						,"required": "true"
+						, "description": "ID del instructor a mostrar"
+						, "schema": {
+							"type": "string"
+							, "example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+				, "responses": {
+					"200": {
+						"description": "Se encontró el recurso o el instructor"
+						, "content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"$ref": "#/components/schemas/Instructor"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		, "/instructors/{id}/reviews": {
+			"summary": "Representa la colección de todas las reseñas del instructor"
+			, "description": "La colección de las reseñas incluye quien lo hizo, el puntaje/rating que marcó y el comentario si dejó alguno"
+			, "get": {
+				"summary": "Retorna una lista de todas las reviews"
+				, "tags": [ "Instructors" ]
+				, "parameters": [
+					{
+						"name": "instructorID"
+						,"in": "path"
+						,"required": "true"
+						, "description": "ID del instructor a mostrar"
+						, "schema": {
+							"type": "string"
+							, "example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+				, "responses": {
+					"200": {
+						"description": "Se pudo procesar la solicitud"
+						, "content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+									, "properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"rating": { "type": "number" }
+													, "reviews": {
+														"type": "array"
+														, "items": {
+															"type": "object",
+															"properties": {
+																"reviewer": { "type": "string" }
+																, "rating": { "type": "number" }
+																, "comment": { "type": "string" }
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			, "post": {
+				"summary": "Permite la creación de la reseña/review para el instructor indicado en la URL"
+				, "tags": [ "Instructors" ]
+				, "parameters": [
+					{
+						"name": "instructorID"
+						,"in": "path"
+						,"required": "true"
+						, "description": "ID del instructor a mostrar"
+						, "schema": {
+							"type": "string"
+							, "example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+				, "requestBody": {
+					"description": "Datos para la reseña"
+					, "required": "true"
+					, "content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"reviewer": {
+										"type": "string",
+										"required": "true",
+										"summary": "Nombre y apellido de la persona"
+									},
+									"rating": {
+										"type": "number",
+										"required": "true",
+										"summary": "Puntaje que la persona le da al instructor"
+									},
+									"comment": {
+										"type": "string",
+										"summary": "Comentario que escribe la persona que hace la reseña"
+									}
+								}
+							}
+							, "example": {
+								"reviewer": "Paula Mendoza"
+								, "rating": "4"
+							}
+						}
+					}
+				}
+				, "responses": {
+					"204": {
+						"description": "El registro de la reseña se realizó con éxito. No retorna contenido"
+					}
+				}
+			}
+		}
+
+		, "/clients/register": {
 			"post": {
 				"summary": "Registra un nuevo cliente",
 				"description": "Registra un nuevo cliente con la información proporcionada",
