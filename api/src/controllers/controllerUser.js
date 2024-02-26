@@ -9,7 +9,7 @@ import {
 } from "../services/user.services.js";
 const { OK } = pkg;
 export const filterUser = async (req, res) => {
-  return res.json({ user: await userServiceFilter( req.query ), status: OK });
+  return res.json({ user: await userServiceFilter(req.query), status: OK });
 };
 
 export const postUser = async (req, res) => {

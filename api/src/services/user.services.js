@@ -4,8 +4,8 @@ import { descriptPass, hassPass } from "../middlewares/encrypt.js";
 import { sendEmail } from "../middlewares/nodeMailer.js";
 import cloudinary from "../config/cloudinary/cloudinary-config.js";
 const { NOT_FOUND, CREATED, OK } = pkg;
-export const userServiceFilter = async ( params = {} ) => {
-  const { firstName, lastName, phone, email, role_id } = params
+export const userServiceFilter = async (params = {}) => {
+  const { firstName, lastName, phone, email, role_id } = params;
   if (firstName || lastName || phone || email || role_id) {
     return await user
       .find({
