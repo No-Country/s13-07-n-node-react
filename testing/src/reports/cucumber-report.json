@@ -1,191 +1,150 @@
 [
   {
-    "description": "    Feature Description",
+    "description": "    Verificar que todos los enlaces en la pagina funcionen correctamente para asegurar de una navegacion adecuada\n    * Protocolo de navegacion\n    * Status de conexion\n    * Redireccion de los enlaces",
     "elements": [
       {
         "description": "",
-        "id": "manejo-de-ingresos-incorrectos-en-el-formulario-de-login;campo-de-email-vacio",
+        "id": "nav-|-ts-01-|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna;verificar-status-y-propiedades-de-todos-los-enlaces-por-pagina",
         "keyword": "Scenario",
-        "line": 8,
-        "name": "Campo de email vacio",
+        "line": 23,
+        "name": "Verificar status y propiedades de todos los enlaces por pagina",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1827239799
+              "duration": 2045822800
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 6,
-            "name": "estoy en la pagina de login en spotter 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
+            "line": 8,
+            "name": "ingreso en la url 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
             "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:23"
+              "location": "src\\features\\steps_definitions\\links_steps.ts:26"
             },
             "result": {
               "status": "passed",
-              "duration": 1530840700
+              "duration": 2655439399
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 9,
-            "name": "no se ingresa ningun caracter en campo de email",
+            "name": "ingreso usuario 'isaacurdaneta@gmail.com' y contraseña '04161652340'",
             "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:32"
+              "location": "src\\features\\steps_definitions\\links_steps.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 4232855799
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 10,
-            "name": "debria ver un mensaje de email es requerido",
-            "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:44"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2554889299
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1011867499
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "manejo-de-ingresos-incorrectos-en-el-formulario-de-login;campo-de-password-vacio",
-        "keyword": "Scenario",
-        "line": 12,
-        "name": "Campo de password vacio",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1914079400
+              "duration": 2184718299
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 6,
-            "name": "estoy en la pagina de login en spotter 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
-            "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1520319199
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
             "line": 13,
-            "name": "no se ingresa ningun caracter en campo de contraseña",
+            "name": "que se realiza clic en 'Home'",
             "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:57"
+              "location": "src\\features\\steps_definitions\\links_steps.ts:41"
             },
             "result": {
               "status": "passed",
-              "duration": 4010028299
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 14,
-            "name": "debria ver un mensaje de contraseña es requerida",
-            "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:69"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2699253000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1013635300
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "manejo-de-ingresos-incorrectos-en-el-formulario-de-login;contraseña-con-numero-minimo-de-caracteres",
-        "keyword": "Scenario",
-        "line": 16,
-        "name": "Contraseña con numero minimo de caracteres",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1860200199
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 6,
-            "name": "estoy en la pagina de login en spotter 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
-            "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1516659299
+              "duration": 3357700800
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 17,
-            "name": "ingreso una contraseña de 7 caracteres",
+            "line": 14,
+            "name": "accedo en la pagina \"inicio/cliente\"",
             "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:82"
+              "location": "src\\features\\steps_definitions\\links_steps.ts:46"
             },
             "result": {
               "status": "passed",
-              "duration": 3799469799
+              "duration": 2108186200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "se realiza clic en todos los enlaces buscados",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 616700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "se muestra el total de enlaces encontrados",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:56"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2315105800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "deben redirigir corretamente a la url de destino",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:66"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2106999199
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 18,
-            "name": "deberia ver un mensaje indicando la contraseña debe ser mayor a 8 caracteres",
+            "name": "deben devolver un codigo de estado HTTP 200 OK",
             "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:94"
+              "location": "src\\features\\steps_definitions\\links_steps.ts:71"
             },
             "result": {
               "status": "passed",
-              "duration": 2681101300
+              "duration": 2107209599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "deben ser accesible y cargar correctamente",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:76"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2109101999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "los enlaces debe utilizar el protocolo correcto (HTTP o HTTPS)",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2112830199
             }
           },
           {
@@ -193,65 +152,165 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1004680100
+              "duration": 2108153699
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@Nav",
+            "line": 11
+          },
+          {
+            "name": "@TS-01",
+            "line": 11
+          }
+        ],
         "type": "scenario"
       },
       {
         "description": "",
-        "id": "manejo-de-ingresos-incorrectos-en-el-formulario-de-login;contraseña-con-numero-maximo-de-caracteres",
+        "id": "nav-|-ts-01-|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna;verificar-status-y-propiedades-de-todos-los-enlaces-por-pagina",
         "keyword": "Scenario",
-        "line": 20,
-        "name": "Contraseña con numero maximo de caracteres",
+        "line": 24,
+        "name": "Verificar status y propiedades de todos los enlaces por pagina",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1804718599
+              "duration": 1802177299
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 6,
-            "name": "estoy en la pagina de login en spotter 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
+            "line": 8,
+            "name": "ingreso en la url 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
             "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:23"
+              "location": "src\\features\\steps_definitions\\links_steps.ts:26"
             },
             "result": {
               "status": "passed",
-              "duration": 1626427799
+              "duration": 2743464599
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 21,
-            "name": "ingreso una contraseña de 13 caracteres",
+            "line": 9,
+            "name": "ingreso usuario 'isaacurdaneta@gmail.com' y contraseña '04161652340'",
             "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:107"
+              "location": "src\\features\\steps_definitions\\links_steps.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 4025246600
+              "duration": 2162166700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "que se realiza clic en 'Wallet'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2802042400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "accedo en la pagina \"entrenamiento\"",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2104515599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "se realiza clic en todos los enlaces buscados",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 93300
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 22,
-            "name": "deberia ver un mensaje indicando que la contraseña debe ser menor a 12 caracteres",
+            "line": 16,
+            "name": "se muestra el total de enlaces encontrados",
             "match": {
-              "location": "src\\features\\steps_definitions\\login_steps.ts:119"
+              "location": "src\\features\\steps_definitions\\links_steps.ts:56"
             },
             "result": {
               "status": "passed",
-              "duration": 3069662099
+              "duration": 2342229099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "deben redirigir corretamente a la url de destino",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:66"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2102727599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "deben devolver un codigo de estado HTTP 200 OK",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:71"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2106060199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "deben ser accesible y cargar correctamente",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:76"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2114217799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "los enlaces debe utilizar el protocolo correcto (HTTP o HTTPS)",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2103742700
             }
           },
           {
@@ -259,19 +318,361 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1009066699
+              "duration": 2105452999
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@Nav",
+            "line": 11
+          },
+          {
+            "name": "@TS-01",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "nav-|-ts-01-|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna;verificar-status-y-propiedades-de-todos-los-enlaces-por-pagina",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Verificar status y propiedades de todos los enlaces por pagina",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1819154100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "ingreso en la url 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:26"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 5013840599,
+              "error_message": "Error: function timed out, ensure the promise resolves within 5000 milliseconds\n    at Timeout.<anonymous> (Z:\\Repositorios GitHub\\No Country - Proyectos\\s13-07-n-node-react\\testing\\node_modules\\@cucumber\\cucumber\\src\\time.ts:52:14)\n    at listOnTimeout (node:internal/timers:573:17)\n    at processTimers (node:internal/timers:514:7)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "ingreso usuario 'isaacurdaneta@gmail.com' y contraseña '04161652340'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:32"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "que se realiza clic en 'Settings'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:41"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "accedo en la pagina \"estadisticas\"",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:46"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "se realiza clic en todos los enlaces buscados",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:52"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "se muestra el total de enlaces encontrados",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:56"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "deben redirigir corretamente a la url de destino",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:66"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "deben devolver un codigo de estado HTTP 200 OK",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:71"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "deben ser accesible y cargar correctamente",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:76"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "los enlaces debe utilizar el protocolo correcto (HTTP o HTTPS)",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:81"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2114492900
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Nav",
+            "line": 11
+          },
+          {
+            "name": "@TS-01",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "nav-|-ts-01-|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna;verificar-status-y-propiedades-de-todos-los-enlaces-por-pagina",
+        "keyword": "Scenario",
+        "line": 26,
+        "name": "Verificar status y propiedades de todos los enlaces por pagina",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1957813499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "ingreso en la url 'https://s13-07-n-node-react-git-front-end-merge-spotterapp.vercel.app/acceso'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2628509199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "ingreso usuario 'isaacurdaneta@gmail.com' y contraseña '04161652340'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2166820000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "que se realiza clic en 'Profile'",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2821677200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "accedo en la pagina \"micuenta\"",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2103415300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "se realiza clic en todos los enlaces buscados",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 123299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "se muestra el total de enlaces encontrados",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:56"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2202310200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "deben redirigir corretamente a la url de destino",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:66"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2114925999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "deben devolver un codigo de estado HTTP 200 OK",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:71"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2108110200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "deben ser accesible y cargar correctamente",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:76"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2112967199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "los enlaces debe utilizar el protocolo correcto (HTTP o HTTPS)",
+            "match": {
+              "location": "src\\features\\steps_definitions\\links_steps.ts:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2107831900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2108430899
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Nav",
+            "line": 11
+          },
+          {
+            "name": "@TS-01",
+            "line": 11
+          }
+        ],
         "type": "scenario"
       }
     ],
-    "id": "manejo-de-ingresos-incorrectos-en-el-formulario-de-login",
+    "id": "nav-|-ts-01-|-verificacion-de-propiedades-y-status-en-los-links/enlaces-de-redireccion-interna",
     "line": 1,
     "keyword": "Feature",
-    "name": "Manejo de Ingresos Incorrectos en el Formulario de Login",
+    "name": "Nav | TS 01 | Verificacion de propiedades y status en los links/enlaces de redireccion interna",
     "tags": [],
-    "uri": "src\\features\\test_cases\\Func_TS-01_login-usuarios.feature"
+    "uri": "src\\features\\test_cases\\Nav_TS-01_links.feature"
   }
 ]

@@ -7,7 +7,7 @@ Background: url de accedo
 
 Scenario: Campo de email vacio
     When no se ingresa ningun caracter en campo de email 
-    Then debria ver un mensaje de email es requerido
+    Then debria ver un mensaje de email es requerido 
 
 Scenario: Campo de password vacio
     When no se ingresa ningun caracter en campo de contraseña

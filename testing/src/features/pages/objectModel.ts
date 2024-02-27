@@ -10,7 +10,7 @@ export class Elements {
     public static readonly PasswordInput = 'input[type="pass"]';
     public static readonly SubmitButton = 'input[type="submit"]';
 
-    private page: Page;
+    public page: Page;
 
     constructor(page: Page) {
         this.page = page;
@@ -73,6 +73,4 @@ export class Elements {
             throw new Error(`La contraseña "${password}" no cumple los requisitos mínimos`);
         }
     }
-    
-
 }

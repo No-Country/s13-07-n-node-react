@@ -1,9 +1,11 @@
 import { Given, When, Then, Before, After } from '@cucumber/cucumber';
 import { chromium, firefox, Page, webkit} from 'playwright';
-import { Elements } from '../../../features/pages/objectModel';
-import { Links } from '../../../features/pages/linksProperties'; 
+import { Elements } from '../pages/objectModel';
+import { Links } from '../pages/linksProperties'; 
+import { ScreenSize } from '../../utils/screenSIze';
 
 let browser;
+let screenSIze: ScreenSize
 let page: Page
 let elements: Elements
 let links: Links
@@ -15,14 +17,16 @@ const escenario2 = '@eliminar-producto'
 Before( async () => {
     browser = await firefox.launch({ headless: false });
     page = await browser.newPage();
-    const context = await browser.newContext();
+    // const context = await browser.newContext();
     elements = new Elements(page)
     links = new Links(page)
+    screenSIze = new ScreenSize(page)
 });
 
 Given('ingreso en la url {string}', async function (URL: string)  {
     await page.goto(URL)
     await page.waitForTimeout(segundos)
+    screenSIze.screenMobileSizeIphone12(390,844)
 });
 
 When('ingreso usuario {string} y contraseña {string}', async function (user: string, pass: string)  {
