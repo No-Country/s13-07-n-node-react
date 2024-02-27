@@ -8,6 +8,7 @@ import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
 import GlobalContainer from '../Components/GlobalContainer';
 import CardContainerActivities from '../Components/CardContainerActivities';
+import CardContainerProfessor from '../Components/CardContainerProfessor';
 
 const InicioCliente = () => {
   return (
@@ -21,7 +22,7 @@ const InicioCliente = () => {
         <CardClient/>
         <div>
           <SectionButton section={"Profesores"} description={"Accede a los profesores de tu sede"} active/>
-          <CardContainer link='Profesores'/>
+          <CardContainerProfessor/>
         </div>
 
         <div>
