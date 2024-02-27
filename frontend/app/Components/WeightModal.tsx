@@ -1,13 +1,10 @@
+"use client"
 import Modal from 'react-modal';
 import { useState } from 'react';
 import WeightChart from './WeightChart';
 
-export default function WeightModal({
-  isOpen,
-  onRequestClose,
-  onWeightSubmit,
-}) {
-  const [weight, setWeight] = useState([]);
+export default function WeightModal({isOpen,onRequestClose,onWeightSubmit,weights,}:{isOpen:boolean, onRequestClose:()=>void,onWeightSubmit:(weight:any)=>void, weights:any}) {
+  const [weight, setWeight] = useState<any>([]);
 
   const handleSubmit = () => {
     onWeightSubmit(weight);
@@ -56,7 +53,7 @@ export default function WeightModal({
         Guardar
       </button>
 
-      <WeightChart data={weight} />
+      <WeightChart initialWeight data={weight} />
     </Modal>
   );
 }

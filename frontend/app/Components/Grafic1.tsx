@@ -56,7 +56,7 @@ const options = {
 export default function App() {
   return (
     <div className='h-customGraphic w-customGraphic flex justify-center items-center'>
-      <Line data={data} legend={legend} options={options} />
+      <Line data={data}  options={options} />
     </div>
   );
 }

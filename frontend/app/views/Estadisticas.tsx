@@ -16,17 +16,19 @@ import GlobalContainer from '../Components/GlobalContainer';
 
 const Estadisticas = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [weights, setWeight] = useState([]); // Añade esta línea
+  const [weights, setWeight] = useState<any>([]); // Añade esta línea
 
   useEffect(() => {
     console.log(weights); // Imprime el peso cada vez que cambia
   }, [weights]);
 
   const handleWeightSubmit = (weight: any) => {
-    setWeight((preWeights) => [
-      ...preWeights,
-      { name: `Semana ${preWeights.length + 1}`, Peso: Number(weight) },
-    ]);
+    //setWeight((preWeights) => [
+    //  ...preWeights,
+    //  { name: `Semana ${preWeights.length + 1}`, Peso: Number(weight) },
+    //]);
+    //Creo que este codigo es mejor, es cuestión de intentarlo
+    setWeight([...weights, {name: `Semana ${weight.length + 1}`, Peso: Number(weight)}])
   };
 
 
