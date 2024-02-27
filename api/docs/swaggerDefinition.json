@@ -100,6 +100,47 @@
 					"name",
 					"address"
 				]
+			},
+			"Activity": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "El nombre de la actividad."
+					},
+					"description": {
+						"type": "string",
+						"description": "La descripción de la actividad."
+					},
+					"start_time": {
+						"type": "string",
+						"format": "date-time",
+						"description": "La hora de inicio de la actividad en formato ISO 8601."
+					},
+					"finish_time": {
+						"type": "string",
+						"format": "date-time",
+						"description": "La hora de finalización de la actividad en formato ISO 8601."
+					},
+					"price": {
+						"type": "number",
+						"description": "El precio de la actividad."
+					},
+					"_id": {
+						"type": "objectid",
+						"description": "El identificador único de la actividad."
+					},
+					"__v": {
+						"type": "number",
+						"description": "La versión del documento."
+					}
+				},
+				"required": [
+					"name",
+					"start_time",
+					"finish_time",
+					"price"
+				]
 			}
 		},
 		"responses": {
@@ -612,6 +653,170 @@
 						}
 					}
 				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
+					},
+					"404": {
+						"$ref": "#/components/responses/NotFoundError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/activities": {
+			"post": {
+				"summary": "Registra una nueva actividad",
+				"description": "Registra una nueva actividad con la información proporcionada",
+				"tags": [
+					"Activities"
+				],
+				"requestBody": {
+					"description": "Datos de la actividad a crear",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ActivityRequestBody"
+							},
+							"example": {
+								"name": "Entrenamiento de fuerza",
+								"description": "Sesión intensiva de levantamiento de pesas y entrenamiento de resistencia.",
+								"start_time": "2024-02-26T14:00:00Z",
+								"finish_time": "2024-02-26T15:30:00Z",
+								"price": 15
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"$ref": "#/components/responses/CreatedResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
+					},
+					"409": {
+						"$ref": "#/components/responses/Error409"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			},
+			"get": {
+				"summary": "Obtener todas las actividades registradas",
+				"description": "Obtiene una lista de todas las actividades registradas en el sistema",
+				"tags": [
+					"Activities"
+				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"401": {
+						"$ref": "#/components/responses/UnauthorizedError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/activities/search": {
+			"get": {
+				"summary": "Buscar actividades por nombre",
+				"description": "Busca actividades por nombre utilizando parámetros de consulta",
+				"tags": [
+					"Activities"
+				],
+				"parameters": [
+					{
+						"name": "name",
+						"in": "query",
+						"description": "Nombre de la actividad a buscar",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
+					},
+					"404": {
+						"$ref": "#/components/responses/NotFoundError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/activities/{id}": {
+			"put": {
+				"summary": "Actualizar información de una actividad",
+				"description": "Actualiza la información de una actividad específica identificada por su ID",
+				"tags": [
+					"Activities"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "ID de la actividad a actualizar",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "Datos de la actividad a actualizar",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"start_time": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"finish_time": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"price": {
+										"type": "number"
+									}
+								}
+							},
+							"example": {
+								"name": "Nueva Clase de spinning",
+								"description": "Una clase de spinning",
+								"start_time": "2024-02-27T10:00:00Z",
+								"finish_time": "2024-02-27T11:30:00Z",
+								"price": 25
+							}
+						}
+					}
+				},
 				"responses": {
 					"200": {
 						"$ref": "#/components/responses/SuccessResponse"
