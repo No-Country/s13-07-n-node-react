@@ -3,15 +3,13 @@ import React from 'react'
 import CardClient from "../Components/CardClient";
 import Header from '../Components/Header';
 import SectionButton from '../Components/SectionButton';
-import CardContainer from '../Components/CardContainer';
+import CardContainer from '../Components/CardContainerProfessor';
 import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
 import GlobalContainer from '../Components/GlobalContainer';
-import { useGlobalStore } from '../store/GlobalStore';
+import CardContainerActivities from '../Components/CardContainerActivities';
 
 const InicioCliente = () => {
-  const {user, rolUser} = useGlobalStore((state)=>state);
-  //console.log(user, rolUser)
   return (
     <div>
       <GlobalContainer>
@@ -28,7 +26,7 @@ const InicioCliente = () => {
 
         <div>
           <SectionButton section={"Actividades"} description={"Distintas actividades y clases que ofrece tu gimnasio"} active />
-          <CardContainer link='Actividades'/>
+          <CardContainerActivities/>
         </div>
         <Navbar/>
         

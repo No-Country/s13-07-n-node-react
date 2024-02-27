@@ -1,4 +1,4 @@
-import Profesores from '@/app/views/Profesores'
+import Profesores from '../../views/Profesores'
 import React from 'react'
 
 const page = () => {
