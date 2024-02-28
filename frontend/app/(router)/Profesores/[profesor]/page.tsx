@@ -1,5 +1,4 @@
 "use client"
-import ProfessorDetails from '@/app/Components/ProfessorDetails'
 import CalificarProfesor from '@/app/views/CalificarProfesor'
 import React from 'react'
 

@@ -1,18 +1,26 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
 import React, { ReactNode, useState } from 'react'
 import X from "../../public/x.png"
 import start from "../../public/star.png"
 import starColor from "../../public/star-color.png"
-import mujer from "../../public/card-header-women.png"
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import Loader from './Loader';
+import { urlAPi } from '../utils/urlBase';
+import { useFetchDataGet } from '../utils/useFetchDataGet';
+
 
 function ProfessorDetails({ params }: { params: {profesor: string;}}) {
- 
   const calificacion = ["profesor","puntaje", "gracias"];
   const  [flujo, setFlujo] = useState(calificacion[0])
-  const router = useRouter()
+  const router = useRouter();
+  const urlToFetch = `${urlAPi}/instructors/${params.profesor}`;
+  const {data, isLoading, error} = useFetchDataGet(urlToFetch);
+  if (isLoading) return <div className='flex items-center justify-center h-screen'><Loader/></div> ;
+  if (error) return <p className='flex items-center justify-center h-screen'>Error: {error}</p>;
+  if (!data) return <p className='flex items-center justify-center h-screen'>No profile data</p>;
 
-  
+    console.log(data.data);
   return (
     <div className={`w-full h-full  fixed  left-0 right-0 bottom-0  backdrop-blur-[5px]  bg-opacity-60`}>
       
@@ -22,13 +30,13 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
       <div className="w-full  absolute bottom-0 right-0 left-0">
         {
           flujo === calificacion[0] && (
-          <><Image src={mujer} alt="profesor" className="w-full" />
+          <><img src={data.data.image} alt="profesor" className="w-full" />
           <div className="w-full p-[20px] h-full bg-black">
               <div className="flex justify-between items-center">
-                <h3 className="text-[24px]">{params.profesor} </h3>
+                <h3 className="text-[24px]">{data.data.firstName} {data.data.lastName}</h3>
                 
                 <p className="flex justify-between items-center">
-                    <span className="flex items-center">Rate 4.6</span>
+                    <span className="flex items-center">{data.data.rating}</span>
                     <Image className="mx-1" src={start} alt="start" /> 
                 </p>
                 
@@ -54,8 +62,8 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
         flujo === calificacion[1] && (
           <div className="w-full p-[20px] h-full bg-black">
               <div className="flex justify-between items-center">
-                <h3 className="text-[24px]">Mara Goméz</h3>
-                <p className="flex justify-between items-center"><span className="flex items-center">Rate 4.6</span> <Image className="mx-1" src={start} alt="start" /> </p>
+                <h3 className="text-[24px]">{data.data.firstName} {data.data.lastName}</h3>
+                <p className="flex justify-between items-center"><span className="flex items-center">{data.data.rating}</span> <Image className="mx-1" src={start} alt="start" /> </p>
               </div>
               <div>
                 <p className="mt-[30px]">

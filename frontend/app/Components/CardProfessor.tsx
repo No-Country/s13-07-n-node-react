@@ -1,18 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
+"use client"
 import Image from 'next/image';
 import React, { useState } from 'react';
 import disponible from "../../public/Ellipse 26.png";;
 import estrella from "../../public/star.png";
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
+function CardProfessor({id, image,lastName, firstName, available, rate, }:{id:string, image:any,lastName:string, firstName:string, available:boolean, rate:number}) {
 
-function CardProfessor({image, name, available, rate, }:{image:any, name:string, available:boolean, rate:number}) {
+    const router = useRouter()
+
     return (
-        <div className='w-[152px] h-[158px] rounded-[20px] relative pointer'  >
-            <Link href={`/Profesores/${name}`} >
-            <div className='absolute top-0 left-0 right-0 bottom-0 w-full h-full flex justify-between items-end p-[0.5rem]'>
+        <div className='w-[152px] h-[158px] rounded-[20px] relative pointer'>
+            <button onClick={()=>{router.push(`/Profesores/${id}`)}}>
+                <div  className='absolute top-0 left-0 right-0 bottom-0 w-full h-full flex justify-between items-end p-[0.5rem]'>
                 <div>
-                    <h2>{name}</h2>
+                    <h2>{firstName} {lastName} </h2>
                     <div>
                         {available === true ? (
                         <div className='flex justify-start items-center'>
@@ -27,8 +30,10 @@ function CardProfessor({image, name, available, rate, }:{image:any, name:string,
                     <Image className='w-[7px] h-[7px] ml-1' alt='rate' src={estrella}/>
                 </div>
             </div>
-            </Link>
-            <img  alt='professor' src={image} />
+            </button>
+            
+            
+            <img className='w-full'  alt='professor' src={image} />
         </div>
     )
 }
