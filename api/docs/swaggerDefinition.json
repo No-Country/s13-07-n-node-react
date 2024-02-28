@@ -65,6 +65,29 @@
 					"email": {
 						"type": "string"
 					},
+					"schedule": {
+						"type": "object",
+						"properties": {
+							"days": {
+								"type":"array",
+								"items": {
+									"type": "number",
+									"example": "[1, 2, 4, 5]",
+									"description": "Representa el día de la semana, 0 para domingo, 6 para sábado"
+								}
+							},
+							"init_time": {
+								"type": "number"
+								, "example": "9"
+								, "description": "Hora en formato de 24Hs que representa la hora de inicio"
+							},
+							"finish_time": {
+								"type": "number"
+								, "example": "16" 
+								, "description": "Hora en formato de 24Hs que representa la hora de salida"
+							}
+						}
+					},
 					"url": {
 						"type": "string"
 					},
