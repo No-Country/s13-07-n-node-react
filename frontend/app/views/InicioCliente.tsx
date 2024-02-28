@@ -3,7 +3,6 @@ import React from 'react'
 import CardClient from "../Components/CardClient";
 import Header from '../Components/Header';
 import SectionButton from '../Components/SectionButton';
-import CardContainer from '../Components/CardContainerProfessor';
 import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
 import GlobalContainer from '../Components/GlobalContainer';

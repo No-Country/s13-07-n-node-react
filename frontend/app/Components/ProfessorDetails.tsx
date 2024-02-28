@@ -20,7 +20,7 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
   if (error) return <p className='flex items-center justify-center h-screen'>Error: {error}</p>;
   if (!data) return <p className='flex items-center justify-center h-screen'>No profile data</p>;
 
-    console.log(data.data);
+  console.log(data.data);
   return (
     <div className={`w-full h-full  fixed  left-0 right-0 bottom-0  backdrop-blur-[5px]  bg-opacity-60`}>
       
@@ -43,11 +43,8 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
               </div>
               <div>
                 <p className='text-primaryDefault font-semibold text-right'>Ver reseñas</p>
-                <p className="mt-[30px] font-semibold">
-                  Hola soy Mara!  👋
-                  Soy personal trainer y puedo ayudarte con tu entrenamiento.
-                  Me vas a encontrar en el gimnasio todos los martes y viernes de 16hs a 20hs.
-                  ¡Te espero!
+                <p className="mt-[30px] font-semibold  whitespace-nowrap overflow-hidden text-overflow-ellipsis w-full">
+                  {data.data.description}
                 </p>
                 <button onClick={() => { setFlujo(calificacion[1]); } } type="button" className="mt-[12px] text-white w-full focus:outline-none  bg-primaryDefault hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
                   Calificar Profesor
@@ -57,7 +54,7 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
           </>
         )
       }
-      
+
       {
         flujo === calificacion[1] && (
           <div className="w-full p-[20px] h-full bg-black">
@@ -89,7 +86,7 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
           <div className="w-full p-[20px] h-full bg-black">
               <div>
                 <p className="mt-[30px] mb-[44px] text-center font-semibold">
-                  Gracias por calificar a Mara
+                  Gracias por calificar a {data.data.firstName} {data.data.lastName}
                 </p>
                 <button onClick={() => {  router.push('/Profesores')   } } type="button" className="mt-[12px] text-white w-full focus:outline-none  bg-primaryDefault hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
                   Continuar

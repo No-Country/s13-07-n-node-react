@@ -10,16 +10,14 @@ function CardContainerProfessor() {
     const urlToFetch = `${urlAPi}/instructors`;
     const {data, isLoading, error} = useFetchDataGet(urlToFetch);
     //console.log(data, isLoading, error)
-    if (isLoading) return <div className='flex items-center justify-center h-screen'><Loader/></div> ;
+    if (isLoading) return <div className='flex items-center justify-center p-2'><Loader/></div> ;
     if (error) return <p className='flex items-center justify-center h-screen'>Error: {error}</p>;
     if (!data) return <p className='flex items-center justify-center h-screen'>No profile data</p>;
-
   return (
-  
     <div className='w-[100%] grid grid-cols-12 mt-[24px]'>
       {
         data.data.map((profesor: any, key: React.Key | null | undefined)=>{
-          console.log(profesor)
+          //console.log(profesor)
           const {firstName,lastName,  active, rating, image, id} =  profesor;
           return(
             <div  key={key} className='col-span-6 flex justify-center items-center mt-[0.8rem]'>
