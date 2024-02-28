@@ -23,8 +23,7 @@ export const createTypeRoutine = async (req, res) => {
 export const updateTypeRoutine = async (req, res) => {
   try {
     const { typeRoutineId } = req.params;
-    const updatedFields = req.body;
-    const updatedTypeRoutine = await updateTypeRoutineService(typeRoutineId, updatedFields);
+    const updatedTypeRoutine = await updateTypeRoutineService(typeRoutineId, req.body);
     res.json(updatedTypeRoutine);
   } catch (error) {
     console.error("Error updating TypeRoutine:", error);
