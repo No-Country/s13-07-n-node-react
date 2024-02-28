@@ -1,11 +1,22 @@
-import TypeRoutine from "../schemas/typeRoutine.schema.js";
-
+import pkg from "http-status";
+import TypeRoutine from "../db/schemas/typeRoutine.schema.js";
+const { NOT_FOUND, OK, CREATED } = pkg;
 // Crear un nuevo TypeRoutine en la base de datos
 export const createTypeRoutineService = async (name) => {
   try {
-    const newTypeRoutine = new TypeRoutine({ name });
-    const savedTypeRoutine = await newTypeRoutine.save();
-    return savedTypeRoutine;
+    const search = await TypeRoutine.findOne({ name: name.toLowerCase() }).exec();
+    if (search) {
+      return {
+        status: NOT_FOUND,
+        message: "El nombre de typeRoutine ya existe",
+      };
+    }
+    const newTypeRoutine = new TypeRoutine({ name: name.toLowerCase() });
+    await newTypeRoutine.save();
+    return {
+      status: CREATED,
+      message: "el tipo de rutina se creo correctamente",
+    };
   } catch (error) {
     throw new Error("Error creating TypeRoutine: " + error.message);
   }
@@ -14,8 +25,27 @@ export const createTypeRoutineService = async (name) => {
 // Actualizar un TypeRoutine existente en la base de datos
 export const updateTypeRoutineService = async (typeRoutineId, updatedFields) => {
   try {
-    const updatedTypeRoutine = await TypeRoutine.findByIdAndUpdate(typeRoutineId, updatedFields, { new: true });
-    return updatedTypeRoutine;
+    const { name } = updatedFields;
+    if (!name) {
+      return {
+        status: NOT_FOUND,
+        message: "Complete el campo nombre de tipo rutina",
+      };
+    }
+
+    const search = await TypeRoutine.findOne({ name: name.toLowerCase() }).exec();
+    if (search) {
+      return {
+        status: NOT_FOUND,
+        message: "El nombre de typeRoutine ya existe",
+      };
+    }
+    
+    await TypeRoutine.findByIdAndUpdate(typeRoutineId, { name: name.toLowerCase() });
+    return {
+      status: OK,
+      message: "el tipo de rutina fue actualizado correctamente",
+    };
   } catch (error) {
     throw new Error("Error updating TypeRoutine: " + error.message);
   }
