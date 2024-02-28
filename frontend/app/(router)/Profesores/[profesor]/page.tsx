@@ -1,14 +1,22 @@
-"use client"
-import ProfessorDetails from '@/app/Components/ProfessorDetails'
-import CalificarProfesor from '@/app/views/CalificarProfesor'
-import React from 'react'
+"use client";
+import { useGlobalStore } from "@/app/store/GlobalStore";
+import { useRouter } from "next/navigation";
+
+import CalificarProfesor from "@/app/views/CalificarProfesor";
 
 const page = ({ params }: { params: { profesor: string } }) => {
-  return (
-    <div>
-      <CalificarProfesor params={params} />
-    </div>
-  )
-}
+    const router = useRouter();
+    const isAuthClient = useGlobalStore((state) => state.isAuthClient);
 
-export default page
+    return (
+        <>
+            {isAuthClient ? (
+                <CalificarProfesor params={params} />
+            ) : (
+                router.push("/acceso")
+            )}
+        </>
+    );
+};
+
+export default page;
