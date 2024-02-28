@@ -12,12 +12,14 @@ function add_rating_to(instructor) {
 export class InstructorService {
   async instructor_role_id() {
     const roles = await rolServiceFilter("profesor/a");
-    return roles[0]._id;
+
+    return roles[0] ? roles[0]._id : -1;
   }
 
   async instructors() {
     const role_id = await this.instructor_role_id();
-    const collection = await userServiceFilter({ role_id });
+
+    const collection = role_id !== -1 ? await userServiceFilter({ role_id }) : []
 
     collection.forEach((e) => add_rating_to(e));
     return collection;
