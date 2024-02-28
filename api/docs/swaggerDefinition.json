@@ -37,21 +37,26 @@
 				"properties": {
 					"id": {
 						"type": "string"
+						, "example": "184A3960S3D"
 					},
 					"firstName": {
 						"type": "string",
 						"required": "true"
+						, "example": "Mara"
 					},
 					"lastName": {
 						"type": "string",
 						"required": "true"
+						, "example": "Gómez"
 					},
 					"description": {
 						"type": "string",
 						"required": "true"
+						, "example": "Hola soy Mara! Soy personal trainer y puedo ayudarte con tu entrenamiento. Me vas a encontrar en el gimnasio todos los martes y viernes desde las 16hs hasta las 20hs.¡Te espero!"
 					},
 					"image": {
 						"type": "string"
+						, "description": "URL de la imágen del profesor"
 					},
 					"active": {
 						"type": "boolean"
@@ -265,7 +270,7 @@
 								"lastName": "Gomez",
 								"email": "maragomez@spotter-gym.com.ar",
 								"password": "qwerty123",
-								"description": "Instructor del gimnasio",
+								"description": "Hola soy Mara! Soy personal trainer y puedo ayudarte con tu entrenamiento. Me vas a encontrar en el gimnasio todos los martes y viernes desde las 16hs hasta las 20hs.¡Te espero!",
 								"phone": "algún número valido de teléfono"
 							}
 						}
