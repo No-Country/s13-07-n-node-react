@@ -15,7 +15,7 @@ function url_to_reviews_for(instructor_id) {
 }
 
 function parse(instructor) {
-  const { _id, firstName, lastName, image, active, rating, phone, email } = instructor;
+  const { _id, firstName, lastName, description, image, active, rating, phone, email } = instructor;
   const url = url_for(_id);
   const url_reviews = url_to_reviews_for(_id);
   return Object.assign(
@@ -23,6 +23,7 @@ function parse(instructor) {
     {
       firstName,
       lastName,
+      description,
       image,
       active,
       rating,

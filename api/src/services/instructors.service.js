@@ -12,12 +12,14 @@ function add_rating_to(instructor) {
 export class InstructorService {
   async instructor_role_id() {
     const roles = await rolServiceFilter("profesor/a");
-    return roles[0]._id;
+
+    return roles[0] ? roles[0]._id : -1;
   }
 
   async instructors() {
     const role_id = await this.instructor_role_id();
-    const collection = await userServiceFilter({ role_id });
+
+    const collection = role_id !== -1 ? await userServiceFilter({ role_id }) : []
 
     collection.forEach((e) => add_rating_to(e));
     return collection;
@@ -78,6 +80,8 @@ export class InstructorService {
     const { firstName, lastName, email, phone, pass, description } = this.verified(params);
 
     const role_id = await this.instructor_role_id();
+
+    if( role_id === -1 ) { throw new Object( {message: 'no role loaded'}) }
 
     if (await user.findOne({ email, firstName, lastName }).exec()) {
       throw new Object({ message: "instructor is registered" });
