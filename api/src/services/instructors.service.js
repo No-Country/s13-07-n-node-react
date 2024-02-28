@@ -81,6 +81,8 @@ export class InstructorService {
 
     const role_id = await this.instructor_role_id();
 
+    if( role_id === -1 ) { throw new Object( {message: 'no role loaded'}) }
+
     if (await user.findOne({ email, firstName, lastName }).exec()) {
       throw new Object({ message: "instructor is registered" });
     }
