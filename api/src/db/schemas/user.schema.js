@@ -21,17 +21,24 @@ const userSchema = new Schema({
       reviewer: {
         // Nombre de la persona que hace la reseña
         type: String,
-        required: true,
       },
       rating: {
         type: Number,
-        required: true,
       },
       comment: {
         type: String,
       },
     },
   ],
+  schedule: {
+    days: [],
+    init_time: {
+      type: Number
+    },
+    finish_time: {
+      type: Number
+    }
+  }
 });
 
 export const user = model("User", userSchema);
