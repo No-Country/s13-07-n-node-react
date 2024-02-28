@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
-import React, { ReactNode, useState } from 'react'
+import React, { useState } from 'react'
 import X from "../../public/x.png"
 import start from "../../public/star.png"
 import starColor from "../../public/star-color.png"
