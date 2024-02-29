@@ -11,6 +11,7 @@ const AuthRoute = ({ children }: {children : any}) => {
         if (!isAuthClient) {
             router.push('/acceso');
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isAuthClient]);
 
     return isAuthClient ? children : null;

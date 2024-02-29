@@ -1,3 +1,4 @@
+"use client"
 import { useState } from 'react';
 import Header from "@/app/Components/Header";
 import CardEjercicio from '@/app/Components/CardEjercicios';
