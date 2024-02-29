@@ -34,9 +34,11 @@ const userSchema = new Schema({
     days: [],
     init_time: {
       type: Number
+      , default: 9
     },
     finish_time: {
       type: Number
+      , default: 16
     }
   }
 });
