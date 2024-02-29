@@ -1,12 +1,16 @@
-import Profesores from '../../views/Profesores'
-import React from 'react'
+
+"use client";
+import { useGlobalStore } from "@/app/store/GlobalStore";
+import { useRouter } from "next/navigation";
+
+import Profesores from "@/app/views/Profesores";
+
 
 const page = () => {
-  return (
-    <div>
-        <Profesores/>
-    </div>
-  )
-}
+    const router = useRouter();
+    const isAuthClient = useGlobalStore((state) => state.isAuthClient);
 
-export default page
+    return <>{isAuthClient ? <Profesores /> : router.push("/acceso")}</>;
+};
+
+export default page;

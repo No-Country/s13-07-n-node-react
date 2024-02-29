@@ -18,7 +18,7 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false)
   const router = useRouter()
-  const {setUser, setRolUser, rolUser} = useGlobalStore((state) => state)
+  const {setUser, setRolUser, rolUser, isAuthClient, setIsAuthClient} = useGlobalStore((state) => state)
   
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -80,6 +80,7 @@ export default function LoginForm() {
         setRolUser(dashRedirect)
         //Aqui va una  validacion de acuerdo al rol del usuario en base a ello redirige a dashboards distintos
         if(dashRedirect === "cliente"){
+          setIsAuthClient(true)
           router.push("/inicio/cliente");
         }
         
