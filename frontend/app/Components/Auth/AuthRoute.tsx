@@ -1,5 +1,6 @@
+"use client"
 import { useGlobalStore } from "@/app/store/GlobalStore";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const AuthRoute = ({ children }: {children : any}) => {
