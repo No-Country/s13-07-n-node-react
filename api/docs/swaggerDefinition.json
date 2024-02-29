@@ -292,7 +292,7 @@
 				}
 			}
 		},
-		"instructors/{id}": {
+		"/instructors/{id}": {
 			"tags": [
 				"Instructors"
 			],
@@ -318,7 +318,7 @@
 			},
 			"patch": {
 				"summary": "Actualiza algún atributo editable del instructor",
-				"description": "Aún No Implementado",
+				"description": "WIP",
 				"tags": [
 					"Instructors"
 				],
@@ -333,7 +333,28 @@
 							"example": "65cc4d4e289a62ebdbbb7671"
 						}
 					}
-				]
+				],
+				"requestBody": {
+					"description": "Algún atributo editable del instructor"
+					, "required": "true"
+					, "content": {
+						"application/json": {
+							"schema": {
+								"type": "object"
+								, "properties": {
+									"data": {
+										"type": "object",
+										"properties": {},
+										"example": {
+											"phone": "543764223412",
+											"description": "Otra descripción para el profesor"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			},
 			"get": {
 				"summary": "Retorna los datos del instructor",
