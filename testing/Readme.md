@@ -1,3 +1,9 @@
+---
+runme:
+  id: 01HQS0008BHKVEJNZM68YDMVJD
+  version: v3
+---
+
 # ___Test Plan___
 
 ## `Objetivo`
@@ -61,7 +67,6 @@ El plan de pruebas cubrirá las funcionalidades de la app según la lista de req
 
 ## `Preparacion y Planificacion`
 
-- [Tablero de trabajo en Trello/Jira]()
 - [Tablero de trabajo en Trello](https://trello.com/b/gyxztPmh/spotter)
 - [Hitos / Milestones en GitHub](https://github.com/No-Country/s13-07-n-node-react/milestones)
 - [Diseño en Figma](https://www.figma.com/file/ZnUGAn04hZRJNplwjh5BoU/Spotter---Gym-App---No-Country?type=design&node-id=5-4&mode=design)
