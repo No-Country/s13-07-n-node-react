@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Header from "@/app/Components/Header";
 import CardEjercicio from '@/app/Components/CardEjercicios';
 import EjerciciosJSON from "@/mock/ejercicios.json";
