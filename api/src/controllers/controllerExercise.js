@@ -5,7 +5,7 @@ import {
   exerciseServiceUpdate,
   exerciseServiceActive,
   exerciseServiceDeactivate,
-} from "../services/exercise.service.js";
+} from "../services/exercise.services.js";
 const { OK } = pkg;
 export const filterExercise = async (req, res) => {
   const { name } = req.query;
@@ -13,12 +13,12 @@ export const filterExercise = async (req, res) => {
 };
 
 export const postExercise = async (req, res) => {
-  const exercise = await exerciseServicePost(req.body);
+  const exercise = await exerciseServicePost(req.body, req.files);
   res.json(exercise);
 };
 
 export const updateExercise = async (req, res) => {
-  const exercise = await exerciseServiceUpdate(req.body, req.params.id);
+  const exercise = await exerciseServiceUpdate(req.body, req.params.id, req.files);
   res.json(exercise);
 };
 
