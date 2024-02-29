@@ -21,16 +21,17 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
   const [showReviews, setShowReviews] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [ratingProfessor, setRatingProfessor] = useState<number>(0);
+  const [comment, setCommen] = useState("")
 
 
   if (isLoading) return <div className='flex items-center justify-center h-screen'><Loader/></div> ;
   if (error) return <p className='flex items-center justify-center h-screen'>Error: {error}</p>;
   if (!data) return <p className='flex items-center justify-center h-screen'>No profile data</p>;
 
-  console.log(ratingProfessor);
+  //console.log(ratingProfessor, comment);
   return (
     <div className={`w-full h-full  fixed  left-0 right-0 bottom-0 top-0`}>
-      {showComment === true &&(<CommentProfessor closeModal={()=>{setShowComment(false)}} />)}
+      {showComment === true &&(<CommentProfessor comment={setCommen} closeModal={()=>{setShowComment(false)}} />)}
       {showReviews === true &&(<ReviewsProfessor closeModal={()=>{setShowReviews(false)}} />)}
       <button onClick={()=> {router.push('/Profesores')}} >
         <Image src={X} alt="x" className="w-[24px] h-[24px] absolute right-5 top-5" />

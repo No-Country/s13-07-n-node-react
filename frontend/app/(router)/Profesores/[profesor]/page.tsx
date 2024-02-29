@@ -10,4 +10,4 @@ const page = ({ params }: { params: { profesor: string } }) => {
   )
 }
 
-export default page
+export default page;
