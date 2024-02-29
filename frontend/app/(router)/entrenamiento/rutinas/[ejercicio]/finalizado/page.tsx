@@ -1,15 +1,11 @@
-"use client";
-import { useGlobalStore } from "@/app/store/GlobalStore";
-import { useRouter } from "next/navigation";
-
 import EjercicioFinalizado from "@/app/Components/EjercicioFinalizado";
+import AuthRoute from "@/app/Components/Auth/AuthRoute";
 
 const page = () => {
-    const router = useRouter();
-    const isAuthClient = useGlobalStore((state) => state.isAuthClient);
-
     return (
-        <>{isAuthClient ? <EjercicioFinalizado /> : router.push("/acceso")}</>
+        <AuthRoute>
+            <EjercicioFinalizado />
+        </AuthRoute>
     );
 };
 

@@ -1,22 +1,13 @@
-"use client";
-import { useGlobalStore } from "@/app/store/GlobalStore";
-import { useRouter } from "next/navigation";
-
 import Ejercicios from "@/app/Components/Ejercicios";
+import AuthRoute from "@/app/Components/Auth/AuthRoute";
 
 const page = ({ params }: { params: any }) => {
-    const router = useRouter();
-    const isAuthClient = useGlobalStore((state) => state.isAuthClient);
-
     return (
-        <>
-            {isAuthClient ? (
-                <Ejercicios params={params} />
-            ) : (
-                router.push("/acceso")
-            )}
-        </>
-    );
+        <AuthRoute>
+            <Ejercicios params={params} />
+        </AuthRoute>
+    )
 };
 
 export default page;
+
