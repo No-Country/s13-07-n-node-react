@@ -10,8 +10,8 @@ import {
 // crear una nueva rutina
 export const createRoutine = async (req, res) => {
   try {
-    const { idClient, idTypeRoutine, idUser } = req.body;
-    const newRoutine = await createRoutineService(idClient, idTypeRoutine, idUser);
+    const { idClient, idTypeRoutine, idUser, name, list_exercise,times } = req.body;
+    const newRoutine = await createRoutineService(idClient, idTypeRoutine, idUser, name, list_exercise, times);
     res.status(201).json(newRoutine);
   } catch (error) {
     console.error("Error creating routine:", error);
@@ -47,8 +47,7 @@ export const activateRoutine = async (req, res) => {
 export const updateRoutine = async (req, res) => {
   try {
     const { routineId } = req.params;
-    const updatedFields = req.body;
-    const updatedRoutine = await updateRoutineService(routineId, updatedFields);
+    const updatedRoutine = await updateRoutineService(routineId, req.body);
     res.json(updatedRoutine);
   } catch (error) {
     console.error("Error updating routine:", error);

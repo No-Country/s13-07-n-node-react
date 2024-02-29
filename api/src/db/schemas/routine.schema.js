@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const routineSchemaDefinition = new mongoose.Schema({
+  name: String,
   idClient: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Client",
-    required: true,
+    ref: "User",
     swagger: {
       type: "string",
       description: "The ID of the client associated with the routine.",
@@ -13,7 +13,6 @@ const routineSchemaDefinition = new mongoose.Schema({
   idTypeRoutine: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "TypeRoutine",
-    required: true,
     swagger: {
       type: "string",
       description: "The ID of the type of routine for the routine.",
@@ -22,7 +21,6 @@ const routineSchemaDefinition = new mongoose.Schema({
   idUser: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true,
     swagger: {
       type: "string",
       description: "The ID of the user who created the routine.",
@@ -36,6 +34,16 @@ const routineSchemaDefinition = new mongoose.Schema({
       description: "Indicates whether the routine is active or not.",
     },
   },
+  exercises: [
+    {
+      exercise: { type: Schema.Types.ObjectId, ref: "Exercise" },
+      cant: Number,
+      repetition: Number,
+      weight: String,
+      time: { type: String, default: null },
+    },
+  ],
+  times: String,
 });
 
 const Routine = mongoose.model("Routine", routineSchemaDefinition);

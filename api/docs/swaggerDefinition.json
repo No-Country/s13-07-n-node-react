@@ -15,6 +15,10 @@
 			"description": "Servidor de Producción (Backup)"
 		},
 		{
+			"url": "http://localhost:9000/api/v1",
+			"description": "Servidor de desarrollo"
+		},
+		{
 			"url": "http://localhost:3001/api/v1",
 			"description": "Servidor de desarrollo"
 		}
@@ -28,37 +32,66 @@
 			}
 		},
 		"schemas": {
-			"client": {
+			"Instructor": {
 				"type": "object",
 				"properties": {
+					"id": {
+						"type": "string"
+					},
 					"firstName": {
 						"type": "string",
-						"description": "El nombre del cliente."
+						"required": "true"
 					},
 					"lastName": {
 						"type": "string",
-						"description": "El apellido del cliente."
+						"required": "true"
 					},
-					"email": {
+					"description": {
 						"type": "string",
-						"description": "La dirección de correo electrónico del cliente.",
-						"format": "email"
+						"required": "true"
 					},
-					"password": {
-						"type": "string",
-						"description": "La contraseña del cliente."
+					"image": {
+						"type": "string"
+					},
+					"active": {
+						"type": "boolean"
+					},
+					"rating": {
+						"type": "number"
 					},
 					"phone": {
-						"type": "string",
-						"description": "El número de teléfono del cliente."
+						"type": "string"
 					},
-					"photoUrl": {
-						"type": "string",
-						"description": "URL de la foto del cliente."
+					"email": {
+						"type": "string"
 					},
-					"isActive": {
+					"url": {
+						"type": "string"
+					},
+					"url_reviews": {
+						"type": "string"
+					}
+				}
+			},
+			"Gym": {
+				"type": "object",
+				"properties": {
+					"logo": {
+						"type": "string",
+						"description": "El logo del gimnasio."
+					},
+					"name": {
+						"type": "string",
+						"description": "El nombre del gimnasio."
+					},
+					"active": {
 						"type": "boolean",
-						"description": "Indica si el cliente está activo o inactivo."
+						"description": "Indica si el gimnasio está activo o inactivo.",
+						"default": true
+					},
+					"address": {
+						"type": "string",
+						"description": "La dirección del gimnasio."
 					},
 					"_id": {
 						"type": "objectid"
@@ -68,10 +101,49 @@
 					}
 				},
 				"required": [
-					"firstName",
-					"lastName",
-					"email",
-					"password"
+					"name",
+					"address"
+				]
+			},
+			"Activity": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "El nombre de la actividad."
+					},
+					"description": {
+						"type": "string",
+						"description": "La descripción de la actividad."
+					},
+					"start_time": {
+						"type": "string",
+						"format": "date-time",
+						"description": "La hora de inicio de la actividad en formato ISO 8601."
+					},
+					"finish_time": {
+						"type": "string",
+						"format": "date-time",
+						"description": "La hora de finalización de la actividad en formato ISO 8601."
+					},
+					"price": {
+						"type": "number",
+						"description": "El precio de la actividad."
+					},
+					"_id": {
+						"type": "objectid",
+						"description": "El identificador único de la actividad."
+					},
+					"__v": {
+						"type": "number",
+						"description": "La versión del documento."
+					}
+				},
+				"required": [
+					"name",
+					"start_time",
+					"finish_time",
+					"price"
 				]
 			}
 		},
@@ -91,7 +163,7 @@
 			"BadRequestError": {
 				"description": "Bad Request: Error en la solicitud"
 			},
-			"NotFound": {
+			"NotFoundError": {
 				"description": "Resource not found: Recurso no encontrado"
 			},
 			"Error409": {
@@ -100,30 +172,317 @@
 		}
 	},
 	"paths": {
-		"/clients/register": {
-			"post": {
-				"summary": "Registra un nuevo cliente",
-				"description": "Registra un nuevo cliente con la información proporcionada",
+		"/instructors": {
+			"summary": "Representa la collección de todos los profesores, profesoras e instructores del gimnasio",
+			"get": {
+				"summary": "Retorna la lista de instructores del gimnasio",
 				"tags": [
-					"Clients"
+					"Instructors"
+				],
+				"responses": {
+					"200": {
+						"description": "Se pudo completar la solicitud con el servidor",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"$ref": "#/components/schemas/Instructor"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"summary": "Registra el instructor cargado",
+				"tags": [
+					"Instructors"
 				],
 				"requestBody": {
-					"description": "Datos del cliente a crear",
+					"description": "Datos del instructor a registar",
 					"required": true,
 					"content": {
 						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"firstName": {
+										"type": "string",
+										"reqrired": "true"
+									},
+									"lastName": {
+										"type": "string",
+										"required": "true"
+									},
+									"email": {
+										"type": "string",
+										"required": "true"
+									},
+									"pass": {
+										"type": "string",
+										"required": "true"
+									},
+									"phone": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									}
+								}
+							},
 							"example": {
-								"firstName": "Paula",
-								"lastName": "Mendoza",
-								"email": "paula.mendoza@spotter.com",
-								"password": "Admin123$"
+								"firstName": "Mara",
+								"lastName": "Gomez",
+								"email": "maragomez@spotter-gym.com.ar",
+								"password": "qwerty123",
+								"description": "Instructor del gimnasio",
+								"phone": "algún número valido de teléfono"
 							}
 						}
 					}
 				},
 				"responses": {
 					"201": {
-						"$ref": "#/components/responses/SuccessResponse"
+						"description": "El instructor se registó exitosamente"
+					},
+					"400": {
+						"description": "La solicitud no se pudo procesar"
+					},
+					"403": {
+						"description": "El instructor está registrado"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"instructors/{id}": {
+			"tags": [
+				"Instructors"
+			],
+			"summary": "Muestra información del instructor",
+			"delete": {
+				"summary": "Elimina el instructor",
+				"description": "Aun No Implementado",
+				"tags": [
+					"Instructors"
+				],
+				"parameters": [
+					{
+						"name": "instructorID",
+						"in": "path",
+						"required": "true",
+						"description": "ID del instructor a mostrar",
+						"schema": {
+							"type": "string",
+							"example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+			},
+			"patch": {
+				"summary": "Actualiza algún atributo editable del instructor",
+				"description": "Aún No Implementado",
+				"tags": [
+					"Instructors"
+				],
+				"parameters": [
+					{
+						"name": "instructorID",
+						"in": "path",
+						"required": "true",
+						"description": "ID del instructor a mostrar",
+						"schema": {
+							"type": "string",
+							"example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+			},
+			"get": {
+				"summary": "Retorna los datos del instructor",
+				"tags": [
+					"Instructors"
+				],
+				"parameters": [
+					{
+						"name": "instructorID",
+						"in": "path",
+						"required": "true",
+						"description": "ID del instructor a mostrar",
+						"schema": {
+							"type": "string",
+							"example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Se encontró el recurso o el instructor",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"$ref": "#/components/schemas/Instructor"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/instructors/{id}/reviews": {
+			"summary": "Representa la colección de todas las reseñas del instructor",
+			"description": "La colección de las reseñas incluye quien lo hizo, el puntaje/rating que marcó y el comentario si dejó alguno",
+			"get": {
+				"summary": "Retorna una lista de todas las reviews",
+				"tags": [
+					"Instructors"
+				],
+				"parameters": [
+					{
+						"name": "instructorID",
+						"in": "path",
+						"required": "true",
+						"description": "ID del instructor a mostrar",
+						"schema": {
+							"type": "string",
+							"example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Se pudo procesar la solicitud",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"rating": {
+														"type": "number"
+													},
+													"reviews": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"reviewer": {
+																	"type": "string"
+																},
+																"rating": {
+																	"type": "number"
+																},
+																"comment": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"summary": "Permite la creación de la reseña/review para el instructor indicado en la URL",
+				"tags": [
+					"Instructors"
+				],
+				"parameters": [
+					{
+						"name": "instructorID",
+						"in": "path",
+						"required": "true",
+						"description": "ID del instructor a mostrar",
+						"schema": {
+							"type": "string",
+							"example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "Datos para la reseña",
+					"required": "true",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"reviewer": {
+										"type": "string",
+										"required": "true",
+										"summary": "Nombre y apellido de la persona"
+									},
+									"rating": {
+										"type": "number",
+										"required": "true",
+										"summary": "Puntaje que la persona le da al instructor"
+									},
+									"comment": {
+										"type": "string",
+										"summary": "Comentario que escribe la persona que hace la reseña"
+									}
+								}
+							},
+							"example": {
+								"reviewer": "Paula Mendoza",
+								"rating": "4"
+							}
+						}
+					}
+				},
+				"responses": {
+					"204": {
+						"description": "El registro de la reseña se realizó con éxito. No retorna contenido"
+					}
+				}
+			}
+		},
+		"/gyms": {
+			"post": {
+				"summary": "Registra un nuevo gimnasio",
+				"description": "Registra un nuevo gimnasio con la información proporcionada",
+				"tags": [
+					"Gyms"
+				],
+				"requestBody": {
+					"description": "Datos del gimnasio a crear",
+					"required": true,
+					"content": {
+						"application/json": {
+							"example": {
+								"name": "Spotter",
+								"address": "Calle Principal 123, BS, Argentina"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"$ref": "#/components/responses/CreatedResponse"
 					},
 					"400": {
 						"$ref": "#/components/responses/BadRequestError"
@@ -135,23 +494,97 @@
 						"$ref": "#/components/responses/ServerError"
 					}
 				}
+			},
+			"get": {
+				"summary": "Obtener todos los gimnasios registrados",
+				"description": "Obtiene una lista de todos los gimnasios registrados en el sistema",
+				"tags": [
+					"Gyms"
+				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"401": {
+						"$ref": "#/components/responses/UnauthorizedError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
 			}
 		},
-		"/clients/login": {
-			"post": {
-				"summary": "Iniciar sesión de cliente",
-				"description": "Inicia sesión de un cliente utilizando su correo electrónico y contraseña.",
+		"/gyms/search": {
+			"get": {
+				"summary": "Buscar gimnasios por nombre",
+				"description": "Busca gimnasios por nombre utilizando parámetros de consulta",
 				"tags": [
-					"Clients"
+					"Gyms"
+				],
+				"parameters": [
+					{
+						"name": "name",
+						"in": "query",
+						"description": "Nombre del gimnasio a buscar",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
+					},
+					"404": {
+						"$ref": "#/components/responses/NotFoundError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/gyms/{id}": {
+			"put": {
+				"summary": "Actualizar información de un gimnasio",
+				"description": "Actualiza la información de un gimnasio específico identificado por su ID",
+				"tags": [
+					"Gyms"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "ID del gimnasio a actualizar",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
 				],
 				"requestBody": {
-					"description": "Datos de inicio de sesión del cliente",
+					"description": "Datos del gimnasio a actualizar",
 					"required": true,
 					"content": {
 						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"address": {
+										"type": "string"
+									}
+								}
+							},
 							"example": {
-								"email": "paula.mendoza@spotter.com",
-								"password": "Admin123$"
+								"name": "Gimnasio the best",
+								"address": "Calle Principal 123, Ciudad, País"
 							}
 						}
 					}
@@ -163,8 +596,8 @@
 					"400": {
 						"$ref": "#/components/responses/BadRequestError"
 					},
-					"401": {
-						"$ref": "#/components/responses/UnauthorizedError"
+					"404": {
+						"$ref": "#/components/responses/NotFoundError"
 					},
 					"500": {
 						"$ref": "#/components/responses/ServerError"
@@ -172,42 +605,21 @@
 				}
 			}
 		},
-		"/clients": {
-			"get": {
-				"summary": "Obtener todos los clientes activos",
-				"description": "Obtiene una lista de todos los clientes activos en el sistema",
+		"/gyms/activate/{id}": {
+			"patch": {
+				"summary": "Activar un gimnasio",
+				"description": "Activa un gimnasio específico identificado por su ID",
 				"tags": [
-					"Clients"
-				],
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/SuccessResponse"
-					},
-					"401": {
-						"$ref": "#/components/responses/UnauthorizedError"
-					},
-					"500": {
-						"$ref": "#/components/responses/ServerError"
-					}
-				}
-			}
-		},
-		"/clients/{clientId}": {
-			"get": {
-				"summary": "Obtener un cliente por ID",
-				"description": "Obtiene un cliente específico por su ID",
-				"tags": [
-					"Clients"
+					"Gyms"
 				],
 				"parameters": [
 					{
-						"name": "clientId",
+						"name": "id",
 						"in": "path",
+						"description": "ID del gimnasio a activar",
 						"required": true,
-						"description": "ID del cliente a obtener",
 						"schema": {
-							"type": "string",
-							"example": "65cc4d4e289a62ebdbbb7671"
+							"type": "string"
 						}
 					}
 				],
@@ -215,137 +627,73 @@
 					"200": {
 						"$ref": "#/components/responses/SuccessResponse"
 					},
-					"401": {
-						"$ref": "#/components/responses/UnauthorizedError"
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
 					},
 					"404": {
-						"$ref": "#/components/responses/NotFound"
+						"$ref": "#/components/responses/NotFoundError"
 					},
 					"500": {
 						"$ref": "#/components/responses/ServerError"
 					}
 				}
-			},
-			"put": {
-				"summary": "Actualizar un cliente por ID",
-				"description": "Actualiza un cliente específico por su ID",
+			}
+		},
+		"/gyms/deactivate/{id}": {
+			"patch": {
+				"summary": "Desactivar un gimnasio",
+				"description": "Desactiva un gimnasio específico identificado por su ID",
 				"tags": [
-					"Clients"
+					"Gyms"
 				],
 				"parameters": [
 					{
-						"name": "clientId",
+						"name": "id",
 						"in": "path",
+						"description": "ID del gimnasio a desactivar",
 						"required": true,
-						"description": "ID del cliente a actualizar",
 						"schema": {
-							"type": "string",
-							"example": "65cc4d4e289a62ebdbbb7671"
+							"type": "string"
 						}
 					}
 				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
+					},
+					"404": {
+						"$ref": "#/components/responses/NotFoundError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/activities": {
+			"post": {
+				"summary": "Registra una nueva actividad",
+				"description": "Registra una nueva actividad con la información proporcionada",
+				"tags": [
+					"Activities"
+				],
 				"requestBody": {
-					"description": "Datos del cliente a actualizar",
+					"description": "Datos de la actividad a crear",
 					"required": true,
 					"content": {
 						"application/json": {
 							"schema": {
-								"type": "object",
-								"properties": {
-									"firstName": {
-										"type": "string",
-										"example": "New FirstName"
-									},
-									"lastName": {
-										"type": "string",
-										"example": "New Lastname"
-									},
-									"phone": {
-										"type": "string",
-										"example": "123-456-7890"
-									},
-									"birthdate": {
-										"type": "date",
-										"example": "1998-04-12"
-									},
-									"imageUrl": {
-										"type": "string",
-										"example": "https://res.cloudinary.com/dxq0pypxu/image/upload/v1696476957/nn12qmebo7v6qhbwbkdf.png"
-									}
-								}
-							}
-						}
-					}
-				},
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/SuccessResponse"
-					},
-					"401": {
-						"$ref": "#/components/responses/UnauthorizedError"
-					},
-					"404": {
-						"$ref": "#/components/responses/NotFound"
-					},
-					"500": {
-						"$ref": "#/components/responses/ServerError"
-					}
-				}
-			},
-			"delete": {
-				"summary": "Desactivar un cliente por ID",
-				"description": "Desactiva un cliente específico por su ID",
-				"tags": [
-					"Clients"
-				],
-				"parameters": [
-					{
-						"name": "clientId",
-						"in": "path",
-						"required": true,
-						"description": "ID del cliente a desactivar",
-						"schema": {
-							"type": "string",
-							"example": "65cc4d4e289a62ebdbbb7671"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"$ref": "#/components/responses/SuccessResponse"
-					},
-					"401": {
-						"$ref": "#/components/responses/UnauthorizedError"
-					},
-					"404": {
-						"$ref": "#/components/responses/NotFound"
-					},
-					"500": {
-						"$ref": "#/components/responses/ServerError"
-					}
-				}
-			}
-		},
-		"/images/upload": {
-			"post": {
-				"summary": "Cargar una imagen",
-				"description": "Carga una imagen y devuelve un URL",
-				"tags": [
-					"Images"
-				],
-				"requestBody": {
-					"description": "Imagen a cargar",
-					"required": true,
-					"content": {
-						"multipart/form-data": {
-							"schema": {
-								"type": "object",
-								"properties": {
-									"image": {
-										"type": "string",
-										"format": "binary"
-									}
-								}
+								"$ref": "#/components/schemas/ActivityRequestBody"
+							},
+							"example": {
+								"name": "Entrenamiento de fuerza",
+								"description": "Sesión intensiva de levantamiento de pesas y entrenamiento de resistencia.",
+								"start_time": "2024-02-26T14:00:00Z",
+								"finish_time": "2024-02-26T15:30:00Z",
+								"price": 15
 							}
 						}
 					}
@@ -356,6 +704,132 @@
 					},
 					"400": {
 						"$ref": "#/components/responses/BadRequestError"
+					},
+					"409": {
+						"$ref": "#/components/responses/Error409"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			},
+			"get": {
+				"summary": "Obtener todas las actividades registradas",
+				"description": "Obtiene una lista de todas las actividades registradas en el sistema",
+				"tags": [
+					"Activities"
+				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"401": {
+						"$ref": "#/components/responses/UnauthorizedError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/activities/search": {
+			"get": {
+				"summary": "Buscar actividades por nombre",
+				"description": "Busca actividades por nombre utilizando parámetros de consulta",
+				"tags": [
+					"Activities"
+				],
+				"parameters": [
+					{
+						"name": "name",
+						"in": "query",
+						"description": "Nombre de la actividad a buscar",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
+					},
+					"404": {
+						"$ref": "#/components/responses/NotFoundError"
+					},
+					"500": {
+						"$ref": "#/components/responses/ServerError"
+					}
+				}
+			}
+		},
+		"/activities/{id}": {
+			"put": {
+				"summary": "Actualizar información de una actividad",
+				"description": "Actualiza la información de una actividad específica identificada por su ID",
+				"tags": [
+					"Activities"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "ID de la actividad a actualizar",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"description": "Datos de la actividad a actualizar",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"start_time": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"finish_time": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"price": {
+										"type": "number"
+									}
+								}
+							},
+							"example": {
+								"name": "Nueva Clase de spinning",
+								"description": "Una clase de spinning",
+								"start_time": "2024-02-27T10:00:00Z",
+								"finish_time": "2024-02-27T11:30:00Z",
+								"price": 25
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/SuccessResponse"
+					},
+					"400": {
+						"$ref": "#/components/responses/BadRequestError"
+					},
+					"404": {
+						"$ref": "#/components/responses/NotFoundError"
 					},
 					"500": {
 						"$ref": "#/components/responses/ServerError"
