@@ -1,9 +1,14 @@
-import Rutinas from "@/app/views/Rutinas"
+"use client";
+import { useGlobalStore } from "@/app/store/GlobalStore";
+import { useRouter } from "next/navigation";
+
+import Rutinas from "@/app/views/Rutinas";
 
 const page = () => {
-  return (
-    <Rutinas />
-  )
-}
+    const router = useRouter();
+    const isAuthClient = useGlobalStore((state) => state.isAuthClient);
 
-export default page
+    return <>{isAuthClient ? <Rutinas /> : router.push("/acceso")}</>;
+};
+
+export default page;

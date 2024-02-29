@@ -1,9 +1,13 @@
-import React from 'react'
+"use client";
+import { useGlobalStore } from "@/app/store/GlobalStore";
+import { useRouter } from "next/navigation";
+
 
 const page = () => {
-  return (
-    <div>secretario</div>
-  )
-}
+    const router = useRouter();
+    const isAuthClient = useGlobalStore((state) => state.isAuthClient);
 
-export default page
+    return <>{isAuthClient ? <div>PAGE SECRETARIO</div> : router.push('/acceso')}</>;
+};
+
+export default page;

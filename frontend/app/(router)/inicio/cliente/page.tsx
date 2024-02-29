@@ -1,12 +1,14 @@
-import InicioCliente from '@/app/views/InicioCliente'
-import React from 'react'
+"use client";
+import { useGlobalStore } from "@/app/store/GlobalStore";
+import { useRouter } from "next/navigation";
+
+import InicioCliente from "@/app/views/InicioCliente";
 
 const page = () => {
-  return (
-    <div>
-        <InicioCliente/>
-    </div>
-  )
-}
+    const router = useRouter();
+    const isAuthClient = useGlobalStore((state) => state.isAuthClient);
 
-export default page
+    return <>{isAuthClient ? <InicioCliente /> : router.push('/acceso')}</>;
+};
+
+export default page;
