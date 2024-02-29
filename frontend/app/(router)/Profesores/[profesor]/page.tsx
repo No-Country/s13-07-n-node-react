@@ -1,14 +1,12 @@
-"use client"
-import ProfessorDetails from '@/app/Components/ProfessorDetails'
-import CalificarProfesor from '@/app/views/CalificarProfesor'
-import React from 'react'
+import CalificarProfesor from "@/app/views/CalificarProfesor";
+import AuthRoute from "@/app/Components/Auth/AuthRoute";
 
 const page = ({ params }: { params: { profesor: string } }) => {
-  return (
-    <div>
-      <CalificarProfesor params={params} />
-    </div>
-  )
-}
+    return (
+        <AuthRoute>
+            <CalificarProfesor params={params} />
+        </AuthRoute>
+    );
+};
 
-export default page
+export default page;

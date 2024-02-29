@@ -1,12 +1,12 @@
-import Profesores from '@/app/views/Profesores'
-import React from 'react'
+import Profesores from "@/app/views/Profesores";
+import AuthRoute from "@/app/Components/Auth/AuthRoute";
 
 const page = () => {
-  return (
-    <div>
-        <Profesores/>
-    </div>
-  )
-}
+    return (
+        <AuthRoute>
+            <Profesores />
+        </AuthRoute>
+    )
+};
 
-export default page
+export default page;
