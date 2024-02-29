@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image';
 import React, { ReactNode, useState } from 'react'
 import X from "../../public/x.png"
