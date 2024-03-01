@@ -101,4 +101,16 @@ export class InstructorService {
 
     return instructor;
   }
+
+  async change( id, params ) {
+    const instructor = await user.findById( id )
+    console.log( '>> CHANGING' )
+    if( instructor ) {
+      console.log( '>>\t', instructor )
+      instructor.schedule = params.schedule
+      await instructor.save()
+    } else {
+      throw new Object( {message: "Instructor not found" })
+    }
+  }
 }

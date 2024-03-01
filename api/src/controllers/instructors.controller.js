@@ -15,7 +15,7 @@ function url_to_reviews_for(instructor_id) {
 }
 
 function parse(instructor) {
-  const { _id, firstName, lastName, description, image, active, rating, phone, email } = instructor;
+  const { _id, firstName, lastName, description, image, active, rating, phone, email, schedule } = instructor;
   const url = url_for(_id);
   const url_reviews = url_to_reviews_for(_id);
   return Object.assign(
@@ -29,6 +29,7 @@ function parse(instructor) {
       rating,
       phone,
       email,
+      schedule,
       url,
       url_reviews,
     },
@@ -138,7 +139,25 @@ export class InstructorsController {
   }
 
   update(req, res) {
-    res.send("wip");
+    const response = {
+      status: 404,
+      body: {
+        message: "Instructor not found"
+      }
+    }
+    const { id } = req.params
+    const { data } = req.body
+
+    try {
+      instructors.change(id, data)
+      response.status = 204
+      response.body = undefined
+    } catch (error) {
+      console.log( ">> CONTROLLER", error)
+    }
+
+    console.log(id, data)
+    res.status(response.status).json(response.body);
   }
   destroy(req, res) {
     res.send("wip");
