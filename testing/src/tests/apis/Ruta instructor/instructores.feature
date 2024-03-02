@@ -16,5 +16,7 @@ Scenario: Crear un instructor para el gym
     Then debería recibir una respuesta con el estado 201
     Then debería ver al instructor creado en la lista de instructores
 
+Scenario: Eliminar Instructor
 
+Scenario: Actualizar datos creados para el isntructor del gym
 

@@ -10,7 +10,7 @@ export class ApiRequestTest {
         this.page = page;
     }
 
-    public async listaIntructores(url: string): Promise<void> {
+    public async solicitudGET(url: string){
         try {
             const response = await fetch(url);
     
@@ -19,13 +19,14 @@ export class ApiRequestTest {
             }
     
             const data = await response.json();
-            console.log('Respuesta de la API:', data);
+            // console.log('Respuesta de la API:', data);
+            return data
         } catch (error) {
             console.error('Se produjo un error al obtener los datos:', error);
         }
     }
 
-    public async crearInstructor(url: string, userData: any):Promise<void> {
+    public async solicitudPOST(url: string, userData: any) {
         try {
             const response = await fetch(url, {
                 method: 'POST',
@@ -41,6 +42,7 @@ export class ApiRequestTest {
     
             const responseData = await response.json();
             console.log('Respuesta de la API:', responseData);
+            return responseData
         } catch (error) {
             console.error('Se produjo un error al obtener los datos:', error);
         }

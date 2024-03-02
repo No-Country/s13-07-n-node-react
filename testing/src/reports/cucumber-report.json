@@ -1,72 +1,72 @@
 [
   {
-    "description": "    * Probar Funcionalidades GET\n    * Obtener lista de instructores ",
+    "description": "    * Se realizan pruebas en el backend sobre la api de creacion de gimnasios\n    * probar metodo GET, POST, DELTE, PATCH. PUT",
     "elements": [
       {
         "description": "",
-        "id": "api-test-instructors;obtener-todos-los-instructores",
+        "id": "api-test-gyms;obtener-todos-los-gimnasios",
         "keyword": "Scenario",
         "line": 8,
-        "name": "Obtener todos los instructores",
+        "name": "Obtener todos los gimnasios",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1332475899
+              "duration": 1309610799
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 6,
-            "name": "se ingresa en la ruta instructores",
+            "name": "ingresamos en la ruta gimnasios 'https://spotter-gym.onrender.com/api/v1/gyms'",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_instructors_steps.ts:23"
+              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:24"
             },
             "result": {
               "status": "passed",
-              "duration": 9205899
+              "duration": 13840599
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 9,
-            "name": "se reliza una solicitud GET 'https://spotter-gym.onrender.com/api/v1/instructors'",
+            "name": "se realiza una solicitud GET en la ruta gyms",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_instructors_steps.ts:28"
+              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:29"
             },
             "result": {
               "status": "passed",
-              "duration": 71640200
+              "duration": 744799099
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 10,
-            "name": "se deberia ver una una estado de respuesta 200",
+            "name": "se deberia ver una respuesta 200 ok",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_instructors_steps.ts:33"
+              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:36"
             },
             "result": {
               "status": "passed",
-              "duration": 3405500
+              "duration": 434098000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 11,
-            "name": "se muestra una lista de instructores",
+            "name": "se muestra una lista con los gimansios creados",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_instructors_steps.ts:37"
+              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:43"
             },
             "result": {
               "status": "passed",
-              "duration": 1840500
+              "duration": 422789400
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2009891400
+              "duration": 2009901600
             }
           }
         ],
@@ -83,82 +83,82 @@
       },
       {
         "description": "",
-        "id": "api-test-instructors;crear-un-instructor-para-el-gym",
+        "id": "api-test-gyms;crear-gimnasio",
         "keyword": "Scenario",
         "line": 13,
-        "name": "Crear un instructor para el gym",
+        "name": "Crear Gimnasio",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1419309200
+              "duration": 1493253399
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 6,
-            "name": "se ingresa en la ruta instructores",
+            "name": "ingresamos en la ruta gimnasios 'https://spotter-gym.onrender.com/api/v1/gyms'",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_instructors_steps.ts:23"
+              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:24"
             },
             "result": {
               "status": "passed",
-              "duration": 284699
+              "duration": 499200
             }
           },
           {
             "arguments": [],
-            "keyword": "Given ",
+            "keyword": "When ",
             "line": 14,
-            "name": "que los siguientes datos del instructor están listos para ser enviados",
+            "name": "se envía una solicitud POST a la ruta de creación de gimnasios",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_instructors_steps.ts:42"
+              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:49"
             },
             "result": {
               "status": "passed",
-              "duration": 3204000
+              "duration": 2576200
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 15,
-            "name": "se realiza una solicitud POST a 'https://spotter-gym.onrender.com/api/v1/instructors' con los datos del instructor",
+            "name": "se incluyen los siguientes datos en la solicitud",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_instructors_steps.ts:55"
+              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:54"
             },
             "result": {
               "status": "passed",
-              "duration": 2019183100
+              "duration": 1837700
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 16,
-            "name": "debería recibir una respuesta con el estado 201",
+            "name": "la respuesta debería incluir un código de estado 201",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_instructors_steps.ts:61"
+              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:62"
             },
             "result": {
               "status": "passed",
-              "duration": 1240500
+              "duration": 820864399
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 17,
-            "name": "debería ver al instructor creado en la lista de instructores",
+            "name": "el gimnasio creado debería estar disponible en la lista del servidor",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_instructors_steps.ts:66"
+              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:69"
             },
             "result": {
               "status": "passed",
-              "duration": 1973099
+              "duration": 1569499
             }
           },
           {
@@ -166,7 +166,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2018733699
+              "duration": 2014721300
             }
           }
         ],
@@ -174,11 +174,11 @@
         "type": "scenario"
       }
     ],
-    "id": "api-test-instructors",
+    "id": "api-test-gyms",
     "line": 1,
     "keyword": "Feature",
-    "name": "Api test Instructors",
+    "name": "Api test Gyms",
     "tags": [],
-    "uri": "src\\features\\test_cases\\instructores.feature"
+    "uri": "src\\features\\test_cases\\gyms.feature"
   }
 ]

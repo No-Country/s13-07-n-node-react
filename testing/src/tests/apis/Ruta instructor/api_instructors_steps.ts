@@ -1,7 +1,7 @@
 import { Given, When, Then, Before, After } from '@cucumber/cucumber';
 import { chromium, firefox, Page, webkit} from 'playwright';
-import { Elements } from '../pages/objectModel';
-import { ApiRequestTest } from '../../utils/api_request';
+import { Elements } from '../../../features/pages/objectModel';
+import { ApiRequestTest } from '../../../utils/api_request';
 
 let browser;
 let page: Page
@@ -26,7 +26,7 @@ Given('se ingresa en la ruta instructores', async function ()  {
 
 // Obtener todos los instructores
 When('se reliza una solicitud GET {string}', async function (URL: string)  {
-    apiRequest.listaIntructores(URL)
+    apiRequest.solicitudGET(URL)
 });
 
 
