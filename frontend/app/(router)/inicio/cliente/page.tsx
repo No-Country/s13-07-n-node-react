@@ -1,12 +1,13 @@
-import InicioCliente from '@/app/views/InicioCliente'
-import React from 'react'
+import AuthRoute from "@/app/Components/Auth/AuthRoute";
+import InicioCliente from "@/app/views/InicioCliente";
 
 const page = () => {
-  return (
-    <div>
-        <InicioCliente/>
-    </div>
-  )
-}
+    return (
+        <AuthRoute>
+            <InicioCliente />
+        </AuthRoute>
+    )
+};
 
-export default page
+export default page;
+

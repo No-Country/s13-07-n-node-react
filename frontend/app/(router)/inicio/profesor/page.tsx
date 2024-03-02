@@ -1,9 +1,11 @@
-import React from 'react'
+import AuthRoute from "@/app/Components/Auth/AuthRoute";
 
 const page = () => {
-  return (
-    <div>profesor</div>
-  )
-}
+    return (
+        <AuthRoute>
+            <div>PAGE PROFESOR</div>
+        </AuthRoute>
+    )
+};
 
-export default page
+export default page;

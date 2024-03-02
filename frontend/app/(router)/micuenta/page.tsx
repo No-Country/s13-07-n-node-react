@@ -1,12 +1,13 @@
-import Micuenta from '@/app/views/Micuenta'
-import React from 'react'
+import AuthRoute from "@/app/Components/Auth/AuthRoute";
+import Micuenta from "@/app/views/Micuenta";
 
 const page = () => {
-  return (
-    <div>
-      <Micuenta/>
-    </div>
-  )
-}
+    return (
+        <AuthRoute>
+            <Micuenta />
+        </AuthRoute>
+    )
+};
 
-export default page
+export default page;
+

@@ -1,12 +1,12 @@
-import Estadisticas from '@/app/views/Estadisticas'
-import React from 'react';
+import Estadisticas from "@/app/views/Estadisticas";
+import AuthRoute from "@/app/Components/Auth/AuthRoute";
 
 const page = () => {
-  return (
-    <div>
-        <Estadisticas/>
-    </div>
-  )
-}
+    return (
+        <AuthRoute>
+            <Estadisticas />
+        </AuthRoute>
+    )
+};
 
 export default page;

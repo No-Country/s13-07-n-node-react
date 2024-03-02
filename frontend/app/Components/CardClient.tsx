@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import backgroundImage from "../../public/Rectangle 2.png";
 import Image from 'next/image';
-import avatar from "../../public/Roberta Casas.png"
 import megatlon from "../../public/image 1.png";
 import { useGlobalStore } from '../store/GlobalStore';
 import codigoQR from "../../public/QR Code.png"
@@ -9,8 +9,8 @@ import ModalQR from './ModalQR';
 
 
 const CardClient = () => {
-    const {user, rolUser} = useGlobalStore<any>((state)=>state);
-    //console.log(user, rolUser)
+    const {user} = useGlobalStore<any>((state)=>state);
+    //console.log(user.image, rolUser)
     const [showModal, setShowModal] = useState(false);
     return (
     <div className='w-[328px] h-[146px] mt-[24px] relative'>
@@ -18,7 +18,7 @@ const CardClient = () => {
         <div className='absolute top-0 left-0 right-0 bottom-0'>
             <div className='w-full h-full grid grid-cols-12'>
                     <div className="col-span-4 flex justify-center items-center">
-                    <Image className='w-[74px]' src={avatar} alt={"avatar"} />
+                    <img className='w-[74px] rounded-full' src={user.image} alt={"avatar"} />
                 </div>
                 <div className="col-span-4  flex flex-col justify-center">
                     <div className='my-[0.2rem]'>
