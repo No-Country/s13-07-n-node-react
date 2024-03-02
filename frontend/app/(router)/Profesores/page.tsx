@@ -1,5 +1,7 @@
+
 import Profesores from "@/app/views/Profesores";
 import AuthRoute from "@/app/Components/Auth/AuthRoute";
+
 
 const page = () => {
     return (

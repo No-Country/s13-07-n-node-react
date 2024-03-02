@@ -4,7 +4,7 @@ interface LoginData {
     email: string;
     pass: string;
 }
-
+//esta funcion usa el metodo post.
 export async function login(data: LoginData){
     const urlToFetch = `${urlAPi}/user/login`;
     try {
