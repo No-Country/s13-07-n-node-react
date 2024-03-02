@@ -1,14 +1,12 @@
-"use client";
-import { useGlobalStore } from "@/app/store/GlobalStore";
-import { useRouter } from "next/navigation";
-
 import Estadisticas from "@/app/views/Estadisticas";
+import AuthRoute from "@/app/Components/Auth/AuthRoute";
 
 const page = () => {
-    const router = useRouter();
-    const isAuthClient = useGlobalStore((state) => state.isAuthClient);
-
-    return <>{isAuthClient ? <Estadisticas /> : router.push("/acceso")}</>;
+    return (
+        <AuthRoute>
+            <Estadisticas />
+        </AuthRoute>
+    )
 };
 
 export default page;

@@ -1,4 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
+
+"use client"
+  /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
 import React, { useState } from 'react'
 import X from "../../public/x.png"
