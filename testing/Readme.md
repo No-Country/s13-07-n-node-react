@@ -1,9 +1,3 @@
----
-runme:
-  id: 01HQS0008BHKVEJNZM68YDMVJD
-  version: v3
----
-
 # ___Test Plan___
 
 ## `Objetivo`

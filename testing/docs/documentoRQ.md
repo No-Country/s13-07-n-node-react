@@ -1,9 +1,3 @@
----
-runme:
-  id: 01HP6VPJ6W24X1XBFCZ9P8F5PP
-  version: v2.2
----
-
 > # Documento de Requerimientos
 
 ## `Información del Proyecto`
