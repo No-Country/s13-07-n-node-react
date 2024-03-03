@@ -4,69 +4,56 @@
     "elements": [
       {
         "description": "",
-        "id": "api-test-gyms;obtener-todos-los-gimnasios",
+        "id": "api-test-gyms;obtener-lista-de-actividades",
         "keyword": "Scenario",
         "line": 8,
-        "name": "Obtener todos los gimnasios",
+        "name": "Obtener lista de actividades",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1309610799
+              "duration": 1422628299
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 6,
-            "name": "ingresamos en la ruta gimnasios 'https://spotter-gym.onrender.com/api/v1/gyms'",
+            "name": "ingresar en la ruta gimnasios 'https://spotter-gym.onrender.com/api/v1/activities'",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:24"
+              "location": "src\\features\\steps_definitions\\api_activities_steps.ts:24"
             },
             "result": {
               "status": "passed",
-              "duration": 13840599
+              "duration": 12530200
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 9,
-            "name": "se realiza una solicitud GET en la ruta gyms",
+            "name": "se realiza una solicitud GET en la ruta activities obteniendo status 200",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:29"
+              "location": "src\\features\\steps_definitions\\api_activities_steps.ts:29"
             },
             "result": {
               "status": "passed",
-              "duration": 744799099
+              "duration": 1256867599
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 10,
-            "name": "se deberia ver una respuesta 200 ok",
+            "name": "se muestra una lista con las actividades creados",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:36"
+              "location": "src\\features\\steps_definitions\\api_activities_steps.ts:38"
             },
             "result": {
               "status": "passed",
-              "duration": 434098000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "se muestra una lista con los gimansios creados",
-            "match": {
-              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:43"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 422789400
+              "duration": 453547200
             }
           },
           {
@@ -74,7 +61,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2009901600
+              "duration": 2010657200
             }
           }
         ],
@@ -83,82 +70,69 @@
       },
       {
         "description": "",
-        "id": "api-test-gyms;crear-gimnasio",
+        "id": "api-test-gyms;crear-una-actividad",
         "keyword": "Scenario",
-        "line": 13,
-        "name": "Crear Gimnasio",
+        "line": 12,
+        "name": "Crear una actividad",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1493253399
+              "duration": 1171267600
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 6,
-            "name": "ingresamos en la ruta gimnasios 'https://spotter-gym.onrender.com/api/v1/gyms'",
+            "name": "ingresar en la ruta gimnasios 'https://spotter-gym.onrender.com/api/v1/activities'",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:24"
+              "location": "src\\features\\steps_definitions\\api_activities_steps.ts:24"
             },
             "result": {
               "status": "passed",
-              "duration": 499200
+              "duration": 392900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "se realiza una solicitud POST en la ruta activities",
+            "match": {
+              "location": "src\\features\\steps_definitions\\api_activities_steps.ts:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1932400
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 14,
-            "name": "se envía una solicitud POST a la ruta de creación de gimnasios",
+            "name": "se envian datos de solicitud en el body",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:49"
+              "location": "src\\features\\steps_definitions\\api_activities_steps.ts:49"
             },
             "result": {
               "status": "passed",
-              "duration": 2576200
+              "duration": 1751800
             }
           },
           {
             "arguments": [],
-            "keyword": "When ",
+            "keyword": "Then ",
             "line": 15,
-            "name": "se incluyen los siguientes datos en la solicitud",
+            "name": "la actividad se crear correctamente indicando status 201",
             "match": {
-              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:54"
+              "location": "src\\features\\steps_definitions\\api_activities_steps.ts:62"
             },
             "result": {
               "status": "passed",
-              "duration": 1837700
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 16,
-            "name": "la respuesta debería incluir un código de estado 201",
-            "match": {
-              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:62"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 820864399
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 17,
-            "name": "el gimnasio creado debería estar disponible en la lista del servidor",
-            "match": {
-              "location": "src\\features\\steps_definitions\\api_gym_steps.ts:69"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1569499
+              "duration": 518299700
             }
           },
           {
@@ -166,7 +140,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2014721300
+              "duration": 2006920500
             }
           }
         ],
@@ -179,6 +153,6 @@
     "keyword": "Feature",
     "name": "Api test Gyms",
     "tags": [],
-    "uri": "src\\features\\test_cases\\gyms.feature"
+    "uri": "src\\features\\test_cases\\activities.feature"
   }
 ]

@@ -1,7 +1,7 @@
 import { Given, When, Then, Before, After } from '@cucumber/cucumber';
 import { chromium, firefox, Page, webkit} from 'playwright';
-import { Elements } from '../pages/objectModel';
-import { ApiRequestTest } from '../../utils/api_request';
+import { Elements } from '../../../features/pages/objectModel';
+import { ApiRequestTest } from '../../../utils/api_request';
 import { expect } from 'chai';
 import { url } from 'webdriverio/build/commands/browser';
 
@@ -53,8 +53,8 @@ When('se envía una solicitud POST a la ruta de creación de gimnasios', async (
 
 When('se incluyen los siguientes datos en la solicitud', async () => {
 userData = {
-    name: '-1mQ@{}+¿}{',
-    address: '****'
+    name: 'a',
+    address: '1'
 }
 
 });
@@ -67,7 +67,6 @@ Then('la respuesta debería incluir un código de estado {int}', async (status: 
 });
 
 Then('el gimnasio creado debería estar disponible en la lista del servidor', async () => {
-
 
 });
 
