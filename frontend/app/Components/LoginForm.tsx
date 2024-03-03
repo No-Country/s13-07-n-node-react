@@ -63,7 +63,7 @@ export default function LoginForm() {
             }
         }
       
-      
+     
       setLoading(true)
       const response = await login(values);
       if(response.status === 200){
@@ -78,9 +78,10 @@ export default function LoginForm() {
         setUser(response.user);
         const dashRedirect = await dashboardRedirect(response.user.role_id);
         setRolUser(dashRedirect)
+        setIsAuthClient(true)
         //Aqui va una  validacion de acuerdo al rol del usuario en base a ello redirige a dashboards distintos
         if(dashRedirect === "cliente"){
-          setIsAuthClient(true)
+          //setIsAuthClient(true)
           router.push("/inicio/cliente");
         }
         
