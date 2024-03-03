@@ -1,17 +1,16 @@
 "use client"
 import { useGlobalStore } from "@/app/store/GlobalStore";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname  } from "next/navigation";
 import { useEffect } from "react";
 
 const AuthRoute = ({ children }: {children : any}) => {
-    const isAuthClient = useGlobalStore((state) => state.isAuthClient);
     const router = useRouter();
-    useEffect(()=>{
-        if(isAuthClient){
-            router.push("/acceso")
-        }
-    },[isAuthClient])
-    
+    const pathname = usePathname();
+    const isAuthClient = useGlobalStore((state) => state.isAuthClient);
+   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => !isAuthClient ? router.push('/acceso') : router.push(pathname), [pathname]);
+
     return isAuthClient ? children : null;
 };
 
