@@ -5,17 +5,13 @@ import { useEffect } from "react";
 
 const AuthRoute = ({ children }: {children : any}) => {
     const isAuthClient = useGlobalStore((state) => state.isAuthClient);
-
-<<<<<<< Updated upstream
-    useEffect(() => {
-        if (!isAuthClient) {
-            router.push('/acceso');
+    const router = useRouter();
+    useEffect(()=>{
+        if(isAuthClient){
+            router.push("/acceso")
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAuthClient]);
-
-=======
->>>>>>> Stashed changes
+    },[isAuthClient])
+    
     return isAuthClient ? children : null;
 };
 
