@@ -1,6 +1,17 @@
 import React from 'react'
+import { urlAPi } from '../utils/urlBase';
+import { useFetchDataGet } from '../utils/useFetchDataGet';
+import Loader from './Loader';
 
-const ReviewsProfessor = ({closeModal}:{closeModal:()=>void}) => {
+const ReviewsProfessor = ({closeModal, params}:{closeModal:()=>void, params: {profesor: string;}}) => {
+
+    const urlToFetch = `${urlAPi}/instructors/${params.profesor}/reviews`;
+    const {data, isLoading, error} = useFetchDataGet(urlToFetch);
+    if (isLoading) return <div className='flex items-center justify-center h-screen'><Loader/></div> ;
+    if (error) return <div className='flex items-center justify-center h-screen'>Error: {error}</div>;
+    if (!data) return <div className='flex items-center justify-center h-screen'>No profile data</div>;
+    console.log(data)
+
     return (
         <div id="default-modal"  tabIndex={-1} aria-hidden="true" className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div className="relative p-4 w-full max-w-2xl max-h-full mx-auto bg-black">
