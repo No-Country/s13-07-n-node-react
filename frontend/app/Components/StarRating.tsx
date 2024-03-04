@@ -3,10 +3,8 @@ import starColor from "../../public/star-color.png";
 import starWithoutColor from "../../public/Frame 656.png";
 import Image from 'next/image';
 
-
 interface StarRatingProps {
     onRatingChange: (rating: number) => void;
-    ratingProfessor:number;
 }
 
 const StarRating: React.FC<StarRatingProps> = ({ onRatingChange}) => {
