@@ -6,7 +6,7 @@ El plan de pruebas cubrirá las funcionalidades de la app según la lista de req
 
 ## `Requerimientos`
 
-- [Documentacion](./docs/documentoRQ.md)
+- [Documentacion](./docs/infoProyecto.md)
 
 ## `Alcance de las Pruebas`
 
