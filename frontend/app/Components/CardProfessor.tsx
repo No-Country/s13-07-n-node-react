@@ -15,7 +15,7 @@ function CardProfessor({id, image,lastName, firstName, available, rate, }:{id:st
             <button onClick={()=>{router.push(`/Profesores/${id}`)}}>
                 <div  className='absolute top-0 left-0 right-0 bottom-0 w-full h-full flex justify-between items-end p-[0.5rem]'>
                 <div>
-                    <h2>{firstName} {lastName} </h2>
+                    <h2 className='text-[.8rem] pb-[0.5rem]'>{firstName} {lastName} </h2>
                     <div>
                         {available === true ? (
                         <div className='flex justify-start items-center'>
@@ -26,7 +26,7 @@ function CardProfessor({id, image,lastName, firstName, available, rate, }:{id:st
                     </div>
                 </div>
                 <div className='flex justify-start items-center'>
-                    <p className='text-[10px]'>{rate}</p>
+                    <p className='text-[10px]'> {Math.round(rate * 100) / 100}</p>
                     <Image className='w-[7px] h-[7px] ml-1' alt='rate' src={estrella}/>
                 </div>
             </div>
