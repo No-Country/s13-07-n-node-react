@@ -1,32 +1,10 @@
-> # Documento de Requerimientos
-
-## `Información del Proyecto`
+> # Información del Proyecto
 
 | Team | S13-07-n-node-react |
 | --- | --- |
 | Proyecto | Gestor de Gimnasios |
 | Fecha de preparación | 9/2/2024 |
 | Cliente | No Country |
-
-## `Requerimientos`
-
-<details>
-<summary>Frontend</summary>
-
-- Requerimiento 1
-- Requerimiento 2
-- ...
-
-</details>
-
-<details>
-<summary>Backend</summary>
-
-- Requerimiento 1
-- Requerimiento 2
-- ...
-
-</details>
 
 ---
 
@@ -48,6 +26,7 @@
 
 - 3 dhasboard en total - ( 1 para clientes/usuarios del gym, 1 para empleado/profesor del gym y 1 para dueño/administrador del gym)
 - Ingreso de manera sencilla y eficiente en la app
+
 
 ## `Clases de Usuarios`
 
@@ -99,7 +78,11 @@
 
 </details>
 
-> ## Reglas de Negocio
+---
+
+###  [`Historia de Usuarios`](./docs/documentoRQ.md)
+
+> ### Reglas de Negocio
 
 - [Descripción de las reglas de negocio que deben considerarse en el desarrollo del proyecto.]
 
