@@ -29,7 +29,7 @@ function ProfessorDetails({ params }: { params: {profesor: string;}}) {
 
   return (
     <div className={`w-full h-full  fixed  left-0 right-0 bottom-0 top-0`}>
-      {showReviews === true &&(<ReviewsProfessor closeModal={()=>{setShowReviews(false)}} />)}
+      {showReviews === true &&(<ReviewsProfessor params={params} closeModal={()=>{setShowReviews(false)}} />)}
       <button onClick={()=> {router.push('/Profesores')}} >
         <Image src={X} alt="x" className="w-[24px] h-[24px] absolute right-5 top-5" />
       </button>
