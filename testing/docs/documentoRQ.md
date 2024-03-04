@@ -80,7 +80,7 @@
 
 ---
 
-###  [`Historia de Usuarios`](./docs/user-story.md)
+###  [`Historia de Usuarios`](./user-story.md)
 
 > ### Reglas de Negocio
 
