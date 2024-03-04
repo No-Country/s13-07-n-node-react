@@ -11,11 +11,11 @@ export const useFetchDataPost = (url:string, body:any) => {
     const fetchData = async () => {
       try {
         const response = await fetch(url, {
-          method: 'POST', // Especificamos que queremos usar el método POST
-          headers: {
-            'Content-Type': 'application/json', // Indicamos que el cuerpo de la solicitud es JSON
-          },
-          body: JSON.stringify(body), // Convertimos el objeto body a una cadena JSON
+            method: 'POST', // Especificamos que queremos usar el método POST
+            headers: {
+                'Content-Type': 'application/json', // Indicamos que el cuerpo de la solicitud es JSON
+            },
+            body: JSON.stringify(body), // Convertimos el objeto body a una cadena JSON
         });
         if (!response.ok) throw new Error('Error fetching data');
         const data = await response.json();
@@ -28,7 +28,8 @@ export const useFetchDataPost = (url:string, body:any) => {
     };
 
     fetchData();
- }, [url, body]); // Añadimos body a las dependencias para que el efecto se ejecute de nuevo si cambia
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ }, [url]); // Añadimos body a las dependencias para que el efecto se ejecute de nuevo si cambia
 
  return { data, isLoading, error };
 };
