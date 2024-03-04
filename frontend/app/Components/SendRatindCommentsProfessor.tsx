@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from 'react'
-import { urlAPi } from '../utils/urlBase';
 import CommentProfessor from './CommentProfessor';
 import StarRating from './StarRating';
 import Image from 'next/image';
@@ -36,7 +35,7 @@ const SendRatindCommentsProfessor = ({ params, dataProfessor }: { params: {profe
                         Enviar
                     </button>
                 </div>
-            </div>) : (<SendDataProfessor comment={comment} ratingProfessor={ratingProfessor} params={params} dataProfessor={dataProfessor} />)
+            </div>) : (<SendDataProfessor  comment={comment} ratingProfessor={ratingProfessor} params={params} dataProfessor={dataProfessor} />)
             }
         </>
         

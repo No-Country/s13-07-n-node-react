@@ -10,7 +10,7 @@ import { useFetchDataPost } from '../utils/useFetchDataPost';
 
 const SendDataProfessor = ({ params, dataProfessor, ratingProfessor, comment }: { params: {profesor: string;}, dataProfessor:any, ratingProfessor:number, comment:string}) => {
     const {user} = useGlobalStore<any>((state)=>state)
-    const nameReviewer = {reviewer:`${user.firstName} ${user.lastName}`, rating:ratingProfessor.toString()};
+    const nameReviewer = {reviewer:`${user.firstName} ${user.lastName}`, rating:ratingProfessor.toString(), comment:comment};
     const urlToFetch = `${urlAPi}/instructors/${params.profesor}/reviews`;
     const router = useRouter()
 
