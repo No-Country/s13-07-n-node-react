@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 ---
 runme:
   id: 01HR5K6G1B34E7X4QZD0EYDZ7F
   version: v3
 ---
 
+=======
+>>>>>>> 3eb423a8cc2cbc7026324aede3206a9f767af8bc
 > # Información del Proyecto
 
 | Team | S13-07-n-node-react |
@@ -12,6 +15,7 @@ runme:
 | Fecha de preparación | 9/2/2024 |
 | Cliente | No Country |
 
+<<<<<<< HEAD
 ## `Historias de Usuario`
 
 <details>
@@ -22,6 +26,8 @@ runme:
 <summary>User story 02</summary>
 - Requerimiento 2
 
+=======
+>>>>>>> 3eb423a8cc2cbc7026324aede3206a9f767af8bc
 ---
 
 ## `Tecnologias`
@@ -42,6 +48,7 @@ runme:
 
 - 3 dhasboard en total - ( 1 para clientes/usuarios del gym, 1 para empleado/profesor del gym y 1 para dueño/administrador del gym)
 - Ingreso de manera sencilla y eficiente en la app
+
 
 ## `Clases de Usuarios`
 
@@ -95,7 +102,11 @@ runme:
 
 </details>
 
-> ## Reglas de Negocio
+---
+
+###  [`Historia de Usuarios`](./user-story.md)
+
+> ### Reglas de Negocio
 
 - [Descripción de las reglas de negocio que deben considerarse en el desarrollo del proyecto.]
 
