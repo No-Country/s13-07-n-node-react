@@ -1,5 +1,5 @@
 Feature: Api test Gyms
-    * Se realizan pruebas en el backend sobre la api de creacion de gimnasios
+    * Se realizan pruebas en el backend sobre la api de creacion de actividades
     * probar metodo GET, POST, DELTE, PATCH. PUT
 
 Background: 

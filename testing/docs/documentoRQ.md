@@ -1,6 +1,10 @@
-> # Documento de Requerimientos
+---
+runme:
+  id: 01HR5K6G1B34E7X4QZD0EYDZ7F
+  version: v3
+---
 
-## `Información del Proyecto`
+> # Información del Proyecto
 
 | Team | S13-07-n-node-react |
 | --- | --- |
@@ -8,25 +12,15 @@
 | Fecha de preparación | 9/2/2024 |
 | Cliente | No Country |
 
-## `Requerimientos`
+## `Historias de Usuario`
 
 <details>
-<summary>Frontend</summary>
+<summary>Backlog</summary>
 
+<summary>User story 01</summary>
 - Requerimiento 1
+<summary>User story 02</summary>
 - Requerimiento 2
-- ...
-
-</details>
-
-<details>
-<summary>Backend</summary>
-
-- Requerimiento 1
-- Requerimiento 2
-- ...
-
-</details>
 
 ---
 
@@ -64,6 +58,7 @@
    - Visualizar alumnos activos e inactivos por sede
    - Visualizar su situacion laboral (contratado, planta, municipal, etc)
    - opcion para visualizar intercambio de cometantario entre profesioanles para la elaboracion de la rutina
+
 </details>
 
 <details>
@@ -75,13 +70,14 @@
    - Acceso a paneles de administración.
    - Visualizar de membresias de pagos, cuotas pagas e impagos
    - Visualizar situacion laboral
-   - Opcion de seguimineto 
+   - Opcion de seguimineto
    - Control de stock de la tienda
    - Acceder a los datos de los clientes y profesores
    - Visualizar todos clientes y profesores activos e invactivos por sede
    - Visualizar registro ganancia y gasto que se tuvo que gastar tanto en proveedores como productos y empleados
    - Crud profesor y Cliente
    - Sistema de notificacion de pagos a clientes y profesores
+
 </details>
 
 <details>
