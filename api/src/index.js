@@ -9,8 +9,15 @@ import cookieParser from "cookie-parser";
 import routes from "./routes/routes.js";
 import configureSwagger from "./config/swagger/swagger.js";
 
+const corsOptions = {
+  credentials: true,
+  origin: [
+      `http://localhost:${PORT_SERVER}`,
+      'https://gym-spotter.vercel.app/'
+      ]
+}
 const app = express();
-config(app, [morgan("dev"), cors(), express.urlencoded({ extended: true }), express.json(), cookieParser()]);
+config(app, [morgan("dev"), cors(corsOptions), express.urlencoded({ extended: true }), express.json(), cookieParser()]);
 
 // Utiliza la aplicación configurada que incluye todas las rutas
 app.use("/api/v1", routes);
