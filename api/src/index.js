@@ -13,7 +13,8 @@ const corsOptions = {
   credentials: true,
   origin: [
       `http://localhost:${process.env.PORT_SERVER}`,
-      'https://gym-spotter.vercel.app/'
+      'https://gym-spotter.vercel.app/',
+      'https://gym-spotter.vercel.app'
       ]
 }
 const app = express();
