@@ -12,7 +12,7 @@ import configureSwagger from "./config/swagger/swagger.js";
 const corsOptions = {
   credentials: true,
   origin: [
-      `http://localhost:${PORT_SERVER}`,
+      `http://localhost:${process.env.PORT_SERVER}`,
       'https://gym-spotter.vercel.app/'
       ]
 }
