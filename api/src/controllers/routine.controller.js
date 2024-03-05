@@ -5,12 +5,14 @@ import {
   activateRoutineService,
   updateRoutineService,
   searchRoutineByNameService,
+  selectRoutine,
+  completeRoutine,
 } from "../services/routine.services.js";
 
 // crear una nueva rutina
 export const createRoutine = async (req, res) => {
   try {
-    const { idClient, idTypeRoutine, idUser, name, list_exercise,times } = req.body;
+    const { idClient, idTypeRoutine, idUser, name, list_exercise, times } = req.body;
     const newRoutine = await createRoutineService(idClient, idTypeRoutine, idUser, name, list_exercise, times);
     res.status(201).json(newRoutine);
   } catch (error) {
@@ -76,4 +78,14 @@ export const searchRoutineByName = async (req, res) => {
     console.error("Error searching routine by name:", error);
     res.status(500).json({ message: "Error searching routine by name" });
   }
+};
+
+export const SearchRoutine = async (req, res) => {
+  const searchRoutines = await selectRoutine(req.params.idUser, req.params.idRutine, req.query.page);
+  res.json(searchRoutines);
+};
+
+export const CompleteRoutine = async (req, res) => {
+  const addRoutines = await completeRoutine(req.body);
+  res.json(addRoutines);
 };

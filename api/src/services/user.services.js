@@ -3,6 +3,7 @@ import { user } from "../db/schemas/user.schema.js";
 import { descriptPass, hassPass } from "../middlewares/encrypt.js";
 import { sendEmail } from "../middlewares/nodeMailer.js";
 import cloudinary from "../config/cloudinary/cloudinary-config.js";
+
 const { NOT_FOUND, CREATED, OK } = pkg;
 export const userServiceFilter = async (params = {}) => {
   const { firstName, lastName, phone, email, role_id } = params;
@@ -17,9 +18,9 @@ export const userServiceFilter = async (params = {}) => {
           { role_id: { _id: role_id } },
         ],
       })
-      .populate("role_id");
+      .populate("role_id routines.routinesDays");
   }
-  return await user.find().populate("role_id");
+  return await user.find().populate("role_id routines.routinesDays");
 };
 
 export const userServicePost = async (body, file) => {
@@ -44,8 +45,8 @@ export const userServicePost = async (body, file) => {
     const { url } = imageUrl;
     body["url"] = url;
   }
-
   const passHash = await hassPass(pass);
+
   const userCreate = await user.create({
     firstName: firstName.toLowerCase(),
     lastName: lastName.toLowerCase(),
