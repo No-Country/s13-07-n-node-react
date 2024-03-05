@@ -4,7 +4,7 @@
 
 El plan de pruebas cubrirá las funcionalidades de la app según la lista de requerimientos en el backlog Frontend y Backend. Se realizaron escenarios de pruebas para optimizar su cobertura.
 
-## `Requerimientos`
+## `Historias de Usuarios`
 
 - [Documentacion](./docs/infoProyecto.md)
 
