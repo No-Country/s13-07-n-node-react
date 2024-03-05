@@ -13,9 +13,9 @@ const corsOptions = {
   credentials: true,
   origin: [
       `http://localhost:${process.env.PORT_SERVER}`,
-      'https://gym-spotter.vercel.app/',
-      'https://gym-spotter.vercel.app'
-      ]
+      'https://gym-spotter.vercel.app',
+      'http://localhost:3000`'
+  ]
 }
 const app = express();
 config(app, [morgan("dev"), cors(corsOptions), express.urlencoded({ extended: true }), express.json(), cookieParser()]);
