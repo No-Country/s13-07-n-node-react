@@ -36,7 +36,7 @@ const Estadisticas = () => {
     <GlobalContainer>
       <Header />
         <SectionButton active={true} section='Tu rendimiento' description='Basado en los ejercicios completados esta semana'/>
-        <div className='flex justify-between mb-10px text-center'>
+        <div className='flex justify-between mb-10px text-center '>
           <h2
             className='font-medium text-sm text-primaryDefault rounded-custom1 border-1.5 border-solid border-primaryDefault py-2.5 px-5 h-10 flex-grow flex justify-center items-center hover:bg-primaryDefault hover:text-white'
             style={{ flexBasis: '33.33%' }}
@@ -108,11 +108,10 @@ const Estadisticas = () => {
         <div className='p-4 '>
           <Grafic2 />
         </div>
-        <div className='flex justify-between items-center gap-4 border-t border-gray-700 h-41px'>
+        <div className=' mb-[5rem] flex justify-between items-center gap-4 border-t border-gray-700 h-41px'>
           <h2 className='font-medium text-sm'>Ultima Semana</h2>
           <Image src={arrowDownWhite} alt='arrow-down' />
         </div>
-      
       <Navbar />
     </GlobalContainer>
   )
