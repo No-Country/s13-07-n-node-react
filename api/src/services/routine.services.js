@@ -276,7 +276,7 @@ export const completeRoutine = async (body) => {
   const day = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado "];
   const currentDate = new Date();
   const weekDayNumber = currentDate.getDay();
-  const weekDay = currentDate.getDate();
+  const weekDay = currentDate.getMDate();
   const month = currentDate.getMonth() + 1;
   const year = currentDate.getFullYear();
   const formatteddate = `${year}-${month < 10 ? "0" : ""}${month}-${weekDay < 10 ? "0" : ""}${weekDay}`;
