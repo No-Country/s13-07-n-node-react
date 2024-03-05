@@ -102,15 +102,43 @@ export class InstructorService {
     return instructor;
   }
 
-  async change( id, params ) {
-    const instructor = await user.findById( id )
-    console.log( '>> CHANGING' )
-    if( instructor ) {
-      console.log( '>>\t', instructor )
-      instructor.schedule = params.schedule
-      await instructor.save()
-    } else {
-      throw new Object( {message: "Instructor not found" })
+  async change(id, params) {
+    const valid = function( attr, value ) {
+      const validators = {
+        schedule: {
+          valid: function( value ) {
+            const { days, init_time, finish_time } = value;
+            const days_valid = 1 <= days.length && days.length <= 6 && days.every( e => 0 <= e && e <= 6 )
+            
+            const init_time_valid = typeof init_time === Number && 6<=init_time && init_time <= 22
+            const finish_time_valid = typeof finish_time === Number && 7 <= finish_time && finish_time <= 23
+
+            return days_valid && init_time_valid && finish_time_valid && (finish_time - init_time > 1 )
+          }
+        }
+      }
+      const valid_attributes = 'pass,image,schedule,description,phone'.split(',')
+      if( valid_attributes.includes( attr ) ) {
+        validators[attr].valid( value )
+      }
+    }
+
+    try {
+      const instructor = await user.findById(id).exec()
+      console.log('>> CHANGING', id, instructor )
+      if (instructor) {
+        console.log('>>\t', instructor)
+        for (const attr in params) {
+          if (valid(attr, params[attr])) {
+              instructor[attr] = params[attr]
+          }
+        }
+        await instructor.save()
+      } else {
+        throw new Object({ message: "Instructor not found" })
+      }
+    } catch (error) {
+      console.log( '>> CHANGE', error )
     }
   }
 }
