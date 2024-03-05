@@ -12,7 +12,7 @@ const port = process.env.PORT_SERVER || 3000
 const corsOptions = {
   credentials: true,
   origin: [
-      `http://localhost:${port}`,
+      `http://localhost:3000`,
       'https://gym-spotter.vercel.app',
   ]
 }
