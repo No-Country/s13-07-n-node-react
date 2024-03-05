@@ -7,6 +7,7 @@ import {
   searchRoutineByNameService,
   selectRoutine,
   completeRoutine,
+  resultRoutines,
 } from "../services/routine.services.js";
 
 // crear una nueva rutina
@@ -88,4 +89,9 @@ export const SearchRoutine = async (req, res) => {
 export const CompleteRoutine = async (req, res) => {
   const addRoutines = await completeRoutine(req.body);
   res.json(addRoutines);
+};
+
+export const resultRoutine = async (req, res) => {
+  const result = await resultRoutines(req.params.idUser, req.params.idRutine);
+  res.json(result);
 };
