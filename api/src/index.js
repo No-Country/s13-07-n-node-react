@@ -8,7 +8,6 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import routes from "./routes/routes.js";
 import configureSwagger from "./config/swagger/swagger.js";
-const port = process.env.PORT_SERVER || 3000
 const corsOptions = {
   credentials: true,
   origin: [
