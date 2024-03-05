@@ -10,7 +10,6 @@ import { login } from '../utils/inicioSesion';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation'
 import { useGlobalStore } from '../store/GlobalStore';
-import { dashboardRedirect } from '../utils/DashbordRedirect';
 
 
 export default function LoginForm() {
@@ -76,7 +75,8 @@ export default function LoginForm() {
         setLoading(false)
         resetForm();
         setUser(response.user);
-        const dashRedirect = await dashboardRedirect(response.user.role_id);
+        console.log(response.user.role_id.name)
+        const dashRedirect = response.user.role_id.name;
         setRolUser(dashRedirect)
         setIsAuthClient(true)
         //Aqui va una  validacion de acuerdo al rol del usuario en base a ello redirige a dashboards distintos
