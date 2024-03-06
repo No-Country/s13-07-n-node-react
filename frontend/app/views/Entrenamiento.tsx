@@ -12,6 +12,7 @@ import ImagenRutinaBiceps from "@/public/ImagenRutinaBiceps.png";
 import Calendario from "../Components/Calendario";
 import Spotify from "../Components/Spotify";
 import GlobalContainer from "../Components/GlobalContainer";
+import ContainerRoutines from "../Components/Routines/ContainerRoutines";
 
 const Entrenamiento = () => {
     return (
@@ -39,23 +40,23 @@ const Entrenamiento = () => {
                     <CardRutinas
                         imagen={ImagenRutinaSentadilla}
                         tiempo={30}
-                        calorias={200}
                         active
                         ejercicio="Sentadillas"
+                        idRoutine="asd"
                     />
                     <CardRutinas
                         imagen={ImagenRutinaEspalda}
                         tiempo={30}
-                        calorias={300}
                         active
                         ejercicio="Espalda"
+                        idRoutine="asd"
                     />
                     <CardRutinas
                         imagen={ImagenRutinaCuerdas}
                         tiempo={20}
-                        calorias={100}
                         active
                         ejercicio="Cuerda"
+                        idRoutine="asd"
                     />
                 </div>
             </div>
@@ -66,31 +67,9 @@ const Entrenamiento = () => {
                     active={false}
                 />
             </div>
-            <div className="h-52 overflow-hidden overflow-x-auto">
-                <div className='flex gap-2 w-[480px] '>
-                    <CardRutinas
-                        imagen={ImagenRutinaBiceps}
-                        tiempo={30}
-                        calorias={200}
-                        active={false}
-                        ejercicio="Biceps"
-                    />
-                    <CardRutinas
-                        imagen={ImagenRutinaEspalda}
-                        tiempo={30}
-                        calorias={300}
-                        active={false}
-                        ejercicio="Espalda"
-                    />
-                    <CardRutinas
-                        imagen={ImagenRutinaCuerdas}
-                        tiempo={20}
-                        calorias={100}
-                        active={false}
-                        ejercicio="Cuerdas"
-                    />
-                </div>
-            </div>
+
+            <ContainerRoutines/>
+            
             <div className='mt-9'>
                 <SectionButton
                     section='Horarios de la sede'
