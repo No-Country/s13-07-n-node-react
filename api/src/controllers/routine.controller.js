@@ -7,13 +7,22 @@ import {
   searchRoutineByNameService,
   selectRoutine,
   completeRoutine,
+  resultRoutines,
 } from "../services/routine.services.js";
 
 // crear una nueva rutina
 export const createRoutine = async (req, res) => {
   try {
     const { idClient, idTypeRoutine, idUser, name, list_exercise, times } = req.body;
-    const newRoutine = await createRoutineService(idClient, idTypeRoutine, idUser, name, list_exercise, times);
+    const newRoutine = await createRoutineService(
+      idClient,
+      idTypeRoutine,
+      idUser,
+      name,
+      list_exercise,
+      times,
+      req.file?.path,
+    );
     res.status(201).json(newRoutine);
   } catch (error) {
     console.error("Error creating routine:", error);
@@ -88,4 +97,9 @@ export const SearchRoutine = async (req, res) => {
 export const CompleteRoutine = async (req, res) => {
   const addRoutines = await completeRoutine(req.body);
   res.json(addRoutines);
+};
+
+export const resultRoutine = async (req, res) => {
+  const result = await resultRoutines(req.params.idUser, req.params.idRutine);
+  res.json(result);
 };

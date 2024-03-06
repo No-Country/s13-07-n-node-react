@@ -5,19 +5,25 @@ import { user } from "../db/schemas/user.schema.js";
 import TypeRoutine from "../db/schemas/typeRoutine.schema.js";
 import { pagination, search_routine } from "../function/Routine.js";
 import { exercisePerformed } from "../db/schemas/exercisePerformed.js";
+import { return_date } from "../function/initialDate.js";
+import cloudinary from "../config/cloudinary/cloudinary-config.js";
 const { CREATED, NOT_FOUND, OK } = pkg;
-export const createRoutineService = async (idClient, idTypeRoutine, idUser, name, list_exercise, times) => {
+export const createRoutineService = async (idClient, idTypeRoutine, idUser, name, list_exercise, times, file) => {
   try {
-    if (!idTypeRoutine || !idUser || !name || list_exercise.length == 0 || !times) {
+    if (!idTypeRoutine || !idUser || !name || list_exercise.length == 0 || !times || !file) {
       return {
         status: NOT_FOUND,
         message: "Complete todos los campos",
       };
     }
+    const imageUrl = await cloudinary.uploader.upload(file);
+    const { url } = imageUrl;
+
     const newRoutine = new Routine({
       idTypeRoutine,
       idUser,
       name,
+      image: url,
     });
     for (const exercises of list_exercise) {
       const object_new = {};
@@ -27,10 +33,7 @@ export const createRoutineService = async (idClient, idTypeRoutine, idUser, name
         object_new["cant"] = exercises.cant;
         object_new["repetition"] = exercises.repetition;
         object_new["weight"] = exercises.weight;
-        const seaerchType = await TypeRoutine.findOne({ _id: idTypeRoutine }).exec();
-        if (seaerchType && seaerchType.name == "cardio") {
-          object_new["time"] = exercises.time;
-        }
+        object_new["time"] = exercises.time;
         newRoutine.exercises.push(object_new);
         searchExercise.routines.push(newRoutine);
       }
@@ -274,23 +277,19 @@ export const completeRoutine = async (body) => {
     };
   }
   const day = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado "];
-  const currentDate = new Date();
-  const weekDayNumber = currentDate.getDay();
-  const weekDay = currentDate.getMDate();
-  const month = currentDate.getMonth() + 1;
-  const year = currentDate.getFullYear();
-  const formatteddate = `${year}-${month < 10 ? "0" : ""}${month}-${weekDay < 10 ? "0" : ""}${weekDay}`;
   const userSearch = await user.findOne({ _id: idUser }).exec();
   const routineSearch = await Routine.findOne({ _id: idRutine }).exec();
+  const search_date = return_date();
   if (userSearch && routineSearch) {
     const complet = await exercisePerformed.create({
       state: state,
       exerciseOne: exerciseOne,
-      days: day[weekDayNumber],
-      dateDays: formatteddate,
+      days: day[search_date.weekDayNumber],
+      dateDays: search_date.formatteddate,
       clientId: userSearch,
       routine: routineSearch,
     });
+    complet.save();
     return complet;
   } else {
     return {
@@ -298,4 +297,32 @@ export const completeRoutine = async (body) => {
       message: "Usuario o rutina no encontrado",
     };
   }
+};
+export const resultRoutines = async (idUser, idRutine) => {
+  if (!idUser) {
+    return {
+      status: NOT_FOUND,
+      message: "Usuario no encontrado",
+    };
+  }
+  if (!idRutine) {
+    return {
+      status: NOT_FOUND,
+      message: "Rutina no encontrado",
+    };
+  }
+  const search_date = return_date();
+  const results = await exercisePerformed
+    .find({
+      $and: [{ clientId: idUser }, { routine: idRutine }, { dateDays: search_date.formatteddate }],
+    })
+    .exec();
+  let resultComplet = results.filter((result) => result.state == true);
+  let resultIncomplet = results.filter((result) => result.state == false);
+  let porcentaje = (resultComplet.length / results.length) * 100;
+  return {
+    resultComplet,
+    resultIncomplet,
+    porcentaje: `${porcentaje}%`,
+  };
 };
