@@ -444,6 +444,9 @@
 									"comment": {
 										"type": "string",
 										"summary": "Comentario que escribe la persona que hace la reseña"
+									},
+									"client_id": {
+
 									}
 								}
 							},
@@ -460,6 +463,20 @@
 						"description": "El registro de la reseña se realizó con éxito. No retorna contenido"
 					}
 				}
+			}
+		}
+		,"/instructors/{id}/reviews/{client_id}": {
+			"summary": "Gestiona las reseñas del cliente a el instructor indicado"
+			, "description": "El usuario puede ver o reemplazar la reseña del cliente identificada por el client_id, siempre indicando el instructor con el id del instructor"
+			,
+			"get": {
+				"summary": "Muestra la reseña del cliente"
+				,"tags": ["Instructors"]
+
+			}
+			, "put": {
+				"summary": "Actualiza la reseña, tanto el comentario como el puntaje"
+				, "tags": ["Instructors"]
 			}
 		},
 		"/gyms": {
