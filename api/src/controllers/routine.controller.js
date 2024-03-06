@@ -58,7 +58,7 @@ export const activateRoutine = async (req, res) => {
 export const updateRoutine = async (req, res) => {
   try {
     const { routineId } = req.params;
-    const updatedRoutine = await updateRoutineService(routineId, req.body);
+    const updatedRoutine = await updateRoutineService(routineId, req.body,req.file.path);
     res.json(updatedRoutine);
   } catch (error) {
     console.error("Error updating routine:", error);

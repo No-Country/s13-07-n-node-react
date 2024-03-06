@@ -91,7 +91,7 @@ export const activateRoutineService = async (routineId) => {
   }
 };
 
-export const updateRoutineService = async (routineId, body) => {
+export const updateRoutineService = async (routineId, body, file) => {
   try {
     const { name, idUser, idClient, list_exercise, idTypeRoutine } = body;
     const object_create = {};
@@ -101,6 +101,13 @@ export const updateRoutineService = async (routineId, body) => {
         message: "seleccione una rutina a modificar",
       };
     }
+
+    if (file) {
+      const imageUrl = await cloudinary.uploader.upload(file);
+      const { url } = imageUrl;
+      object_create["image"] = url;
+    }
+
     if (name) {
       object_create["name"] = name;
     }
@@ -128,10 +135,7 @@ export const updateRoutineService = async (routineId, body) => {
           object_new["cant"] = exercises.cant;
           object_new["repetition"] = exercises.repetition;
           object_new["weight"] = exercises.weight;
-          const seaerchType = await TypeRoutine.findOne({ _id: idTypeRoutine }).exec();
-          if (seaerchType && seaerchType.name == "cardio") {
-            object_new["time"] = exercises.time;
-          }
+          object_new["time"] = exercises.time;
           if (updatedRoutine) {
             updatedRoutine.exercises.push(object_new);
             searchExercise.routines.push(updatedRoutine);
