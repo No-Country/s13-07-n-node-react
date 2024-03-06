@@ -10,8 +10,8 @@ import {
 const router = Router();
 
 //Rutas CRUD para routine
-
-router.post("/create", createRoutine);
+import { upload } from "../middlewares/muter.cjs";
+router.post("/create", upload, createRoutine);
 router.put("/deactivate/:routineId", deactivateRoutine);
 router.put("/activate/:routineId", activateRoutine);
 router.put("/update/:routineId", updateRoutine);

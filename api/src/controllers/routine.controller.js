@@ -11,7 +11,7 @@ import {
 export const createRoutine = async (req, res) => {
   try {
     const { idClient, idTypeRoutine, idUser, name, list_exercise,times } = req.body;
-    const newRoutine = await createRoutineService(idClient, idTypeRoutine, idUser, name, list_exercise, times);
+    const newRoutine = await createRoutineService(idClient, idTypeRoutine, idUser, name, list_exercise, times, req.file?.path);
     res.status(201).json(newRoutine);
   } catch (error) {
     console.error("Error creating routine:", error);

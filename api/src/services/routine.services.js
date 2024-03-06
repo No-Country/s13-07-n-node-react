@@ -3,19 +3,24 @@ import Routine from "../db/schemas/routine.schema.js";
 import { exercise } from "../db/schemas/exercise.schema.js";
 import { user } from "../db/schemas/user.schema.js";
 import TypeRoutine from "../db/schemas/typeRoutine.schema.js";
+import cloudinary from "../config/cloudinary/cloudinary-config.js";
 const { CREATED, NOT_FOUND, OK } = pkg;
-export const createRoutineService = async (idClient, idTypeRoutine, idUser, name, list_exercise, times) => {
+export const createRoutineService = async (idClient, idTypeRoutine, idUser, name, list_exercise, times, file) => {
   try {
-    if (!idTypeRoutine || !idUser || !name || list_exercise.length == 0 || !times) {
+    if (!idTypeRoutine || !idUser || !name || list_exercise.length == 0 || !times || !file) {
       return {
         status: NOT_FOUND,
         message: "Complete todos los campos",
       };
     }
+    const imageUrl = await cloudinary.uploader.upload(file);
+    const { url } = imageUrl;
+
     const newRoutine = new Routine({
       idTypeRoutine,
       idUser,
       name,
+      image: url,
     });
     for (const exercises of list_exercise) {
       const object_new = {};
@@ -25,10 +30,7 @@ export const createRoutineService = async (idClient, idTypeRoutine, idUser, name
         object_new["cant"] = exercises.cant;
         object_new["repetition"] = exercises.repetition;
         object_new["weight"] = exercises.weight;
-        const seaerchType = await TypeRoutine.findOne({ _id: idTypeRoutine }).exec();
-        if (seaerchType && seaerchType.name == "cardio") {
-          object_new["time"] = exercises.time;
-        }
+        object_new["time"] = exercises.time;
         newRoutine.exercises.push(object_new);
         searchExercise.routines.push(newRoutine);
       }
