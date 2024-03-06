@@ -1,6 +1,17 @@
 import { InstructorsController } from "../controllers/instructors.controller.js";
 import { checkSchema } from 'express-validator'
 
+const review_for_client_validation = function() {
+  return checkSchema({
+    client: {
+      trim: true
+      , isMongoId: {
+        errorMessage: 'El ID debe ser un UUID válido'
+      }
+    }
+  }, ['params'])
+}
+
 const review_post_validation = function() {
   return checkSchema( {
     reviewer: {
@@ -46,6 +57,7 @@ export class Instructors {
     router.patch(AN_INSTRUCTOR_PATH, instructors.update);
     router.delete(AN_INSTRUCTOR_PATH, instructors.destroy);
     router.get(REVIEW_PATH, instructors.show_reviews);
+    router.get(REVIEW_PATH.concat('/:client'), review_for_client_validation(), instructors.show_review_for);
     router.post(REVIEW_PATH, review_post_validation(), instructors.enter_review);
   }
 }
