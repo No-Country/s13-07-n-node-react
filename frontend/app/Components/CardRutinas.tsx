@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 import flecha from "../../public/Arrow - Right 2.svg";
 import Bookmark from "../../public/Bookmark.svg";
 import Link from "next/link";
@@ -23,4 +22,3 @@ const CardRutinas = ({imagen, tiempo,  active = false, ejercicio = '', idRoutine
 };
 
 export default CardRutinas;
- 

@@ -2,11 +2,10 @@ import AuthRoute from "@/app/Components/Auth/AuthRoute";
 import { Metadata } from "next";
 
 const metadata:Metadata = {
-
-    title:"Entrenamiento",
-    description:"Seccion de entramiento del usuario",
+    title:"Ejercicios  | rutinas",
+    description:"Seccion de un ejercicio del usuario",
 }
-export default function EntrenamientoLayout({
+export default function EjercicioLayout({
     children,
     }: {
     children: React.ReactNode

@@ -1,6 +1,5 @@
 import React from 'react'
 import CardProfessor from './CardProfessor'
-import professor2 from "../../public/Rectangle 4 (1).png";
 import { urlAPi } from '../utils/urlBase';
 import { useFetchDataGet } from '../utils/useFetchDataGet';
 import Loader from './Loader';
