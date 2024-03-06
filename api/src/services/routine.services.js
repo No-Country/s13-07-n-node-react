@@ -2,7 +2,6 @@ import pkg from "http-status";
 import Routine from "../db/schemas/routine.schema.js";
 import { exercise } from "../db/schemas/exercise.schema.js";
 import { user } from "../db/schemas/user.schema.js";
-import TypeRoutine from "../db/schemas/typeRoutine.schema.js";
 import { pagination, search_routine } from "../function/Routine.js";
 import { exercisePerformed } from "../db/schemas/exercisePerformed.js";
 import { return_date } from "../function/initialDate.js";
@@ -18,14 +17,15 @@ export const createRoutineService = async (idClient, idTypeRoutine, idUser, name
     }
     const imageUrl = await cloudinary.uploader.upload(file);
     const { url } = imageUrl;
-
     const newRoutine = new Routine({
-      idTypeRoutine,
-      idUser,
-      name,
+      idTypeRoutine: idTypeRoutine,
+      idUser: idUser,
+      name: name,
       image: url,
+      times: times,
     });
-    for (const exercises of list_exercise) {
+    const formatte = list_exercise.map((jsonFile) => JSON.parse(jsonFile));
+    for (const exercises of formatte) {
       const object_new = {};
       const searchExercise = await exercise.findOne({ _id: exercises.exercise });
       if (searchExercise) {
@@ -36,8 +36,8 @@ export const createRoutineService = async (idClient, idTypeRoutine, idUser, name
         object_new["time"] = exercises.time;
         newRoutine.exercises.push(object_new);
         searchExercise.routines.push(newRoutine);
+        await searchExercise.save();
       }
-      await searchExercise.save();
     }
     let client;
     if (idClient) {
@@ -125,9 +125,10 @@ export const updateRoutineService = async (routineId, body, file) => {
     if (object_create) {
       updatedRoutine = await Routine.findByIdAndUpdate(routineId, object_create, { new: true });
     }
-    if (list_exercise.length > 0) {
+    if (list_exercise && list_exercise.length > 0) {
       updatedRoutine.exercises = [];
-      for (const exercises of list_exercise) {
+      const formatte = list_exercise.map((jsonFile) => JSON.parse(jsonFile));
+      for (const exercises of formatte) {
         const object_new = {};
         const searchExercise = await exercise.findOne({ _id: exercises.exercise });
         if (searchExercise) {

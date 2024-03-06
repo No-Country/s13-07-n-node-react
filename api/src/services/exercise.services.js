@@ -113,7 +113,7 @@ export const exerciseServiceUpdate = async (body, id, files) => {
       error.push("Ingrese la imagen o el video del ejercicio");
     } else {
       for (const file of files) {
-        if (file.mimetype.includes("video")) {
+        if (file.mimetype.includes("video") || file.mimetype.includes("webp")) {
           const update = await cloudinary.uploader.upload(file["path"], { resource_type: "video" });
           objectUpdate["video"] = update["url"];
         } else {

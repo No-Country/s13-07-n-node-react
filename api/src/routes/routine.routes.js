@@ -15,9 +15,9 @@ const router = Router();
 //Rutas CRUD para routine
 import { upload } from "../middlewares/muter.cjs";
 router.post("/create", upload, createRoutine);
-router.put("/deactivate/:routineId", upload, deactivateRoutine);
+router.put("/deactivate/:routineId", deactivateRoutine);
 router.put("/activate/:routineId", activateRoutine);
-router.put("/update/:routineId", updateRoutine);
+router.put("/update/:routineId", upload, updateRoutine);
 router.get("/all", getAllRoutines);
 router.get("/search", searchRoutineByName);
 router.get("/selectRoutine/:idUser/:idRutine", SearchRoutine);
