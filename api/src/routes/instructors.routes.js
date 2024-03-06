@@ -39,7 +39,6 @@ const review_post_validation = function() {
         options: { max: 150 }
         , errorMessage: 'No debe exceder los 150 caracteres'
       }
-      , isAlpha: { errorMessage: 'Solo debe contener caracteres legibles' }
     }
   }, ['body'])
 }
@@ -59,5 +58,6 @@ export class Instructors {
     router.get(REVIEW_PATH, instructors.show_reviews);
     router.get(REVIEW_PATH.concat('/:client'), review_for_client_validation(), instructors.show_review_for);
     router.post(REVIEW_PATH, review_post_validation(), instructors.enter_review);
+    router.put( REVIEW_PATH.concat('/:client_id'), review_post_validation(), instructors.update_review_for );
   }
 }

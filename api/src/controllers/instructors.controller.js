@@ -165,6 +165,41 @@ export class InstructorsController {
     res.status(response.status).json(response.body);
   }
 
+  async update_review_for( req, res ) {
+    const { id, client_id } = req.params
+
+    const response = {
+      status: 400,
+      body: {
+        message: 'can not processed'
+      }
+    }
+  
+    const result = validationResult( req )
+    if( !result.isEmpty() || !id || !client_id ) {
+      console.log( '>> PUT REVIEW', id, client_id )
+      response.body.errors = result.array().map( e => e.msg )
+      return res.status( response.status ).json( response.body )
+    }
+
+    try {
+      const { reviewer, rating, comment, client } = req.body
+      if( client != client_id ) throw new Object( {message: 'client id not match'} )
+      const params = {
+        id, client_id, reviewer, rating, comment, client
+      }
+      await instructors.update_review_for(params)
+      response.status = 204
+      response.body = null
+
+    } catch (error) {
+      console.error( '>> PUT REVIEW', error )
+      response.body.message = error
+    }
+
+    res.status( response.status ).json( response.body )
+  }
+
   async create(req, res) {
     const response = {
       body: {

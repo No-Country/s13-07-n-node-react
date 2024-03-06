@@ -69,6 +69,33 @@ export class InstructorService {
     await instructor.save();
   }
 
+  async update_review_for( params ) {
+    const { id, client, reviewer, rating, comment } = params 
+    const instructor = await this.find_by( { id } )
+    if(!instructor) {
+      console.log( 'UPDATING REVIEW', id, instructor )
+      throw new Object( { message: 'instructor not found' } )
+    }
+
+    console.log( '>> UPDATING REVIEW', instructor.reviews)
+    const reviews = instructor.reviews.filter( e => e.client.toString() == client )
+    if (reviews.length === 0) {
+      instructor.reviews.push({
+        reviewer, rating, comment, client
+      })
+    } else {
+      reviews[0].comment = comment
+      reviews[0].rating = rating
+    }
+
+    try {
+      await instructor.save()
+    } catch (error) {
+      console.error( '>> UPDATING REVIEW', error )
+    }
+    console.log( '>> UPDATING REVIEW', instructor.reviews)
+  }
+
   verified(params) {
     const { firstName, lastName, email, pass, description, phone } = params;
 
