@@ -3,7 +3,7 @@ import { checkSchema } from 'express-validator'
 
 const review_for_client_validation = function() {
   return checkSchema({
-    client: {
+    client_id: {
       trim: true
       , isMongoId: {
         errorMessage: 'El ID debe ser un UUID válido'
@@ -17,7 +17,6 @@ const review_post_validation = function() {
     reviewer: {
       trim: true
       , notEmpty: { errorMessage: 'Debe ingresar el nombre del revisor' }
-      //, isAlpha: { errorMessage: 'Debe contener únicamente caracteres visible no símbolos'}
     }
     , rating: {
       trim: true
@@ -50,14 +49,14 @@ const AN_INSTRUCTOR_PATH = INSTRUCTORS_PATH.concat("/:id");
 const REVIEW_PATH = AN_INSTRUCTOR_PATH.concat("/reviews");
 export class Instructors {
   static config(router) {
-    router.get(INSTRUCTORS_PATH, instructors.index);
-    router.get(AN_INSTRUCTOR_PATH, instructors.show);
-    router.post(INSTRUCTORS_PATH, instructors.create);
-    router.patch(AN_INSTRUCTOR_PATH, instructors.update);
-    router.delete(AN_INSTRUCTOR_PATH, instructors.destroy);
-    router.get(REVIEW_PATH, instructors.show_reviews);
-    router.post(REVIEW_PATH, review_post_validation(), instructors.enter_review);
-    router.get(REVIEW_PATH.concat('/:client_id'), review_for_client_validation(), instructors.show_review_for);
-    router.put( REVIEW_PATH.concat('/:client_id'), review_post_validation(), instructors.update_review_for );
+    router.get(REVIEW_PATH.concat('/:client_id'), review_for_client_validation(), instructors.show_review_for)
+    router.get(REVIEW_PATH, instructors.show_reviews)
+    router.get(INSTRUCTORS_PATH, instructors.index)
+    router.get(AN_INSTRUCTOR_PATH, instructors.show)
+    router.post(INSTRUCTORS_PATH, instructors.create)
+    router.patch(AN_INSTRUCTOR_PATH, instructors.update)
+    router.delete(AN_INSTRUCTOR_PATH, instructors.destroy)
+    router.post(REVIEW_PATH, review_post_validation(), instructors.enter_review)
+    router.put( REVIEW_PATH.concat('/:client_id'), review_post_validation(), instructors.update_review_for )
   }
 }

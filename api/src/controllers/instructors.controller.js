@@ -89,21 +89,26 @@ export class InstructorsController {
     };
 
     const { id } = req.params;
-    const reviews = await instructors.reviews_for(id);
-    if (reviews) {
-      if (reviews.rating === 0 && reviews.reviews.length === 0) {
-        response.message = "instructor has not reviews";
-      } else {
-        response.body.message = "reviews found";
-        response.body.data = {
-          rating: reviews.rating
-          , reviews: reviews.reviews.reduce((col, review) => {
-            col.push( parse_review( id, review ) )
-            return col;
-          }, [])
+    try {
+      const reviews = await instructors.reviews_for(id);
+      if (reviews) {
+        if (reviews.rating === 0 && reviews.reviews.length === 0) {
+          response.message = "instructor has not reviews";
+        } else {
+          response.body.message = "reviews found";
+          response.body.data = {
+            rating: reviews.rating
+            , reviews: reviews.reviews.reduce((col, review) => {
+              col.push(parse_review(id, review))
+              return col;
+            }, [])
+          }
         }
+        response.status = 200;
       }
-      response.status = 200;
+    } catch (error) {
+      response.status = 400
+      response.body.errors = error
     }
     res.status(response.status).json(response.body);
   }
@@ -111,7 +116,7 @@ export class InstructorsController {
   async show_review_for( req, res ) {
     const response = {
       body: {
-        message: 'review not found'
+        message: 'review not found' 
       }
       , status: 404
     }

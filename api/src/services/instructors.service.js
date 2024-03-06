@@ -48,7 +48,7 @@ export class InstructorService {
       reviews = reviews.filter( e => e.client.toString() == where.client )
     }
 
-    if( reviews.length === 0 ) {
+    if( where.client !== '' && reviews.length === 0 ) {
       throw new Object( {message: 'the client did not review the instructor'} )
     }
 
