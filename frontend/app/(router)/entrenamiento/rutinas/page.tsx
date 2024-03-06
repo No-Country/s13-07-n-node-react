@@ -1,5 +1,5 @@
-import flecha from "../../public/Arrow - Right 2.svg";
-import SettingIco from "../../public/SettingIco.svg";
+import flecha from "../../../../public/Arrow - Right 2.svg";
+import SettingIco from "../../../../public/SettingIco.svg";
 import EjerciciosSemana from "@/app/Components/EjerciciosSemana";
 import GlobalContainer from "@/app/Components/GlobalContainer";
 import Header from '@/app/Components/Header'
