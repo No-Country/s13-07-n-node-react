@@ -36,6 +36,16 @@ function parse(instructor) {
   );
 }
 
+function parse_review( instructor_id, review ) {
+  const { reviewer, rating, comment, client } = review
+  const url = `${url_to_reviews_for(instructor_id)}/${client}`
+  return {
+    reviewer, rating, comment, client
+    , url
+  }
+}
+
+
 export class InstructorsController {
   async index(req, res) {
     let response = { message: "no instructors" };
@@ -88,8 +98,7 @@ export class InstructorsController {
         response.body.data = {
           rating: reviews.rating
           , reviews: reviews.reviews.reduce((col, review) => {
-            const { reviewer, rating, comment } = review
-            col.push({ reviewer, rating, comment })
+            col.push( parse_review( id, review ) )
             return col;
           }, [])
         }
@@ -97,6 +106,33 @@ export class InstructorsController {
       response.status = 200;
     }
     res.status(response.status).json(response.body);
+  }
+
+  async show_review_for( req, res ) {
+    const response = {
+      body: {
+        message: 'review not found'
+      }
+      , status: 404
+    }
+    const result = validationResult( req )
+    if( result.isEmpty() ) {
+      const where = { client: req.params.client }
+      try {
+        const review = await instructors.reviews_for(req.params.id, where)
+        response.body.message = 'review found'
+        response.body.data = parse_review(req.params.id, review.reviews[0])
+        response.status = 200
+      } catch (error) {
+        response.status = 400
+        response.body.message = error.message
+      }
+    } else {
+      console.log( '>> Review for', result.array() )
+    }
+
+
+    res.status( response.status ).json( response.body )
   }
 
   async enter_review(req, res) {

@@ -36,12 +36,25 @@ export class InstructorService {
     return instructor;
   }
 
-  async reviews_for(id) {
+  async reviews_for(id, where = {client: ''}) {
     const instructor = await this.find_by({ id });
+    if( !instructor ) {
+      throw new Object( {message: 'instructor not found'} )
+    }
+
+    let reviews = instructor.reviews
+
+    if( 0 < where.client.length ) {
+      reviews = reviews.filter( e => e.client.toString() == where.client )
+    }
+
+    if( reviews.length === 0 ) {
+      throw new Object( {message: 'the client did not review the instructor'} )
+    }
 
     return {
       rating: instructor.rating,
-      reviews: instructor.reviews,
+      reviews
     };
   }
 
