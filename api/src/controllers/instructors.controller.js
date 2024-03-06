@@ -117,7 +117,7 @@ export class InstructorsController {
     }
     const result = validationResult( req )
     if( result.isEmpty() ) {
-      const where = { client: req.params.client }
+      const where = { client: req.params.client_id }
       try {
         const review = await instructors.reviews_for(req.params.id, where)
         response.body.message = 'review found'
@@ -129,6 +129,8 @@ export class InstructorsController {
       }
     } else {
       console.log( '>> Review for', result.array() )
+      response.status = 400
+      response.body.errors = result.array().map( e => e.msg )
     }
 
 
@@ -177,7 +179,6 @@ export class InstructorsController {
   
     const result = validationResult( req )
     if( !result.isEmpty() || !id || !client_id ) {
-      console.log( '>> PUT REVIEW', id, client_id )
       response.body.errors = result.array().map( e => e.msg )
       return res.status( response.status ).json( response.body )
     }
@@ -193,7 +194,6 @@ export class InstructorsController {
       response.body = null
 
     } catch (error) {
-      console.error( '>> PUT REVIEW', error )
       response.body.message = error
     }
 
