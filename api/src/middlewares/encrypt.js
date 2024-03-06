@@ -6,7 +6,7 @@ export const hassPass = async (pass) => {
 };
 
 export const descriptPass = async (schema, email, pass) => {
-  const userSearch = await schema.findOne({ email: email }).exec();
+  const userSearch = await schema.findOne({ email: email }).populate("role_id routines.routinesDays").exec();
   if (userSearch) {
     const comparePass = await bcryptjs.compare(pass, userSearch.pass);
     if (comparePass) {

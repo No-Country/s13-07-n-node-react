@@ -19,7 +19,7 @@ export class InstructorService {
   async instructors() {
     const role_id = await this.instructor_role_id();
 
-    const collection = role_id !== -1 ? await userServiceFilter({ role_id }) : []
+    const collection = role_id !== -1 ? await userServiceFilter({ role_id }) : [];
 
     collection.forEach((e) => add_rating_to(e));
     return collection;
@@ -81,7 +81,9 @@ export class InstructorService {
 
     const role_id = await this.instructor_role_id();
 
-    if( role_id === -1 ) { throw new Object( {message: 'no role loaded'}) }
+    if (role_id === -1) {
+      throw new Object({ message: "no role loaded" });
+    }
 
     if (await user.findOne({ email, firstName, lastName }).exec()) {
       throw new Object({ message: "instructor is registered" });

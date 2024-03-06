@@ -3,6 +3,9 @@ import Routine from "../db/schemas/routine.schema.js";
 import { exercise } from "../db/schemas/exercise.schema.js";
 import { user } from "../db/schemas/user.schema.js";
 import TypeRoutine from "../db/schemas/typeRoutine.schema.js";
+import { pagination, search_routine } from "../function/Routine.js";
+import { exercisePerformed } from "../db/schemas/exercisePerformed.js";
+import { return_date } from "../function/initialDate.js";
 import cloudinary from "../config/cloudinary/cloudinary-config.js";
 const { CREATED, NOT_FOUND, OK } = pkg;
 export const createRoutineService = async (idClient, idTypeRoutine, idUser, name, list_exercise, times, file) => {
@@ -36,19 +39,34 @@ export const createRoutineService = async (idClient, idTypeRoutine, idUser, name
       }
       await searchExercise.save();
     }
+    let client;
     if (idClient) {
       newRoutine.idClient = idClient;
-      const client = await user.findOne({ _id: idClient }).exec();
-      await newRoutine.save();
-      return {
-        status: CREATED,
-        message: `la rutina del cliente ${client.firstName} fue creada correctamente`,
-      };
+      client = await user.findOne({ _id: idClient }).exec();
+      if (client) {
+        client.routines.push({ routinesDays: newRoutine._id, status: "pendiente" });
+        await client.save();
+      } else {
+        return {
+          status: NOT_FOUND,
+          message: "Cliente no encontrado",
+        };
+      }
     }
     await newRoutine.save();
+
+    const employeer = await user.findOne({ _id: idUser }).exec();
+    employeer.routines.push({ routinesDays: newRoutine._id, status: "pendiente" });
+    employeer.save();
+    if (client) {
+      return {
+        status: CREATED,
+        message: "rutina del cliente creada correctamente",
+      };
+    }
     return {
       status: CREATED,
-      message: "rutina surgerida creada correctamente",
+      message: "rutina sugerida creada correctamente",
     };
   } catch (error) {
     throw new Error("Error creating routine: " + error.message);
@@ -143,7 +161,7 @@ export const updateRoutineService = async (routineId, body) => {
 export const getAllRoutinesService = async () => {
   try {
     const routines = await Routine.find().populate("idClient idTypeRoutine idUser exercises.exercise");
-    return routines;
+    return routines.filter((routine) => !routine.idClient);
   } catch (error) {
     throw new Error("Error getting all routines: " + error.message);
   }
@@ -158,4 +176,153 @@ export const searchRoutineByNameService = async (routineName) => {
   } catch (error) {
     throw new Error("Error searching routine by name: " + error.message);
   }
+};
+
+export const selectRoutine = async (idUser, idRutine, page = 1, limit = 1) => {
+  if (!idUser) {
+    return {
+      status: NOT_FOUND,
+      message: "Ingrese el id del cliente",
+    };
+  }
+  if (!idRutine) {
+    return {
+      status: NOT_FOUND,
+      message: "Ingrese el id del cliente",
+    };
+  }
+
+  const userSearch = await user.findOne({ _id: idUser }).populate("role_id routines.routinesDays").exec();
+  if (userSearch) {
+    let result;
+    const user_date_object = await search_routine(userSearch, idRutine);
+    if (Object.entries(user_date_object).length > 0) {
+      result = await pagination(user_date_object.RoutineSearch, page, limit, user_date_object.userId);
+    } else {
+      const searchRoutines = await Routine.findOne({ _id: idRutine }).exec();
+      userSearch.routines.push({ routinesDays: searchRoutines, status: "pendiente" });
+      userSearch.save();
+      const user_date_object = await search_routine(userSearch, idRutine);
+      result = await pagination(user_date_object.RoutineSearch, page, limit, user_date_object.userId);
+    }
+    return result;
+  } else {
+    return {
+      status: NOT_FOUND,
+      message: "Usuario no encontrado",
+    };
+  }
+};
+export const completeRoutine = async (body) => {
+  const { idUser, idRutine, exerciseOne, state } = body;
+
+  if (!state) {
+    return {
+      status: NOT_FOUND,
+      message: "Ingrese el id del cliente",
+    };
+  }
+  if (!idUser) {
+    return {
+      status: NOT_FOUND,
+      message: "Ingrese el id del cliente",
+    };
+  }
+  if (!idRutine) {
+    return {
+      status: NOT_FOUND,
+      message: "Ingrese el id del cliente",
+    };
+  }
+  if (!exerciseOne.name) {
+    return {
+      status: NOT_FOUND,
+      message: "ingrese el nombre del ejercicio",
+    };
+  }
+  if (!exerciseOne.image) {
+    return {
+      status: NOT_FOUND,
+      message: "ingrese la imagen del ejercicio",
+    };
+  }
+  if (!exerciseOne.video) {
+    return {
+      status: NOT_FOUND,
+      message: "ingrese video del ejercicio",
+    };
+  }
+  if (!exerciseOne.repetition) {
+    return {
+      status: NOT_FOUND,
+      message: "ingrese repetition del ejercicio",
+    };
+  }
+  if (!exerciseOne.series) {
+    return {
+      status: NOT_FOUND,
+      message: "ingrese la series del ejercicio",
+    };
+  }
+  if (!exerciseOne.weight) {
+    return {
+      status: NOT_FOUND,
+      message: "ingrese el peso del ejercicio",
+    };
+  }
+  if (!exerciseOne.time) {
+    return {
+      status: NOT_FOUND,
+      message: "ingrese el tiempo del ejercicio",
+    };
+  }
+  const day = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado "];
+  const userSearch = await user.findOne({ _id: idUser }).exec();
+  const routineSearch = await Routine.findOne({ _id: idRutine }).exec();
+  const search_date = return_date();
+  if (userSearch && routineSearch) {
+    const complet = await exercisePerformed.create({
+      state: state,
+      exerciseOne: exerciseOne,
+      days: day[search_date.weekDayNumber],
+      dateDays: search_date.formatteddate,
+      clientId: userSearch,
+      routine: routineSearch,
+    });
+    complet.save();
+    return complet;
+  } else {
+    return {
+      status: NOT_FOUND,
+      message: "Usuario o rutina no encontrado",
+    };
+  }
+};
+export const resultRoutines = async (idUser, idRutine) => {
+  if (!idUser) {
+    return {
+      status: NOT_FOUND,
+      message: "Usuario no encontrado",
+    };
+  }
+  if (!idRutine) {
+    return {
+      status: NOT_FOUND,
+      message: "Rutina no encontrado",
+    };
+  }
+  const search_date = return_date();
+  const results = await exercisePerformed
+    .find({
+      $and: [{ clientId: idUser }, { routine: idRutine }, { dateDays: search_date.formatteddate }],
+    })
+    .exec();
+  let resultComplet = results.filter((result) => result.state == true);
+  let resultIncomplet = results.filter((result) => result.state == false);
+  let porcentaje = (resultComplet.length / results.length) * 100;
+  return {
+    resultComplet,
+    resultIncomplet,
+    porcentaje: `${porcentaje}%`,
+  };
 };

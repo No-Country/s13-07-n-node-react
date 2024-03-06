@@ -19,7 +19,6 @@ const userSchema = new Schema({
   reviews: [
     {
       reviewer: {
-        // Nombre de la persona que hace la reseña
         type: String,
         required: true,
       },
@@ -29,6 +28,16 @@ const userSchema = new Schema({
       },
       comment: {
         type: String,
+      },
+    },
+  ],
+  routines: [
+    {
+      routinesDays: { type: mongoose.Types.ObjectId, ref: "Routine" },
+      status: {
+        type: String,
+        enum: ["completado", "pendiente", "realizando"],
+        default: "pendiente",
       },
     },
   ],
