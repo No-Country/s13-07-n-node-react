@@ -1,3 +1,4 @@
+import { validationResult } from "express-validator";
 import { InstructorService } from "../services/instructors.service.js";
 
 const DOMAIN_NAME = process.env.HOST;
@@ -84,7 +85,14 @@ export class InstructorsController {
         response.message = "instructor has not reviews";
       } else {
         response.body.message = "reviews found";
-        response.body.data = reviews;
+        response.body.data = {
+          rating: reviews.rating
+          , reviews: reviews.reviews.reduce((col, review) => {
+            const { reviewer, rating, comment } = review
+            col.push({ reviewer, rating, comment })
+            return col;
+          }, [])
+        }
       }
       response.status = 200;
     }
@@ -93,20 +101,29 @@ export class InstructorsController {
 
   async enter_review(req, res) {
     const response = {
-      body: { message: "reviews not found" },
-      status: 404,
+      body: { message: 'could not be processed' },
+      status: 400,
     };
-    const { id } = req.params;
-    const { reviewer, rating, comment } = req.body;
+    
+    const result = validationResult( req )
+    if (result.isEmpty()) {
+      const { id } = req.params;
+      const { reviewer, rating, comment, client } = req.body;
 
-    try {
-      await instructors.register_review_for(id, { reviewer, rating, comment });
 
-      response.body.message = "review added for instructor";
-      response.status = 201;
-    } catch (error) {
-      console.error(">> ERROR", error);
-      response.message = error;
+      try {
+        await instructors.register_review_for(id, { reviewer, rating, comment, client });
+
+        response.body.message = "review added for instructor";
+        response.status = 201;
+      } catch (error) {
+        console.error(">> ERROR", error);
+        response.body.message = error;
+      }
+    } else {
+      response.body.errors = result.array().reduce( (a, e) => {
+        a.push( e.msg ); return a;
+      }, [])
     }
 
     res.status(response.status).json(response.body);

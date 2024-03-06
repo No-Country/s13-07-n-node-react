@@ -46,9 +46,12 @@ export class InstructorService {
   }
 
   async register_review_for(id, params = {}) {
-    const { reviewer, rating, comment } = params;
+    const { reviewer, rating, comment, client } = params;
     const instructor = await this.find_by({ id });
-    instructor.reviews.push({ reviewer, rating, comment });
+    if (!instructor) {
+      throw new Object( {message: 'instructor not found'} )
+    }
+    instructor.reviews.push({ reviewer, rating, comment, client });
     add_rating_to(instructor);
     await instructor.save();
   }
