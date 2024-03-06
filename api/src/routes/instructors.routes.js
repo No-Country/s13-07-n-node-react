@@ -56,8 +56,8 @@ export class Instructors {
     router.patch(AN_INSTRUCTOR_PATH, instructors.update);
     router.delete(AN_INSTRUCTOR_PATH, instructors.destroy);
     router.get(REVIEW_PATH, instructors.show_reviews);
-    router.get(REVIEW_PATH.concat('/:client'), review_for_client_validation(), instructors.show_review_for);
     router.post(REVIEW_PATH, review_post_validation(), instructors.enter_review);
+    router.get(REVIEW_PATH.concat('/:client_id'), review_for_client_validation(), instructors.show_review_for);
     router.put( REVIEW_PATH.concat('/:client_id'), review_post_validation(), instructors.update_review_for );
   }
 }
