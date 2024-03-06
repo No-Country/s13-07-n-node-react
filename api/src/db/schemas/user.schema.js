@@ -20,15 +20,22 @@ const userSchema = new Schema({
     {
       reviewer: {
         type: String,
-        required: true,
+        required: [true, 'El nombre del revisor debe estar presente']
       },
       rating: {
         type: Number,
         required: true,
+        min: [1, 'No debe ser menor que 1']
+        , max: [5, 'No puede ser mayor que 5']
       },
       comment: {
         type: String,
+        maxLength: [150, 'El comentario no debe exceder de 150 caracteres']
       },
+      client: {
+        type: Schema.Types.ObjectId
+        , required: [ true, 'Debe ingresar el ID del cliente']
+      }
     },
   ],
   routines: [
