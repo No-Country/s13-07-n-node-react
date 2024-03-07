@@ -3,7 +3,7 @@ import flecha from "../../public/Arrow - Right 2.svg";
 import Bookmark from "../../public/Bookmark.svg";
 import Link from "next/link";
 
-const CardRutinas = ({imagen, tiempo,  active = false, ejercicio = '', idRoutine}: {imagen: any, tiempo: number,  active: boolean, ejercicio: string, idRoutine:string}) => {
+const CardRutinas = ({calorias, imagen, tiempo,  active = false, ejercicio = '', idRoutine}: {calorias:number,imagen: any, tiempo: number,  active: boolean, ejercicio: string, idRoutine?:string}) => {
     return (
         <Link href={`/entrenamiento/rutinas/${idRoutine}`}>
             <div className='relative mt-2 w-40'>
