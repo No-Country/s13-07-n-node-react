@@ -444,12 +444,18 @@
 									"comment": {
 										"type": "string",
 										"summary": "Comentario que escribe la persona que hace la reseña"
+									},
+									"client": {
+										"type": "UUID"
+										, "summary": "ID de la persona que hace el comentario"
 									}
 								}
 							},
 							"example": {
 								"reviewer": "Paula Mendoza",
-								"rating": "4"
+								"rating": "4",
+								"comment": "Excelente profesor. Me hace sentir muy segura"
+								, "client": "65cc4d4e289a62ebdbbb7671"
 							}
 						}
 					}
@@ -457,6 +463,146 @@
 				"responses": {
 					"204": {
 						"description": "El registro de la reseña se realizó con éxito. No retorna contenido"
+					}
+				}
+			}
+		}
+		,"/instructors/{instructor_id}/reviews/{client_id}": {
+			"summary": "Gestiona las reseñas del cliente a el instructor indicado"
+			, "description": "El usuario puede ver o reemplazar la reseña del cliente identificada por el client_id, siempre indicando el instructor con el id del instructor"
+			,
+			"get": {
+				"summary": "Muestra la reseña del cliente"
+				,"tags": ["Instructors"]
+				, "parameters": [ 
+					{
+						"name": "instructor_id",
+						"in": "path",
+						"required": "true",
+						"description": "ID del instructor a mostrar",
+						"schema": {
+							"type": "string",
+							"example": "65cc4d4e289a62ebdbbb7671"
+						}
+					},{
+						"name": "client_id"
+						, "in": "path"
+						, "required": "true"
+						, "description": "ID del cliente que hizo la reseña"
+						, "schema": {
+							"type": "UUID"
+							, "example": "65cc4d4e289a62ebdbbb7671"
+						}
+					}
+				]
+				, "responses": {
+					"200": {
+						"description": "Se pudo procesar la solicitud"
+						, "content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+									, "properties": {
+										"message": {
+											"type": "string"
+											, "description": "Mensaje de la operación"
+											, "example": "review found"
+										}
+										, "data": {
+											"type": "object"
+											, "properties": {
+												"reviewer": {
+													"type": "string"
+													, "summary": "nombre completa del reseñador"
+													, "example": "Emanuel Gauler"
+												}
+												, "rating": {
+													"type": "number"
+													, "summary": "Puntaje que el resañador da al instructor"
+													, "example": 5
+												}
+												, "comment": {
+													"type": "string"
+													, "summary": "Comentario que dió el reseñador"
+													, "example": "Es una persona que me alienta a seguir mejorando cada día"
+												}
+												, "client": {
+													"type": "string"
+													, "summary": "ID del reseñador"
+												}
+												, "url": {
+													"type": "string"
+													, "summary": "URL a la reseña del reseñador"
+													, "example": "https://spotter-gym.onrender.com/api/v1/instructors/id/reviews/id"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			, "put": {
+				"summary": "Actualiza la reseña, tanto el comentario como el puntaje"
+				, "tags": ["Instructors"]
+				, "parameters": [ 
+					{
+						"name": "instructor_id",
+						"in": "path",
+						"required": "true",
+						"description": "ID del instructor a mostrar",
+						"schema": {
+							"type": "string",
+							"example": "65e8f4b0119e17d70204e850"
+						}
+					},{
+						"name": "client_id"
+						, "in": "path"
+						, "required": "true"
+						, "description": "ID del cliente que hizo la reseña"
+						, "schema": {
+							"type": "UUID"
+							, "example": "65e8f49c119e17d70204e84c"
+						}
+					}
+				]
+				, "requestBody": {
+					"description": "Datos para la reseña",
+					"required": "true",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"reviewer": {
+										"type": "string",
+										"required": "true",
+										"summary": "Nombre y apellido de la persona"
+									},
+									"rating": {
+										"type": "number",
+										"required": "true",
+										"summary": "Puntaje que la persona le da al instructor"
+									},
+									"comment": {
+										"type": "string",
+										"summary": "Comentario que escribe la persona que hace la reseña"
+									},
+									"client": {
+										"type": "UUID"
+										, "summary": "ID de la persona que hace el comentario"
+									}
+								}
+							},
+							"example": {
+								"reviewer": "Carolina García",
+								"rating": 4,
+								"comment": "Es muy entusiasta y me da mucha confianza",
+								"client": "65e8f49c119e17d70204e84c"
+							}
+						}
 					}
 				}
 			}

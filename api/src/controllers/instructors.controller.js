@@ -1,3 +1,4 @@
+import { validationResult } from "express-validator";
 import { InstructorService } from "../services/instructors.service.js";
 
 const DOMAIN_NAME = process.env.HOST;
@@ -34,6 +35,16 @@ function parse(instructor) {
     },
   );
 }
+
+function parse_review( instructor_id, review ) {
+  const { reviewer, rating, comment, client } = review
+  const url = `${url_to_reviews_for(instructor_id)}/${client}`
+  return {
+    reviewer, rating, comment, client
+    , url
+  }
+}
+
 
 export class InstructorsController {
   async index(req, res) {
@@ -78,38 +89,120 @@ export class InstructorsController {
     };
 
     const { id } = req.params;
-    const reviews = await instructors.reviews_for(id);
-    if (reviews) {
-      if (reviews.rating === 0 && reviews.reviews.length === 0) {
-        response.message = "instructor has not reviews";
-      } else {
-        response.body.message = "reviews found";
-        response.body.data = reviews;
+    try {
+      const reviews = await instructors.reviews_for(id);
+      if (reviews) {
+        if (reviews.rating === 0 && reviews.reviews.length === 0) {
+          response.message = "instructor has not reviews";
+        } else {
+          response.body.message = "reviews found";
+          response.body.data = {
+            rating: reviews.rating
+            , reviews: reviews.reviews.reduce((col, review) => {
+              col.push(parse_review(id, review))
+              return col;
+            }, [])
+          }
+        }
+        response.status = 200;
       }
-      response.status = 200;
+    } catch (error) {
+      response.status = 400
+      response.body.errors = error
     }
     res.status(response.status).json(response.body);
   }
 
+  async show_review_for( req, res ) {
+    const response = {
+      body: {
+        message: 'review not found' 
+      }
+      , status: 404
+    }
+    const result = validationResult( req )
+    if( result.isEmpty() ) {
+      const where = { client: req.params.client_id }
+      try {
+        const review = await instructors.reviews_for(req.params.id, where)
+        response.body.message = 'review found'
+        response.body.data = parse_review(req.params.id, review.reviews[0])
+        response.status = 200
+      } catch (error) {
+        response.status = 400
+        response.body.message = error.message
+      }
+    } else {
+      console.log( '>> Review for', result.array() )
+      response.status = 400
+      response.body.errors = result.array().map( e => e.msg )
+    }
+
+
+    res.status( response.status ).json( response.body )
+  }
+
   async enter_review(req, res) {
     const response = {
-      body: { message: "reviews not found" },
-      status: 404,
+      body: { message: 'could not be processed' },
+      status: 400,
     };
-    const { id } = req.params;
-    const { reviewer, rating, comment } = req.body;
+    
+    const result = validationResult( req )
+    if (result.isEmpty()) {
+      const { id } = req.params;
+      const { reviewer, rating, comment, client } = req.body;
 
-    try {
-      await instructors.register_review_for(id, { reviewer, rating, comment });
 
-      response.body.message = "review added for instructor";
-      response.status = 201;
-    } catch (error) {
-      console.error(">> ERROR", error);
-      response.message = error;
+      try {
+        await instructors.register_review_for(id, { reviewer, rating, comment, client });
+
+        response.body.message = "review added for instructor";
+        response.status = 201;
+      } catch (error) {
+        console.error(">> ERROR", error);
+        response.body.message = error;
+      }
+    } else {
+      response.body.errors = result.array().reduce( (a, e) => {
+        a.push( e.msg ); return a;
+      }, [])
     }
 
     res.status(response.status).json(response.body);
+  }
+
+  async update_review_for( req, res ) {
+    const { id, client_id } = req.params
+
+    const response = {
+      status: 400,
+      body: {
+        message: 'can not processed'
+      }
+    }
+  
+    const result = validationResult( req )
+    if( !result.isEmpty() || !id || !client_id ) {
+      response.body.errors = result.array().map( e => e.msg )
+      return res.status( response.status ).json( response.body )
+    }
+
+    try {
+      const { reviewer, rating, comment, client } = req.body
+      if( client != client_id ) throw new Object( {message: 'client id not match'} )
+      const params = {
+        id, client_id, reviewer, rating, comment, client
+      }
+      await instructors.update_review_for(params)
+      response.status = 204
+      response.body = null
+
+    } catch (error) {
+      response.body.message = error
+    }
+
+    res.status( response.status ).json( response.body )
   }
 
   async create(req, res) {

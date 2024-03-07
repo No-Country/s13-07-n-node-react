@@ -2,6 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const routineSchemaDefinition = new mongoose.Schema({
   name: String,
+  image: String,
   idClient: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
