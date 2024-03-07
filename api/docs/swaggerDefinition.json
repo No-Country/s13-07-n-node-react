@@ -453,7 +453,7 @@
 							},
 							"example": {
 								"reviewer": "Paula Mendoza",
-								"rating": "4",
+								"rating": 4,
 								"comment": "Excelente profesor. Me hace sentir muy segura"
 								, "client": "65cc4d4e289a62ebdbbb7671"
 							}
