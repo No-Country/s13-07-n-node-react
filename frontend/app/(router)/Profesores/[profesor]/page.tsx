@@ -1,13 +1,13 @@
+import React from 'react'
+import ProfessorDetails from '../../../Components/ProfessorDetails';
 
-import CalificarProfesor from "@/app/views/CalificarProfesor";
-import AuthRoute from "@/app/Components/Auth/AuthRoute";
 
-const page = ({ params }: { params: { profesor: string } }) => {
-    return (
-        <AuthRoute>
-            <CalificarProfesor params={params} />
-        </AuthRoute>
-    );
-};
+function CalificarProfesor({ params }: { params: { profesor: string } }) {
+  return (
+    <div>
+        <ProfessorDetails params={params} />
+    </div>
+  )
+}
 
-export default page;
+export default CalificarProfesor;
