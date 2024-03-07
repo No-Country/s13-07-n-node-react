@@ -3,10 +3,10 @@ import { Metadata } from "next";
 
 const metadata:Metadata = {
 
-    title:"Estadisticas",
-    description:"estadisticas",
+    title:"Actividades",
+    description:"Actividades",
 }
-export default function EstadisticasLayout({
+export default function ActividadesLayout({
     children,
     }: {
     children: React.ReactNode

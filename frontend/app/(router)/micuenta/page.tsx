@@ -1,13 +1,15 @@
-import AuthRoute from "@/app/Components/Auth/AuthRoute";
-import Micuenta from "@/app/views/Micuenta";
+import React from 'react'
+import Navbar from '../../Components/Navbar'
+import GlobalContainer from '../../Components/GlobalContainer'
 
-const page = () => {
-    return (
-        <AuthRoute>
-            <Micuenta />
-        </AuthRoute>
-    )
-};
+const Micuenta = () => {
+  return (
+    <GlobalContainer>
+      Mi cuenta
+        <Navbar/>
+    </GlobalContainer>
+  )
+}
 
-export default page;
+export default Micuenta;
 
