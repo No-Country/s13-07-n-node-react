@@ -13,7 +13,7 @@ function CardContainerProfessor() {
     if (isLoading) return <div className='flex items-center justify-center p-2'><Loader/></div> ;
     if (error) return <p className='flex items-center justify-center h-screen'>Error: {error}</p>;
     if (!data) return <p className='flex items-center justify-center h-screen'>No profile data</p>;
-    console.log(data)
+    //console.log(data)
   return (
     <div className='w-[100%] grid grid-cols-12 mt-[24px]'>
       

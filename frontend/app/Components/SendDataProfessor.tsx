@@ -10,8 +10,9 @@ import { useFetchDataPost } from '../utils/useFetchDataPost';
 
 const SendDataProfessor = ({ params, dataProfessor, ratingProfessor, comment }: { params: {profesor: string;}, dataProfessor:any, ratingProfessor:number, comment:string}) => {
     const {user} = useGlobalStore<any>((state)=>state)
-    const nameReviewer = {reviewer:`${user.firstName} ${user.lastName}`, rating:ratingProfessor.toString(), comment:comment};
+    const nameReviewer = {reviewer:`${user.firstName} ${user.lastName}`, rating:ratingProfessor.toString(), comment:comment, client:`${user._id}`};
     const urlToFetch = `${urlAPi}/instructors/${params.profesor}/reviews`;
+    console.log(urlToFetch)
     const router = useRouter()
 
 
@@ -20,13 +21,13 @@ const SendDataProfessor = ({ params, dataProfessor, ratingProfessor, comment }: 
     if (error) return <div className='flex items-center justify-center h-screen'>Error: {error}</div>;
     if (!data) return <div className='flex items-center justify-center h-screen'>No profile data</div>;
     
-    if(data){
-        Swal.fire({
-        icon: "success",
-        title: `Calificación Enviada`,
-        showConfirmButton: false,
-        timer: 1500
-    });
+        if(data){
+            Swal.fire({
+            icon: "success",
+            title: `Calificación Enviada`,
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
     
 
