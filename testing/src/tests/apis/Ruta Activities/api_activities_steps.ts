@@ -1,7 +1,7 @@
 import { Given, When, Then, Before, After } from '@cucumber/cucumber';
 import { chromium, firefox, Page, webkit} from 'playwright';
-import { Elements } from '../pages/objectModel';
-import { ApiRequestTest } from '../../utils/api_request';
+import { Elements } from '../../../features/pages/objectModel';
+import { ApiRequestTest } from '../../../utils/api_request';
 import { expect } from 'chai';
 
 
