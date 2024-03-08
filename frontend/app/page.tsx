@@ -12,6 +12,10 @@ export default function Page() {
         Inicia sesion
       </button>
 
+      <button onClick={()=>{router.push("/registro")}} type="button" className="text-white bg-primaryDefault hover:bg-primaryDefault focus:ring-4 focus:primaryDefault font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:primaryDefault">
+        Registrarse
+      </button>
+
     </div>
   );
 }

@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import { login } from '@/app/utils/inicioSesion';
 import Loader from '@/app/Components/Loader';
 import { useGlobalStore } from '@/app/store/GlobalStore';
+import Link from 'next/link';
 
 
 
@@ -220,8 +221,8 @@ export default function LoginForm() {
                 Confirmar
               </button>
               <h2 className='text-gray-500 mt-4'>
-                No estas registrado?
-                <span className='text-primaryLigth '> Crear Cuenta</span>
+                No estas registrado? 
+                <Link href={"/registro"} > <span className='text-primaryLigth '> Crear Cuenta</span></Link>
               </h2>
             </>
           )}
