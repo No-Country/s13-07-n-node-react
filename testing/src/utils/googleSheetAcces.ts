@@ -14,9 +14,7 @@ async function accessGoogleSheet( spreadsheetId: string, apiKey: string, range: 
         const values = response.data.values as string[][];
         // Utiliza map para procesar y guardar todos los valores
         const processedValues = values.map(row => {
-        // Aquí puedes realizar cualquier procesamiento adicional en cada fila
         return row.map(cell => {
-            // Ejemplo: Convertir las celdas en números si son cadenas
             return cell;
         });
         });
