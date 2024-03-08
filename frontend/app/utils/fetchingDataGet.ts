@@ -1,3 +1,4 @@
+
 async function fetchingDataGet(url: string): Promise<any> {
  try {
     const response = await fetch(url);
