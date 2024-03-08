@@ -6,17 +6,23 @@ import Navbar from '../../Components/Navbar';
 import Footer from '../../Components/Footer';
 import GlobalContainer from '../../Components/GlobalContainer';
 import CardContainerProfessor from '../../Components/CardContainerProfessor';
+import { urlAPi } from '@/app/utils/urlBase';
+import fetchingDataGet from '@/app/utils/fetchingDataGet';
 
 
 
-const Profesores = () => {
+export default async function Profesores(){
+
+  const urlToFetch = `${urlAPi}/instructors`;
+
+  const data = await fetchingDataGet(urlToFetch);
   return (
     <div>
       <GlobalContainer>
         <Header/>
         <Navbar/>
         <SectionButton section='Profesores' active={false} description='Conoce a los profesores de tu sede' />
-        <CardContainerProfessor/>
+        <CardContainerProfessor data={data}/>
       </GlobalContainer>
       <Footer/>
     </div>
@@ -24,4 +30,4 @@ const Profesores = () => {
   )
 }
 
-export default Profesores;
+

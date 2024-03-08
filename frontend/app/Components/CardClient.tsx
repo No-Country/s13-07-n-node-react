@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+"use client"
 import React, { useState } from 'react';
 import backgroundImage from "../../public/Rectangle 2.png";
 import Image from 'next/image';
