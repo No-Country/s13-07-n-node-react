@@ -44,18 +44,13 @@ export default function RegisterForm() {
         role_id: Yup.string(),
     });
 
-    let storedEmail:any;
-    let storedpass:any;
-    if (typeof window !== 'undefined') {
-        storedEmail = JSON.parse(localStorage.getItem('user-spotter-email') || "{}")
-        storedpass = JSON.parse(localStorage.getItem('user-spotter-pass') || "{}")
-    }
+    
 
 
   const formik = useFormik({
     initialValues:{
-      email: typeof storedEmail === "object" ? "" : storedEmail,
-      pass: typeof storedpass === "object" ? "" : storedpass,
+      email: "",
+      pass: "",
       firstName:"",
       lastName:"",
       phone:"",
@@ -63,13 +58,7 @@ export default function RegisterForm() {
     validationSchema,
     onSubmit: async  (values, {resetForm}) => {
       
-        if (rememberMe) {
-          // Almacena la contraseña en una cookie o localStorage
-            if (typeof window !== 'undefined') {
-              localStorage.setItem('user-spotter-email', JSON.stringify(values.email))
-              localStorage.setItem('user-spotter-pass', JSON.stringify(values.pass))
-            }
-        }
+        
       
      
       setLoading(true)
@@ -89,22 +78,7 @@ export default function RegisterForm() {
         setRolUser(dashRedirect)
         setIsAuthClient(true)
         //Aqui va una  validacion de acuerdo al rol del usuario en base a ello redirige a dashboards distintos
-        if(dashRedirect === "cliente"){
-          //setIsAuthClient(true)
-          router.push("/inicio/cliente");
-        }
         
-        if(dashRedirect === "dueño"){
-          router.push("/inicio/duennio");
-        }
-
-        if(dashRedirect === "profesor/a"){
-          router.push("/inicio/profesor")
-        }
-
-        if(dashRedirect === "secretario/a"){
-          router.push("/inicio/secretario")
-        }
         return;
       }
 
@@ -167,11 +141,10 @@ export default function RegisterForm() {
             <Loader />
           ) : (
             <>
-              <div className='flex justify-center mb-40'>
+              <div className='flex justify-center mb-10'>
                 <Image src={spotterLogo} alt='logo' />
               </div>
 
-            
               <h2 className='mb-6'>Registrar Usuario</h2>
                 
                     <div className='relative mt-3'>
@@ -248,29 +221,40 @@ export default function RegisterForm() {
                             <Image src={mailIcon} alt='Imagen' width={20} height={20} />
                         </div>
                     </div>
-                
 
-                <div>
-                    <label htmlFor='pass' className='mb-2 '>
-                        Contraseña
-                    </label>
-                    <input
-                        type='pass'
-                        id='pass'
-                        className='mb-4 p-2 border-none rounded-lg w-full text-primaryDefault bg-gray-800'
-                        onChange={formik.handleChange}
-                        value={formik.values.pass}
-                        placeholder={'**********'}
-                    />
-                    {formik.touched.pass && formik.errors.pass ? (
+                    <div className='relative mt-3'>
+                        <input
+                            type='password'
+                            id='password'
+                            placeholder='Contraseña'
+                            className='text-primaryDefault bg-gray-800 mb-4 p-2 border-none rounded-lg w-full pl-10 border border-gray-300'
+                            onChange={formik.handleChange}
+                            value={formik.values.pass}
+                        />
+                        {formik.touched.pass && formik.errors.pass ? (
                         <div className='my-1 text-primaryDefault'>{String(formik.errors.pass)}</div>
-                    ) : null}
+                        ) : null}
+                        <div className='absolute left-2 top-1/3 transform -translate-y-1/2'>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-primaryDefault">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                            </svg>
+                        </div>
+                    </div>
+
                     
-                </div>
-             
-
-              
-
+                    <div className='my-4' >
+                      <label htmlFor="countries" className=" flex items-center  mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-primaryDefault">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                        </svg>
+                        <span className='ml-3'>Tipo de usuario</span>
+                      </label>
+                      <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="Cliente">Cliente</option>
+                        <option value="CA">Profesor</option>
+                        <option value="FR">Dueño De Gimnasio</option>
+                      </select>
+                    </div>
               <button
                 type='submit'
                 className='p-2 bg-primaryDefault text-white rounded-md w-full '
