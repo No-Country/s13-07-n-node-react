@@ -1,3 +1,4 @@
+import AuthRoute from "@/app/Components/Auth/AuthRoute";
 import { Metadata } from "next";
 
 const metadata:Metadata = {
@@ -12,7 +13,9 @@ export default function InicioLayout({
     }) {
     return (
         <div>
-            {children}
+            <AuthRoute>
+                {children}
+            </AuthRoute>
         </div>
     )
 }

@@ -19,6 +19,7 @@ const Ejercicios = ({params} : {params: any}) => {
     const isLastExercise = currentExerciseIndex === totalExercises - 1;
 
     const ejercicio = EjerciciosJSON.exercises[currentExerciseIndex];
+    console.log(params)
 
     return (
         <GlobalContainer>
